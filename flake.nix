@@ -25,7 +25,7 @@
       edwin = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         modules = [
-          ./hosts/edwin/configuration.nix
+          ./hosts/edwin/default.nix
           {
 
             nix.settings.substituters = [ "https://cosmic.cachix.org/" ];
@@ -42,7 +42,7 @@
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
             home-manager.users.oddbjornmr =
-              import ./home-manager/edwin/default.nix;
+              import ./home-manager/oddbjornmr/edwin.nix;
 
             # Optionally, use home-manager.extraSpecialArgs to pass arguments to home.nix
           }
