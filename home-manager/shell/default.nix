@@ -48,7 +48,10 @@
     # it provides the command `nom` works just like `nix`
     # with more details log output
     nix-output-monitor
-
+    # language server
+    nil 
+   
+   
     # productivity
     hugo # static site generator
     glow # markdown previewer in terminal

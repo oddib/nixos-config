@@ -5,11 +5,11 @@
   programs.vscode = {
   enable = true;
   userSettings = {
-        "nix.enableLanguageServer"=true;
-        "nix.serverPath"="nil";
-        "git.confirmSync"= false;
-        "git.enableSmartCommit"= true;
-
+        "nix.enableLanguageServer" = true;
+        "nix.serverPath" = "nil";
+        "git.confirmSync" = false;
+        "git.enableSmartCommit" = true;
+        "files.autoSave" = "afterDelay";
   };
   extensions = with pkgs.vscode-extensions; [
       jnoortheen.nix-ide
