@@ -1,9 +1,5 @@
-{ config, pkgs, ... }:
+{ ... }:
 
 {
-  imports = [
-    ./1pass.nix
-    ./vivaldi.nix
-    ./vscode.nix
-  ];
+  imports = [ ./1pass.nix ./vivaldi.nix ./vscode.nix ];
 }

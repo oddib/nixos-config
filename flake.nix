@@ -3,7 +3,8 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-24.11";
-    nixpkgs.follows = "nixos-cosmic/nixpkgs-stable"; # NOTE: change "nixpkgs" to "nixpkgs-stable" to use stable NixOS release
+    nixpkgs.follows =
+      "nixos-cosmic/nixpkgs-stable"; # NOTE: change "nixpkgs" to "nixpkgs-stable" to use stable NixOS release
 
     nixos-cosmic.url = "github:lilyinstarlight/nixos-cosmic";
 
@@ -16,7 +17,7 @@
       # to avoid problems caused by different versions of nixpkgs.
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    
+
   };
 
   outputs = inputs@{ nixpkgs, home-manager, nixos-cosmic, ... }: {
@@ -27,10 +28,12 @@
         modules = [
           ./hosts/edwin/configuration.nix
           {
-            nix.settings = {
-              substituters = [ "https://cosmic.cachix.org/" ];
-              trusted-public-keys = [ "cosmic.cachix.org-1:Dya9IyXD4xdBehWjrkPv6rtxpmMdRel02smYzA85dPE=" ];
-            };
+
+            nix.settings.substituters = [ "https://cosmic.cachix.org/" ];
+            nix.settings.trusted-public-keys = [
+              "cosmic.cachix.org-1:Dya9IyXD4xdBehWjrkPv6rtxpmMdRel02smYzA85dPE="
+            ];
+
           }
           nixos-cosmic.nixosModules.default
           # make home-manager as a module of nixos
@@ -41,7 +44,8 @@
             home-manager.useUserPackages = true;
 
             # TODO replace ryan with your own username
-            home-manager.users.oddbjornmr = import ./home-manager/edwin/default.nix;
+            home-manager.users.oddbjornmr =
+              import ./home-manager/edwin/default.nix;
 
             # Optionally, use home-manager.extraSpecialArgs to pass arguments to home.nix
           }

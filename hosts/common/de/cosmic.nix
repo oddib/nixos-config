@@ -1,9 +1,7 @@
-{ config, pkgs, ... }:
+{ ... }:
 
 {
-  imports = [
-    ./audio.nix
-    ];
+  imports = [ ./audio.nix ];
   services.desktopManager.cosmic.enable = true;
   services.displayManager.cosmic-greeter.enable = true;
 }

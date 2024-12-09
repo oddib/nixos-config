@@ -1,10 +1,7 @@
-{ config, pkgs, ... }:
+{ ... }:
 
 {
-  imports = [
-  ../app/default.nix
-  ../shell/default.nix
-  ];
+  imports = [ ../app/default.nix ../shell/default.nix ];
   home.username = "oddbjornmr";
   home.homeDirectory = "/home/oddbjornmr";
   #
