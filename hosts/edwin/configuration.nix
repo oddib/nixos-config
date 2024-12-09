@@ -81,23 +81,6 @@
 
   # Install firefox.
   programs.firefox.enable = true;
-
-  # Install 1password
-  programs._1password.enable = true;
-  programs._1password-gui = {
-    enable = true;
-    # Certain features, including CLI integration and system authentication support,
-    # require enabling PolKit integration on some desktop environments (e.g. Plasma).
-    polkitPolicyOwners = [ "oddbjornmr" ];
-  };
-  environment.etc = {
-    "1password/custom_allowed_browsers" = {
-      text = ''
-        vivaldi-bin
-      '';
-      mode = "0755";
-    };
-  };
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   services.tailscale.enable = true;
@@ -107,10 +90,6 @@
   #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
   #  wget
   duplicacy
-  (vivaldi.override {
-    proprietaryCodecs = true;
-    enableWidevine = true;
-  })
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
