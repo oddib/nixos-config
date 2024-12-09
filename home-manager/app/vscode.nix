@@ -4,6 +4,10 @@
  { 
   programs.vscode = {
   enable = true;
+  userSettings = {
+        "nix.enableLanguageServer"=true;
+        "nix.serverPath"="nil";
+  };
   extensions = with pkgs.vscode-extensions; [
       jnoortheen.nix-ide
       ms-python.python
@@ -18,9 +22,6 @@
         sha256 = "1hp6gjh4xp2m1xlm1jsdzxw9d8frkiidhph6nvl24d0h8z34w49g";
       }
     ];
-    usersettings {
-        "nix.enableLanguageServer"="true";
-        "nix.serverPath"="nil";
-    }
-  }
+
+  };
  }
