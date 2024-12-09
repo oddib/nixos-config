@@ -7,6 +7,7 @@
   userSettings = {
         "nix.enableLanguageServer"=true;
         "nix.serverPath"="nil";
+        "git.confirmSync"= false;
   };
   extensions = with pkgs.vscode-extensions; [
       jnoortheen.nix-ide
