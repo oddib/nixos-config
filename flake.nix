@@ -17,10 +17,9 @@
       # to avoid problems caused by different versions of nixpkgs.
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
   };
 
-  outputs = inputs@{ nixpkgs, home-manager, nixos-cosmic, ... }: {
+  outputs = { nixpkgs, home-manager, nixos-cosmic, ... }: {
     nixosConfigurations = {
       # TODO please change the hostname to your own
       edwin = nixpkgs.lib.nixosSystem {
@@ -42,8 +41,6 @@
           {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
-
-            # TODO replace ryan with your own username
             home-manager.users.oddbjornmr =
               import ./home-manager/edwin/default.nix;
 
