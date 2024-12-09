@@ -9,6 +9,7 @@
     ./hardware-configuration.nix
     ../common/default.nix
     ../common/de/default.nix
+    ../common/games/default.nix
   ];
 
   # Bootloader.

@@ -49,7 +49,7 @@
     # with more details log output
     nix-output-monitor
     nil # language server
-    nixfmt # formatter
+    nixfmt-classic # formatter
 
     # productivity
     hugo # static site generator

@@ -1,7 +1,7 @@
 { ... }:
 
 {
-  imports = [ ../app/default.nix ../shell/default.nix ../games/default.nix ];
+  imports = [ ../app/default.nix ../shell/default.nix ];
   home.username = "oddbjornmr";
   home.homeDirectory = "/home/oddbjornmr";
   #
