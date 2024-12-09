@@ -31,10 +31,11 @@
     #GUI programs
     (vscode-with-extensions.override {
     vscodeExtensions = with vscode-extensions; [
-      bbenoist.nix
+      jnoortheen.nix-ide
       ms-python.python
       ms-azuretools.vscode-docker
       ms-vscode-remote.remote-ssh
+      tailscale.vscode-tailscale
     ] ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
       {
         name = "remote-ssh-edit";
@@ -162,7 +163,7 @@
    #   urlencode = "python3 -c 'import sys, urllib.parse as ul; print(ul.quote_plus(sys.stdin.read()))'";
    # };
   };
-
+  
   # This value determines the home Manager release that your
   # configuration is compatible with. This helps avoid breakage
   # when a new home Manager release introduces backwards
