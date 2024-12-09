@@ -2,7 +2,7 @@
 
 {
   imports = [
-    ./ipass.nix
+    ./1pass.nix
     ./vivaldi.nix
     ./vscode.nix
   ];
