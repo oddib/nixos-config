@@ -8,6 +8,8 @@
         "nix.enableLanguageServer"=true;
         "nix.serverPath"="nil";
         "git.confirmSync"= false;
+        "git.enableSmartCommit"= true;
+
   };
   extensions = with pkgs.vscode-extensions; [
       jnoortheen.nix-ide
