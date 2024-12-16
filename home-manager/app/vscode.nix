@@ -4,6 +4,7 @@
   programs.vscode = {
     enable = true;
     userSettings = {
+      "extensions.autoUpdate" = false;
       "nix.enableLanguageServer" = true;
       "nix.serverPath" = "nil";
       "git.confirmSync" = false;
@@ -19,16 +20,18 @@
     extensions = with pkgs.vscode-extensions;
       [
         jnoortheen.nix-ide
-        ms-python.python
+        # ms-python.python
         ms-azuretools.vscode-docker
-        ms-vscode-remote.remote-ssh
+        # ms-vscode-remote.remote-ssh
         tailscale.vscode-tailscale
-      ] ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [{
-        name = "remote-ssh-edit";
-        publisher = "ms-vscode-remote";
-        version = "0.47.2";
-        sha256 = "1hp6gjh4xp2m1xlm1jsdzxw9d8frkiidhph6nvl24d0h8z34w49g";
-      }];
-
+        
+      ] 
+      ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [{
+        name = "op-vscode";
+        publisher = "1Password";
+        version = "1.0.5";
+        sha256 = "sha256-J7vAK2t6fSjm5i6y3+88aO84ipFwekQkJMD7W3EIWrc=";
+      }]
+      ;
   };
 }
