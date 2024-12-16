@@ -2,10 +2,10 @@
   description = "NixOS configuration";
 
   inputs = {
-#    nixpkgs.url = "github:nixos/nixpkgs/nixos-24.11";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-24.11";
     nixpkgs.follows =
       "nixos-cosmic/nixpkgs-stable"; # NOTE: change "nixpkgs" to "nixpkgs-stable" to use stable NixOS release
-
+    nix-flatpak.url = "github:gmodena/nix-flatpak"; # unstable branch. Use github:gmodena/nix-flatpak/?ref=<tag> to pin releases.
     nixos-cosmic.url = "github:lilyinstarlight/nixos-cosmic";
 
     # home-manager, used for managing user configuration
@@ -19,7 +19,7 @@
     };
   };
 
-  outputs = { nixpkgs, home-manager, nixos-cosmic, ... }: {
+  outputs = { nixpkgs, home-manager, nixos-cosmic, nix-flatpak, ... }: {
     nixosConfigurations = {
       # TODO please change the hostname to your own
       edwin = nixpkgs.lib.nixosSystem {
@@ -35,6 +35,7 @@
 
           }
           nixos-cosmic.nixosModules.default
+          nix-flatpak.nixosModules.nix-flatpak
           # make home-manager as a module of nixos
           # so that home-manager configuration will be deployed automatically when executing `nixos-rebuild switch`
           home-manager.nixosModules.home-manager
