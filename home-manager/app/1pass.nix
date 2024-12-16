@@ -26,7 +26,7 @@
       };
       commit = { gpgsign = true; };
 
-      user = { signingKey = "..."; };
+      user = { signingKey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJDCJ0s4kA8stxlBhrxhyN1bQyBh8LFE+HsoNZbas83V"; };
     };
   };
 }
