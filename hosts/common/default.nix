@@ -1,7 +1,7 @@
 { ... }:
 
 {
-  imports = [ ./1pass.nix ./tailscale.nix ./flatpak.nix];
+  imports = [ ./1pass.nix ./tailscale.nix ./flatpak.nix ];
   home-manager.backupFileExtension = "hm-backup";
 
   # Enable networking

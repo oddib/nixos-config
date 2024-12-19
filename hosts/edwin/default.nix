@@ -10,6 +10,7 @@
     ../common/default.nix
     ../common/de/default.nix
     ../common/games/default.nix
+    ../common/containers/default.nix
   ];
 
   # Bootloader.
@@ -46,10 +47,6 @@
     isNormalUser = true;
     description = "Oddbjørn Mestad Rønnestad";
     extraGroups = [ "networkmanager" "wheel" ];
-    # packages = with pkgs;
-    #   [
-    #     #  thunderbird
-    #   ];
   };
 
   # Install firefox.
