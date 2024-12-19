@@ -9,7 +9,7 @@
     environmentFile = "/etc/opnix.env";
     # Set the systemd services that will use 1Password secrets; this makes them wait until
     # secrets are deployed before attempting to start the service.
-    systemdWantedBy = [ "podman-caddy.service" "homepage-dashboard" ];
+    systemdWantedBy = [ "podman-caddy" ];
     # Specify the secrets you need
     secrets = {
       # The 1Password Secret Reference in here (the `op://` URI)
@@ -18,13 +18,13 @@
         CLOUDFLARE_API_KEY=op://Docker secrets/CF-api/Section_zt7q7yv43v24wegeyewpaikbjy/api token
       '';
       # you can also specify the UNIX file owner, group, and mode
-      #caddy-secret.user = "SomeServiceUser";
-      #caddy-secret.group = "SomeServiceGroup";
-      #caddy-secret.mode = "0600";
+      caddy-secret.user = "root";
+      caddy-secret.group = "root";
+      caddy-secret.mode = "0600";
       # If you need to, you can even customize the path that the secret gets installed to
-      caddy-secret.path = "/run/secrets/container/caddy-secret";
+      #caddy-secret.path = "/run/secrets/container/caddy-secret";
       # You can also disable symlinking the secret into the installation destination
-      #caddy-secret.symlink = false;
+      caddy-secret.symlink = true;
     };
   };
 }
