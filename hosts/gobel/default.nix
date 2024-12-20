@@ -7,9 +7,7 @@
 {
   imports = [ # Include the results of the hardware scan.
     ./hardware-configuration.nix
-    ../../common/games/default.nix
-    ../../common/containers/default.nix
-    ./ekstra-disks.nix
+    ../../common/default-desktop.nix
     #./impermanence.nix
   ];
 
@@ -20,7 +18,7 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
   # Networking
-  networking.hostName = "edwin"; # Define your hostname.
+  networking.hostName = "gobel"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
   # Configure network proxy if necessary
   # networking.proxy.default = "http://user:password@proxy:port/";

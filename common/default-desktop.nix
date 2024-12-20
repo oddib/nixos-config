@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ ... }:
 
 {
   imports = [ ./default.nix ./flatpak.nix ./de/default.nix ];
@@ -15,9 +15,6 @@
   hardware.bluetooth.settings.General.Experimental =
     true; # Showing battery charge of bluetooth devices
   home-manager = {
-    useGlobalPkgs = true;
-    useUserPackages = true;
     users.oddbjornmr = import ../home-manager/default-desktop.nix;
   };
-
 }
