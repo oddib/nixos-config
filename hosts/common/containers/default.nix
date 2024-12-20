@@ -3,7 +3,7 @@
 
 {
   # Containers
-  imports = [ ./caddy.nix ./opnix.nix ];
+  imports = [ ./caddy.nix ./opnix.nix ./streamer.nix];
   environment.systemPackages = with pkgs; [ mergerfs ];
   fileSystems = {
     disk1 = {
@@ -32,5 +32,13 @@
       options =
         [ "cache.files=partial" "dropcacheonclose=true" "category.create=mfs" ];
     };
+  };
+  users.users.media ={
+    group="media";
+    isSystemUser=true;
+  };
+  users.groups = {
+
+  "media"= {};
   };
 }

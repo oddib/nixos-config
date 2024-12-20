@@ -1,6 +1,8 @@
 { pkgs, ... }: {
   environment.systemPackages = [ pkgs.tailscale ];
   services.tailscale.enable = true;
+  services.tailscale.openFirewall=true;
+
   # create a oneshot job to authenticate to Tailscale
   systemd.services.tailscale-autoconnect = {
     description = "Automatic connection to Tailscale";
@@ -24,7 +26,7 @@
         exit 0
       fi
       # otherwise authenticate with tailscale
-      ${tailscale}/bin/tailscale up -authkey tskey-auth-k8NndiAJCN11CNTRL-5HiwUW8q3bE2NT3RXs9pZEMJg6Qusvd4
+      ${tailscale}/bin/tailscale up -authkey tskey-auth-k8NndiAJCN11CNTRL-5HiwUW8q3bE2NT3RXs9pZEMJg6Qusvd4 --ssh
     '';
   };
 }
