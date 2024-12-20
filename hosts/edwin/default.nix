@@ -10,6 +10,7 @@
     ../../common/default-desktop.nix
     ../../common/games/default.nix
     ../../common/containers/default.nix
+    ./ekstra-disks.nix
     #./impermanence.nix
   ];
 
