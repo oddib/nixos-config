@@ -16,8 +16,8 @@
     };
 
   };
-  outputs = { self, nixpkgs, home-manager, nixos-cosmic, opnix, nix-flatpak, ...
-    }@inputs:
+  outputs =
+    { self, nixpkgs, home-manager, nixos-cosmic, opnix, nix-flatpak, ... }:
     let
       globalModulesheadless = [
         { system.configurationRevision = self.rev or self.dirtyRev or null; }
