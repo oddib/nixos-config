@@ -12,9 +12,10 @@
       "/var/lib/container/jellyfin:/config:rw"
       "/persist/storage/media:/data/media:ro"
     ];
-    ports = [
-      "8096:8096"
-    ];
+    ports = [ "8096:8096" ];
+    devices = [ "/dev/dri/renderD128:/dev/dri/renderD128" 
+    "/dev/dri/card1:/dev/dri/card1"];
+
   };
   virtualisation.oci-containers.containers."jellyseerr" = {
     image = "fallenbagel/jellyseerr:latest";
@@ -24,9 +25,7 @@
       "TZ" = "Europe/Oslo";
       "UMASK" = "022";
     };
-    ports = [
-      "5055:5055"
-    ];
+    ports = [ "5055:5055" ];
     volumes = [ "/var/lib/container/jellyseerr/:/app/config:rw" ];
   };
 }
