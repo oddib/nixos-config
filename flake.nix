@@ -21,32 +21,29 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-
   };
 
-  outputs =
-    { nixpkgs, home-manager, nixos-cosmic, nix-flatpak, opnix, ... }: {
+  outputs = { self, nixpkgs, home-manager, nixos-cosmic, opnix, nix-flatpak, ...
+    }@inputs:
+    let
+      globalModulesheadless = [
+        { system.configurationRevision = self.rev or self.dirtyRev or null; }
+        home-manager.nixosModules.home-manager
+        opnix.nixosModules.default
+
+      ];
+      globalModuleshead = globalModulesheadless ++ [
+        nixos-cosmic.nixosModules.default
+        nix-flatpak.nixosModules.nix-flatpak
+
+      ];
+
+    in {
       nixosConfigurations = {
         # TODO please change the hostname to your own
         edwin = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
-          modules = [
-            ./hosts/edwin/default.nix
-            nixos-cosmic.nixosModules.default
-            nix-flatpak.nixosModules.nix-flatpak
-            opnix.nixosModules.default
-            # make home-manager as a module of nixos
-            # so that home-manager configuration will be deployed automatically when executing `nixos-rebuild switch`
-            home-manager.nixosModules.home-manager
-            {
-              home-manager.useGlobalPkgs = true;
-              home-manager.useUserPackages = true;
-              home-manager.users.oddbjornmr =
-                import ./home-manager/oddbjornmr/edwin.nix;
-
-              # Optionally, use home-manager.extraSpecialArgs to pass arguments to home.nix
-            }
-          ];
+          modules = globalModuleshead ++ [ ./hosts/edwin/default.nix ];
         };
       };
     };

@@ -1,7 +1,6 @@
-{ ... }:
-
+{...}:
 {
-  imports = [ ../app/default.nix ../shell/default.nix ];
+  imports = [ ./shell/default.nix ];
   home.username = "oddbjornmr";
   home.homeDirectory = "/home/oddbjornmr";
   #
@@ -17,4 +16,5 @@
 
   # Let home Manager install and manage itself.
   programs.home-manager.enable = true;
+
 }
