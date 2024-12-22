@@ -1,2 +1,2 @@
 On init
-login to onepassword tailscale, vivaldi
+set new one time tailscale auth 
