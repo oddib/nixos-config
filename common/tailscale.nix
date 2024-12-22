@@ -26,7 +26,7 @@
         exit 0
       fi
       # otherwise authenticate with tailscale
-      ${tailscale}/bin/tailscale up -authkey tskey-auth-k8NndiAJCN11CNTRL-5HiwUW8q3bE2NT3RXs9pZEMJg6Qusvd4 --ssh
-    '';
+      ${tailscale}/bin/tailscale up -authkey tskey-auth- --ssh
+    ''; #insert authkey on install
   };
 }
