@@ -7,6 +7,7 @@
 {
   imports = [ # Include the results of the hardware scan.
     ./hardware-configuration.nix
+    ./disk-config.nix
     ../../common/default-desktop.nix
     #./impermanence.nix
   ];
@@ -15,8 +16,11 @@
   # boot.loader.grub.enable = true;
   # boot.loader.grub.device = "/dev/nvme0n1";
   # boot.loader.grub.useOSProber = true;
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
+  # boot.loader.systemd-boot.enable = true;
+  # boot.loader.efi.canTouchEfiVariables = true;
+  boot.loader.grub.enable = true;
+  boot.loader.grub.efiSupport = true;
+  boot.loader.grub.efiInstallAsRemovable = true;
   # Networking
   networking.hostName = "gobel"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
