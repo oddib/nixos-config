@@ -10,6 +10,7 @@
       "git.confirmSync" = false;
       "git.enableSmartCommit" = true;
       "files.autoSave" = "afterDelay";
+      "git.autofetch" = true;
       "nix.serverSettings" = {
         "nil" = {
           "formatting" = { "command" = [ "nixfmt" ]; };
