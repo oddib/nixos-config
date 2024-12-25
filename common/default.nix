@@ -1,4 +1,4 @@
-{pkgs, ... }:
+{ pkgs, ... }:
 
 {
   imports = [ ./1pass.nix ./tailscale.nix ];
@@ -22,6 +22,17 @@
       #  wget
       duplicacy
     ];
+  services.openssh = {
+    enable = true;
+    settings = {
+      PasswordAuthentication = true;
+      AllowUsers =
+        null; # Allows all users by default. Can be [ "user1" "user2" ]
+      PermitRootLogin =
+        "no"; # "yes", "without-password", "prohibit-password", "forced-commands-only", "no"
+    };
+  };
+
   users.users.oddbjornmr = {
     isNormalUser = true;
     description = "Oddbjørn Mestad Rønnestad";
