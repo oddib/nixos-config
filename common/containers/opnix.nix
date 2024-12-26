@@ -9,7 +9,7 @@
     environmentFile = "/etc/opnix.env";
     # Set the systemd services that will use 1Password secrets; this makes them wait until
     # secrets are deployed before attempting to start the service.
-    systemdWantedBy = [ "podman-caddy" ];
+    systemdWantedBy = [ "podman-caddy" "lldap" ];
     # Specify the secrets you need
     secrets = {
       # The 1Password Secret Reference in here (the `op://` URI)
