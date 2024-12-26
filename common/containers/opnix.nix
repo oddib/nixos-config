@@ -1,4 +1,4 @@
-{  ... }: {
+{ ... }: {
   programs._1password.enable = true;
   opnix = {
     # This is where you put your Service Account token in .env file format, e.g.
@@ -25,6 +25,10 @@
       #caddy-secret.path = "/run/secrets/container/caddy-secret";
       # You can also disable symlinking the secret into the installation destination
       caddy-secret.symlink = true;
+      lldap-secret = {
+        source = "op://Docker secrets/LLDAP_JWT_SECRET/password";
+        symlink= true;
+      };
     };
   };
 }
