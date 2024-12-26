@@ -13,6 +13,7 @@
       "UMASK" = "022";
     };
     volumes = [ "/var/lib/container/prowlarr:/config:rw" ];
+    ports = [ "9696:9696" ];
   };
   virtualisation.oci-containers.containers."radarr" = {
     image = "lscr.io/linuxserver/radarr:latest";
@@ -29,6 +30,7 @@
       "/var/lib/container/radarr:/config:rw"
       "/persist/storage/media:/data/media:ro"
     ];
+    ports = [ "7878:7878" ];
   };
   virtualisation.oci-containers.containers."sonarr" = {
     image = "lscr.io/linuxserver/sonarr:latest";
@@ -45,6 +47,7 @@
       "/var/lib/container/sonarr:/config:rw"
       "/persist/storage/media:/data/media:ro"
     ];
+    ports = [ "8989:8989" ];
   };
   virtualisation.oci-containers.containers."sabnzbd" = {
     image = "lscr.io/linuxserver/sabnzbd:latest";
@@ -60,5 +63,6 @@
       "/var/lib/container/sabnzbd:/config:rw"
       "/persist/storage/media:/data/media:ro"
     ];
+    ports = [ "8080:8080" ];
   };
 }
