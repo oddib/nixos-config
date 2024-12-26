@@ -1,4 +1,7 @@
 { config, ... }: {
+  ###
+  # Caddy
+  
   virtualisation.oci-containers.containers.caddy = {
     image = "ghcr.io/caddybuilds/caddy-cloudflare:latest";
     environmentFiles = [ config.opnix.secrets.caddy-secret.path ];
