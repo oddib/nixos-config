@@ -1,4 +1,4 @@
-{ ... }:
+{lib, ... }:
 
 {
   virtualisation.oci-containers.containers."prowlarr" = {
@@ -15,6 +15,13 @@
     volumes = [ "/var/lib/container/prowlarr:/config:rw" ];
     ports = [ "9696:9696" ];
     extraOptions = [ "--network-alias=prowlarr" "--network=default-network" ];
+  };
+  systemd.services."podman-prowlarr" = {
+    serviceConfig = { Restart = lib.mkOverride 90 "always"; };
+    after = [ "podman-network-default-network.service" ];
+    requires = [ "podman-network-default-network.service" ];
+    partOf = [ "podman-compose-scuffedflix-root.target" ];
+    wantedBy = [ "podman-compose-scuffedflix-root.target" ];
   };
   virtualisation.oci-containers.containers."radarr" = {
     image = "lscr.io/linuxserver/radarr:latest";
@@ -34,6 +41,13 @@
     ports = [ "7878:7878" ];
     extraOptions = [ "--network-alias=radarr" "--network=default-network" ];
   };
+  systemd.services."podman-radarr" = {
+    serviceConfig = { Restart = lib.mkOverride 90 "always"; };
+    after = [ "podman-network-default-network.service" ];
+    requires = [ "podman-network-default-network.service" ];
+    partOf = [ "podman-compose-scuffedflix-root.target" ];
+    wantedBy = [ "podman-compose-scuffedflix-root.target" ];
+  };
   virtualisation.oci-containers.containers."sonarr" = {
     image = "lscr.io/linuxserver/sonarr:latest";
     environment = {
@@ -52,6 +66,13 @@
     ports = [ "8989:8989" ];
     extraOptions = [ "--network-alias=sonarr" "--network=default-network" ];
   };
+  systemd.services."podman-sonarr" = {
+    serviceConfig = { Restart = lib.mkOverride 90 "always"; };
+    after = [ "podman-network-default-network.service" ];
+    requires = [ "podman-network-default-network.service" ];
+    partOf = [ "podman-compose-scuffedflix-root.target" ];
+    wantedBy = [ "podman-compose-scuffedflix-root.target" ];
+  };
   virtualisation.oci-containers.containers."sabnzbd" = {
     image = "lscr.io/linuxserver/sabnzbd:latest";
     environment = {
@@ -68,5 +89,12 @@
     ];
     ports = [ "8080:8080" ];
     extraOptions = [ "--network-alias=sabnzbd" "--network=default-network" ];
+  };
+  systemd.services."podman-sabnzbd" = {
+    serviceConfig = { Restart = lib.mkOverride 90 "always"; };
+    after = [ "podman-network-default-network.service" ];
+    requires = [ "podman-network-default-network.service" ];
+    partOf = [ "podman-compose-scuffedflix-root.target" ];
+    wantedBy = [ "podman-compose-scuffedflix-root.target" ];
   };
 }
