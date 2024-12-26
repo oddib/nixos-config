@@ -28,6 +28,9 @@
       lldap-secret = {
         source = "op://Docker secrets/LLDAP_JWT_SECRET/password";
         symlink= true;
+        user = "root";
+        group = "root";
+        mode = "0600";
       };
     };
   };
