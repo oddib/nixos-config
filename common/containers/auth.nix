@@ -27,4 +27,9 @@
       http_url = "http://auth.scuffedflix.no";
     };
   };
+  users.users.lldap = {
+    group = "lldap";
+    isSystemUser = true;
+  };
+  users.groups = { "lldap" = { }; };
 }
