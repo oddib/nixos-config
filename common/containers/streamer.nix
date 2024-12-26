@@ -13,8 +13,11 @@
       "/persist/storage/media:/data/media:ro"
     ];
     ports = [ "8096:8096" ];
-    devices = [ "/dev/dri/renderD128:/dev/dri/renderD128" 
-    "/dev/dri/card1:/dev/dri/card1"];
+    devices = [
+      "/dev/dri/renderD128:/dev/dri/renderD128"
+      "/dev/dri/card1:/dev/dri/card1"
+    ];
+    extraOptions = [ "--network-alias=jellyfin" "--network=default-network" ];
 
   };
   virtualisation.oci-containers.containers."jellyseerr" = {
@@ -27,5 +30,7 @@
     };
     ports = [ "5055:5055" ];
     volumes = [ "/var/lib/container/jellyseerr/:/app/config:rw" ];
+    extraOptions = [ "--network-alias=jellyseerr" "--network=default-network" ];
+
   };
 }

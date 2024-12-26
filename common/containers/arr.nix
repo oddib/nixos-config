@@ -14,6 +14,7 @@
     };
     volumes = [ "/var/lib/container/prowlarr:/config:rw" ];
     ports = [ "9696:9696" ];
+    extraOptions = [ "--network-alias=prowlarr" "--network=default-network" ];
   };
   virtualisation.oci-containers.containers."radarr" = {
     image = "lscr.io/linuxserver/radarr:latest";
@@ -31,6 +32,7 @@
       "/persist/storage/media:/data/media:ro"
     ];
     ports = [ "7878:7878" ];
+    extraOptions = [ "--network-alias=radarr" "--network=default-network" ];
   };
   virtualisation.oci-containers.containers."sonarr" = {
     image = "lscr.io/linuxserver/sonarr:latest";
@@ -48,6 +50,7 @@
       "/persist/storage/media:/data/media:ro"
     ];
     ports = [ "8989:8989" ];
+    extraOptions = [ "--network-alias=sonarr" "--network=default-network" ];
   };
   virtualisation.oci-containers.containers."sabnzbd" = {
     image = "lscr.io/linuxserver/sabnzbd:latest";
@@ -64,5 +67,6 @@
       "/persist/storage/media:/data/media:ro"
     ];
     ports = [ "8080:8080" ];
+    extraOptions = [ "--network-alias=sabnzbd" "--network=default-network" ];
   };
 }

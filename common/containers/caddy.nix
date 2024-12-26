@@ -10,9 +10,9 @@
       "caddy_data:/data"
       "caddy_config:/config"
     ];
-    #capabilities = {
-    #  NET_ADMIN = true;
-    #};
+    capabilities = {
+      NET_ADMIN = true;
+    };
   };
   environment.etc = {
     caddy = {
