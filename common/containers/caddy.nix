@@ -46,6 +46,9 @@
           handle @lldap{
             reverse_proxy localhost:3890
           }
+          handle {
+            abort
+          }
         }";
     };
   };
