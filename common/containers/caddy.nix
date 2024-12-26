@@ -22,7 +22,31 @@
       #source = ./Caddyfile;
       target = "/container/caddy/Caddyfile";
       text =
-        "\n(cloudflare) {\n	tls {\n		dns cloudflare {$CLOUDFLARE_API_KEY}\n	}\n}\n{$DOMAIN} {\n	reverse_proxy localhost:8096\n	import cloudflare\n}\n*.{$DOMAIN} {\n	import cloudflare\n  @jellyseerr host jellyseerr.{$DOMAIN}, jellyserr.{$DOMAIN}, jellyseer.{$DOMAIN}, jellyser.{$DOMAIN}, request.{$DOMAIN} \n  handle @jellyseerr {\n    reverse_proxy localhost:5055\n  }\n  @wizarr host invite.{$DOMAIN}\n  handle @wizarr {\n    reverse_proxy localhost:5000\n  }\n}\n      ";
+        "
+        (cloudflare) {
+        	tls {
+        		dns cloudflare {$CLOUDFLARE_API_KEY}
+        	}
+        }
+        {$DOMAIN} {
+        	reverse_proxy localhost:8096
+        	import cloudflare
+        }
+        *.{$DOMAIN} {
+        	import cloudflare
+          @jellyseerr host jellyseerr.{$DOMAIN}, jellyserr.{$DOMAIN}, jellyseer.{$DOMAIN}, jellyser.{$DOMAIN}, request.{$DOMAIN} 
+          handle @jellyseerr {
+            reverse_proxy localhost:5055
+          }
+          @wizarr host invite.{$DOMAIN}
+          handle @wizarr {
+            reverse_proxy localhost:5690
+          }
+          @lldap host auth.{$DOMAIN}
+          handle @lldap{
+            reverse_proxy localhost:3890
+          }
+        }";
     };
   };
 }
