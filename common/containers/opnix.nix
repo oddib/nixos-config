@@ -18,8 +18,8 @@
         CLOUDFLARE_API_KEY=op://Docker secrets/CF-api/Section_zt7q7yv43v24wegeyewpaikbjy/api token
       '';
       # you can also specify the UNIX file owner, group, and mode
-      caddy-secret.user = "lldap";
-      caddy-secret.group = "lldap";
+      caddy-secret.user = "root";
+      caddy-secret.group = "root";
       caddy-secret.mode = "0600";
       # If you need to, you can even customize the path that the secret gets installed to
       #caddy-secret.path = "/run/secrets/container/caddy-secret";
@@ -28,8 +28,8 @@
       lldap-secret = {
         source = "op://Docker secrets/LLDAP_JWT_SECRET/password";
         symlink= true;
-        user = "root";
-        group = "root";
+        user = "lldap";
+        group = "lldap";
         mode = "0600";
       };
     };
