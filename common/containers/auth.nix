@@ -27,6 +27,10 @@
       http_url = "http://auth.scuffedflix.no";
     };
   };
+  systemd.services.lldap.serviceConfig ={
+    user = "lldap";
+    group= "lldap";
+  };
   users.users.lldap = {
     group = "lldap";
     isSystemUser = true;
