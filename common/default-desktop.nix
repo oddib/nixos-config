@@ -1,7 +1,7 @@
 { ... }:
 
 {
-  imports = [ ./default.nix ./flatpak.nix ./de/default.nix ];
+  imports = [ ./default.nix ./flatpak.nix ./de/default.nix ./games/default.nix];
 
   # Enable CUPS to print documents.
   services.printing.enable = true;
