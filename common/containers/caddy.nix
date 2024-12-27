@@ -32,24 +32,19 @@
         	reverse_proxy localhost:8096
         	import cloudflare
         }
-        *.{$DOMAIN} {
-        	import cloudflare
-          @jellyseerr host jellyseerr.{$DOMAIN}, jellyserr.{$DOMAIN}, jellyseer.{$DOMAIN}, jellyser.{$DOMAIN}, request.{$DOMAIN} 
-          handle @jellyseerr {
+        jellyseerr.{$DOMAIN}, jellyserr.{$DOMAIN}, jellyseer.{$DOMAIN}, jellyser.{$DOMAIN}, request.{$DOMAIN} {
             reverse_proxy localhost:5055
+            import cloudflare
           }
-          @wizarr host invite.{$DOMAIN}
-          handle @wizarr {
+        invite.{$DOMAIN} {
             reverse_proxy localhost:5690
-          }
-          @lldap host auth.{$DOMAIN}
-          handle @lldap{
-            reverse_proxy localhost:3890
-          }
-          handle {
-            abort
-          }
-        }";
+            import cloudflare
+        }
+        auth.{$DOMAIN} {
+          reverse_proxy localhost:3890
+          import cloudflare
+        }
+        ";
     };
   };
 }
