@@ -13,8 +13,6 @@
       "TZ" = "Europe/Oslo";
       "UMASK" = "022";
     };
-    user = "media:media";
-
     volumes = [ "/var/lib/container/prowlarr:/config:rw" ];
     ports = [ "9696:9696" ];
     extraOptions = [ "--network-alias=prowlarr" "--network=default-network" ];
@@ -44,7 +42,6 @@
       "/var/lib/container/radarr:/config:rw"
       "/persist/storage/media:/data/media:ro"
     ];
-    user = "media:media";
     ports = [ "7878:7878" ];
     extraOptions = [ "--network-alias=radarr" "--network=default-network" ];
     log-driver = "journald";
@@ -69,7 +66,6 @@
       "TZ" = "Europe/Oslo";
       "UMASK" = "022";
     };
-    user = "media:media";
     volumes = [
       "/var/lib/container/sonarr:/config:rw"
       "/persist/storage/media:/data/media:ro"
@@ -96,7 +92,6 @@
       "TZ" = "Europe/Oslo";
       "UMASK" = "022";
     };
-    user = "media:media";
     volumes = [
       "/var/lib/container/sabnzbd:/config:rw"
       "/persist/storage/media:/data/media:ro"
