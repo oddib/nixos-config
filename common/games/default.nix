@@ -1,1 +1,1 @@
-{ ... }: { imports = [ ./heroic.nix ./lutris.nix ./steam.nix]; }
+{ ... }: { imports = [ ./lutris.nix ./steam.nix]; }
