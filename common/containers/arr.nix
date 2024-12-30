@@ -13,6 +13,8 @@
       "TZ" = "Europe/Oslo";
       "UMASK" = "022";
     };
+    user = "media:media";
+
     volumes = [ "/var/lib/container/prowlarr:/config:rw" ];
     ports = [ "9696:9696" ];
     extraOptions = [ "--network-alias=prowlarr" "--network=default-network" ];
@@ -33,8 +35,6 @@
     image = "lscr.io/linuxserver/radarr:latest";
     environment = {
       "DOCKER_MODS" = "ghcr.io/gilbn/theme.park:radarr";
-      "PGID" = "999";
-      "PUID" = "999";
       "TIMEZONE" = "Europe/Oslo";
       "TP_THEME" = "nord";
       "TZ" = "Europe/Oslo";
@@ -44,6 +44,7 @@
       "/var/lib/container/radarr:/config:rw"
       "/persist/storage/media:/data/media:ro"
     ];
+    user = "media:media";
     ports = [ "7878:7878" ];
     extraOptions = [ "--network-alias=radarr" "--network=default-network" ];
     log-driver = "journald";
@@ -63,13 +64,12 @@
     image = "lscr.io/linuxserver/sonarr:latest";
     environment = {
       "DOCKER_MODS" = "ghcr.io/gilbn/theme.park:sonarr";
-      "PGID" = "999";
-      "PUID" = "999";
       "TIMEZONE" = "Europe/Oslo";
       "TP_THEME" = "nord";
       "TZ" = "Europe/Oslo";
       "UMASK" = "022";
     };
+    user = "media:media";
     volumes = [
       "/var/lib/container/sonarr:/config:rw"
       "/persist/storage/media:/data/media:ro"
@@ -91,13 +91,12 @@
   virtualisation.oci-containers.containers."sabnzbd" = {
     image = "lscr.io/linuxserver/sabnzbd:latest";
     environment = {
-      "PGID" = "999";
-      "PUID" = "999";
       "TIMEZONE" = "Europe/Oslo";
       "TP_THEME" = "nord";
       "TZ" = "Europe/Oslo";
       "UMASK" = "022";
     };
+    user = "media:media";
     volumes = [
       "/var/lib/container/sabnzbd:/config:rw"
       "/persist/storage/media:/data/media:ro"
