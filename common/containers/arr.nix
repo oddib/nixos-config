@@ -5,8 +5,8 @@
     image = "lscr.io/linuxserver/prowlarr:latest";
     environment = {
       "DOCKER_MODS" = "ghcr.io/gilbn/theme.park:prowlarr";
-      "PGID" = 984;
-      "PUID" = 987;
+      "PGID" = "984";
+      "PUID" = "987";
       "TIMEZONE" = "Europe/Oslo";
       "TP_THEME" = "nord";
       "TZ" = "Europe/Oslo";
@@ -36,8 +36,8 @@
       "TP_THEME" = "nord";
       "TZ" = "Europe/Oslo";
       "UMASK" = "022";
-      "PGID" = 984;
-      "PUID" = 987;
+      "PGID" = "984";
+      "PUID" = "987";
 
     };
     volumes = [
@@ -67,8 +67,8 @@
       "TP_THEME" = "nord";
       "TZ" = "Europe/Oslo";
       "UMASK" = "022";
-      "PGID" = 984;
-      "PUID" = 987;
+      "PGID" = "984";
+      "PUID" = "987";
     };
     volumes = [
       "/var/lib/container/sonarr:/config:rw"
@@ -95,8 +95,8 @@
       "TP_THEME" = "nord";
       "TZ" = "Europe/Oslo";
       "UMASK" = "022";
-      "PGID" = 984;
-      "PUID" = 987;
+      "PGID" = "984";
+      "PUID" = "987";
     };
     volumes = [
       "/var/lib/container/sabnzbd:/config:rw"
