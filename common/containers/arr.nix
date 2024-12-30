@@ -1,13 +1,12 @@
 { lib, ... }: {
   ###
   # Prowlarr
-
   virtualisation.oci-containers.containers."prowlarr" = {
     image = "lscr.io/linuxserver/prowlarr:latest";
     environment = {
       "DOCKER_MODS" = "ghcr.io/gilbn/theme.park:prowlarr";
-      "PGID" = "999";
-      "PUID" = "999";
+      "PGID" = 984;
+      "PUID" = 987;
       "TIMEZONE" = "Europe/Oslo";
       "TP_THEME" = "nord";
       "TZ" = "Europe/Oslo";
@@ -37,6 +36,9 @@
       "TP_THEME" = "nord";
       "TZ" = "Europe/Oslo";
       "UMASK" = "022";
+      "PGID" = 984;
+      "PUID" = 987;
+
     };
     volumes = [
       "/var/lib/container/radarr:/config:rw"
@@ -65,6 +67,8 @@
       "TP_THEME" = "nord";
       "TZ" = "Europe/Oslo";
       "UMASK" = "022";
+      "PGID" = 984;
+      "PUID" = 987;
     };
     volumes = [
       "/var/lib/container/sonarr:/config:rw"
@@ -91,6 +95,8 @@
       "TP_THEME" = "nord";
       "TZ" = "Europe/Oslo";
       "UMASK" = "022";
+      "PGID" = 984;
+      "PUID" = 987;
     };
     volumes = [
       "/var/lib/container/sabnzbd:/config:rw"
