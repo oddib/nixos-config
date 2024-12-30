@@ -12,6 +12,7 @@
       "TZ" = "Europe/Oslo";
       "UMASK" = "022";
     };
+    user= "root:root";
     volumes = [ "/var/lib/container/prowlarr:/config:rw" ];
     ports = [ "9696:9696" ];
     extraOptions = [ "--network-alias=prowlarr" "--network=default-network" ];
@@ -38,8 +39,8 @@
       "UMASK" = "022";
       "PGID" = "984";
       "PUID" = "987";
-
     };
+    user= "root:root";
     volumes = [
       "/var/lib/container/radarr:/config:rw"
       "/persist/storage/media:/data/media:ro"
@@ -70,6 +71,7 @@
       "PGID" = "984";
       "PUID" = "987";
     };
+    user= "root:root";
     volumes = [
       "/var/lib/container/sonarr:/config:rw"
       "/persist/storage/media:/data/media:ro"
@@ -98,6 +100,7 @@
       "PGID" = "984";
       "PUID" = "987";
     };
+    user= "root:root";
     volumes = [
       "/var/lib/container/sabnzbd:/config:rw"
       "/persist/storage/media:/data/media:ro"
