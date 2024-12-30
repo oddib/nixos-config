@@ -43,7 +43,7 @@
     user= "root:root";
     volumes = [
       "/var/lib/container/radarr:/config:rw"
-      "/persist/storage/media:/data/media:ro"
+      "/persist/storage/media:/data/media:rw"
     ];
     ports = [ "7878:7878" ];
     extraOptions = [ "--network-alias=radarr" "--network=default-network" ];
@@ -74,7 +74,7 @@
     user= "root:root";
     volumes = [
       "/var/lib/container/sonarr:/config:rw"
-      "/persist/storage/media:/data/media:ro"
+      "/persist/storage/media:/data/media:rw"
     ];
     ports = [ "8989:8989" ];
     extraOptions = [ "--network-alias=sonarr" "--network=default-network" ];
@@ -103,7 +103,7 @@
     user= "root:root";
     volumes = [
       "/var/lib/container/sabnzbd:/config:rw"
-      "/persist/storage/media:/data/media:ro"
+      "/persist/storage/media:/data/media:rw"
     ];
     ports = [ "8080:8080" ];
     extraOptions = [ "--network-alias=sabnzbd" "--network=default-network" ];
