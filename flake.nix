@@ -7,6 +7,8 @@
     nixos-cosmic.url = "github:lilyinstarlight/nixos-cosmic";
     disko.url = "github:nix-community/disko/latest";
     disko.inputs.nixpkgs.follows = "nixpkgs";
+    impermanence.url = "github:nix-community/impermanence";
+    nix-minecraft.url = "github:Infinidoge/nix-minecraft";
     # home-manager, used for managing user configuration
     home-manager = {
       url = "github:nix-community/home-manager";
@@ -19,7 +21,7 @@
 
   };
   outputs =
-    { self, nixpkgs, home-manager, nixos-cosmic, opnix, nix-flatpak, disko, ... }:
+    { self, nixpkgs, home-manager, nixos-cosmic, opnix, nix-flatpak, disko, impermanence, ... }:
     let
       globalModulesheadless = [
         { system.configurationRevision = self.rev or self.dirtyRev or null; }
@@ -31,7 +33,10 @@
         nix-flatpak.nixosModules.nix-flatpak
         ./common/default-desktop.nix
       ];
-
+      secureBoot = globalModuleshead ++ [
+        impermanence.nixosModules.impermanence
+        disko.nixosModules.disko
+      ];
     in {
       nixosConfigurations = {
         edwin = nixpkgs.lib.nixosSystem {
@@ -40,9 +45,8 @@
         };
         gobel = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
-          modules = globalModuleshead ++ [ disko.nixosModules.disko ./hosts/gobel/default.nix ];
+          modules = secureBoot ++ [ ./hosts/gobel/default.nix ];
         };
-
       };
     };
 }

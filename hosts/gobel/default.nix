@@ -9,7 +9,7 @@
     ./hardware-configuration.nix
     ./disk-config.nix
     ../../common/default-desktop.nix
-    #./impermanence.nix
+    ./persistance.nix
   ];
 
   # Bootloader.
