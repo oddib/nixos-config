@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ ... }:
+{ lib, ... }:
 
 {
   imports = [ # Include the results of the hardware scan.
@@ -13,14 +13,18 @@
   ];
 
   # Bootloader.
-  # boot.loader.grub.enable = true;
-  # boot.loader.grub.device = "/dev/nvme0n1";
-  boot.loader.grub.useOSProber = true;
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
-  #boot.loader.grub.enable = true;
-  #boot.loader.grub.efiSupport = true;
-  #boot.loader.grub.efiInstallAsRemovable = true;
+  boot = {
+    initrd.systemd.enable = true;
+
+    loader.systemd-boot.enable = lib.mkForce false;
+    loader.grub.useOSProber = true;
+    loader.efi.canTouchEfiVariables = true;
+    lanzaboote = {
+      enable = true;
+      pkiBundle = "/etc/secureboot";
+    };
+  };
+
   # Networking
   networking.hostName = "gobel"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.

@@ -9,6 +9,7 @@
     disko.inputs.nixpkgs.follows = "nixpkgs";
     impermanence.url = "github:nix-community/impermanence";
     nix-minecraft.url = "github:Infinidoge/nix-minecraft";
+    lanzaboote.url = "github:nix-community/lanzaboote";
     # home-manager, used for managing user configuration
     home-manager = {
       url = "github:nix-community/home-manager";
@@ -20,8 +21,8 @@
     };
 
   };
-  outputs =
-    { self, nixpkgs, home-manager, nixos-cosmic, opnix, nix-flatpak, disko, impermanence, ... }:
+  outputs = { self, nixpkgs, home-manager, nixos-cosmic, opnix, nix-flatpak
+    , disko, impermanence, lanzaboote, ... }:
     let
       globalModulesheadless = [
         { system.configurationRevision = self.rev or self.dirtyRev or null; }
@@ -36,6 +37,7 @@
       secureBoot = globalModuleshead ++ [
         impermanence.nixosModules.impermanence
         disko.nixosModules.disko
+        lanzaboote.nixosModules.lanzaboote
       ];
     in {
       nixosConfigurations = {
