@@ -44,6 +44,11 @@
           reverse_proxy localhost:3890
           import cloudflare
         }
+        foundryvtt.{$DOMAIN} {
+          reverse_proxy localhost:30000
+          import cloudflare
+        }
+
         ";
     };
   };
