@@ -1,6 +1,13 @@
 { pkgs, ... }: {
   # Containers
-  imports = [ ./caddy.nix ./opnix.nix ./streamer.nix ./auth.nix ./arr.nix ];
+  imports = [
+    ./caddy.nix
+    ./opnix.nix
+    ./streamer.nix
+    ./auth.nix
+    ./arr.nix
+    ./foundryvtt.nix
+  ];
   # Runtime
   virtualisation.podman = {
     enable = true;
@@ -20,7 +27,6 @@
     isSystemUser = true;
   };
   users.groups = { "media" = { }; };
-
 
   ###
   # Set up service for configuring network

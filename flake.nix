@@ -10,6 +10,7 @@
     impermanence.url = "github:nix-community/impermanence";
     nix-minecraft.url = "github:Infinidoge/nix-minecraft";
     lanzaboote.url = "github:nix-community/lanzaboote";
+    foundryvtt.url = "github:reckenrode/nix-foundryvtt";
     # home-manager, used for managing user configuration
     home-manager = {
       url = "github:nix-community/home-manager";
@@ -22,7 +23,7 @@
 
   };
   outputs = { self, nixpkgs, home-manager, nixos-cosmic, opnix, nix-flatpak
-    , disko, impermanence, lanzaboote, ... }:
+    , disko, impermanence, lanzaboote, foundryvtt, ... }@inputs:
     let
       globalModulesheadless = [
         { system.configurationRevision = self.rev or self.dirtyRev or null; }
@@ -43,7 +44,9 @@
       nixosConfigurations = {
         edwin = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
-          modules = globalModuleshead ++ [ ./hosts/edwin/default.nix ];
+          specialArgs = { inherit inputs; };
+          modules = globalModuleshead
+            ++ [ ./hosts/edwin/default.nix ];
         };
         gobel = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
