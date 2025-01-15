@@ -1,6 +1,6 @@
 {...}:
 {
-  imports = [ ./shell/default.nix ];
+  imports = [ ./shell ];
   home.username = "oddbjornmr";
   home.homeDirectory = "/home/oddbjornmr";
   #

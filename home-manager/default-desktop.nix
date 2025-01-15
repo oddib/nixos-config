@@ -2,7 +2,7 @@
 
 {
   imports =[
-    ./app/default.nix
+    ./app
     ./default.nix
   ];
 }

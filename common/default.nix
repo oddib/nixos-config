@@ -41,6 +41,6 @@
   home-manager = {
     useGlobalPkgs = true;
     useUserPackages = true;
-    users.oddbjornmr = import ../home-manager/default.nix;
+    users.oddbjornmr = import ../home-manager;
   };
 }
