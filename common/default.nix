@@ -1,7 +1,7 @@
 { pkgs, ... }:
 
 {
-  imports = [ ./1pass.nix ./tailscale.nix ];
+  imports = [ ./1pass.nix ./tailscale.nix ../cachix.nix];
   home-manager.backupFileExtension = "hm-backup";
 
   # Enable networking
@@ -21,6 +21,7 @@
       #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
       #  wget
       duplicacy
+      cachix
     ];
   services.openssh = {
     enable = true;
