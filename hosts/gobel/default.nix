@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ lib, ... }:
+{  ... }:
 
 {
   imports = [ # Include the results of the hardware scan.
@@ -15,14 +15,11 @@
   # Bootloader.
   boot = {
     initrd.systemd.enable = true;
-
-    loader.systemd-boot.enable = lib.mkForce false;
-    loader.grub.useOSProber = true;
+    loader.systemd-boot.enable = true;
+    #loader.grub.useOSProber = true;
     loader.efi.canTouchEfiVariables = true;
-    lanzaboote = {
-      enable = true;
-      pkiBundle = "/etc/secureboot";
-    };
+    #lanzaboote = { enable = true; pkiBundle = "/etc/secureboot";};    loader.systemd-boot.enable = lib.mkForce false;
+
   };
 
   # Networking
