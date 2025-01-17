@@ -53,22 +53,22 @@
   outputs = { self, nixpkgs, home-manager, nixos-cosmic, opnix, nix-flatpak
     , disko, impermanence, foundryvtt, ... }@inputs:
     let
-      common = [
+      common_modules = [
         { system.configurationRevision = self.rev or self.dirtyRev or null; }
         ./common
       ];
-      desktop = common ++ [ ./common/desktop ];
+      desktop_modules = common_modules ++ [ ./common/desktop ];
     in {
       nixosConfigurations = {
         edwin = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
           specialArgs = { inherit inputs; };
-          modules = desktop ++ [ ./hosts/edwin ];
+          modules = desktop_modules ++ [ ./hosts/edwin ];
         };
         gobel = nixpkgs.lib.nixosSystem {
-          specialArgs = { inherit inputs; };
           system = "x86_64-linux";
-          modules = desktop ++ [ ./hosts/gobel ];
+          specialArgs = { inherit inputs; };
+          modules = desktop_modules ++ [ ./hosts/gobel ];
         };
       };
     };
