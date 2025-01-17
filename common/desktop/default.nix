@@ -1,7 +1,7 @@
 { ... }:
 
 {
-  imports = [ ./default.nix ./flatpak.nix ./de ./games];
+  imports = [ ./flatpak.nix ./de ./games ./1pass.nix];
 
   # Enable CUPS to print documents.
   services.printing.enable = true;
@@ -15,6 +15,6 @@
   hardware.bluetooth.settings.General.Experimental =
     true; # Showing battery charge of bluetooth devices
   home-manager = {
-    users.oddbjornmr = import ../home-manager/default-desktop.nix;
+    users.oddbjornmr = import ../../home-manager/desktop;
   };
 }

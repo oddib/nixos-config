@@ -1,8 +1,9 @@
-{ pkgs, ... }: {
+{ inputs, pkgs, ... }: {
   # Containers
   imports = [
     ./caddy.nix
     ./opnix.nix
+    inputs.opnix.nixosModules.default
     ./streamer.nix
     ./auth.nix
     ./arr.nix

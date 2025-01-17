@@ -27,7 +27,7 @@
       caddy-secret.symlink = true;
       lldap-secret = {
         source = "op://Docker secrets/LLDAP_JWT_SECRET/password";
-        symlink= true;
+        symlink = true;
         user = "lldap";
         group = "lldap";
         mode = "0600";

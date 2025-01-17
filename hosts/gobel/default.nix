@@ -2,17 +2,18 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{  ... }:
 
+{inputs, ... }:
 {
   imports = [ # Include the results of the hardware scan.
     ./hardware-configuration.nix
     ./disk-config.nix
-    ../../common/default-desktop.nix
     ./persistance.nix
+    inputs.lanzaboote.nixosModules.lanzaboote ## move to boot nix config soon
   ];
 
   # Bootloader.
+
   boot = {
     initrd.systemd.enable = true;
     loader.systemd-boot.enable = true;
