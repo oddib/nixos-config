@@ -29,13 +29,12 @@
       url = "github:Infinidoge/nix-minecraft";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    lanzaboote = {
-      url = "github:nix-community/lanzaboote";
-      inputs.nixpkgs.follows = "nixpkgs";
-      inputs.pre-commit-hooks-nix.follows = "";
-      #inputs.nixpkgs-stable.follows = "nixpkgs-stable";
-
-    };
+    #lanzaboote = {
+    #  url = "github:nix-community/lanzaboote";
+    #  inputs.nixpkgs.follows = "nixpkgs";
+    #  inputs.pre-commit-hooks-nix.follows = "";
+    #  #inputs.nixpkgs-stable.follows = "nixpkgs-stable";
+    #};
     foundryvtt = {
       url = "github:reckenrode/nix-foundryvtt";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -52,7 +51,7 @@
     };
   };
   outputs = { self, nixpkgs, home-manager, nixos-cosmic, opnix, nix-flatpak
-    , disko, impermanence, lanzaboote, foundryvtt, ... }@inputs:
+    , disko, impermanence, foundryvtt, ... }@inputs:
     let
       common = [
         { system.configurationRevision = self.rev or self.dirtyRev or null; }

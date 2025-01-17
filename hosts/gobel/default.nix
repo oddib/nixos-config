@@ -3,13 +3,13 @@
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
 
-{inputs, ... }:
+{ ... }:
 {
   imports = [ # Include the results of the hardware scan.
     ./hardware-configuration.nix
     ./disk-config.nix
     ./persistance.nix
-    inputs.lanzaboote.nixosModules.lanzaboote ## move to boot nix config soon
+    #inputs.lanzaboote.nixosModules.lanzaboote ## move to boot nix config soon
   ];
 
   # Bootloader.
