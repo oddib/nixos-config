@@ -2,11 +2,10 @@
   description = "NixOS configuration";
 
   inputs = {
-    #nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     #nixpkgs-stable.url= "github:nixos/nixpkgs/nixos-24.11";
     #nixpkgs-stable.follows = "nixos-cosmic/nixpkgs-stable";
-    nixpkgs.follows =
-      "nixos-cosmic/nixpkgs"; # NOTE: change "nixpkgs" to "nixpkgs-stable" to use stable NixOS release
+    #nixpkgs.follows = "nixos-cosmic/nixpkgs"; # NOTE: change "nixpkgs" to "nixpkgs-stable" to use stable NixOS release
     nixos-cosmic = {
       url = "github:lilyinstarlight/nixos-cosmic";
       #inputs.nixpkgs.follows = "nixpkgs";
