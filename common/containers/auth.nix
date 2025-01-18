@@ -16,24 +16,24 @@
     partOf = [ "podman-compose-scuffedflix-root.target" ];
     wantedBy = [ "podman-compose-scuffedflix-root.target" ];
   };
-  services.lldap = {
-    enable = true;
-    environment = {
-      LLDAP_JWT_SECRET_FILE = config.opnix.secrets.lldap-secret.path;
-    };
-    settings = {
-      ldap_user_email = "admin@scuffedflix.no";
-      ldap_base_dn = "dc=scuffedflix,dc=no";
-      http_url = "http://auth.scuffedflix.no";
-    };
-  };
-  systemd.services."lldap.service".serviceConfig ={
-    user = "lldap";
-    group= "lldap";
-  };
-  users.users.lldap = {
-    group = "lldap";
-    isSystemUser = true;
-  };
-  users.groups = { "lldap" = { }; };
+  # services.lldap = {
+  #   enable = true;
+  #   environment = {
+  #     LLDAP_JWT_SECRET_FILE = config.opnix.secrets.lldap-secret.path;
+  #   };
+  #   settings = {
+  #     ldap_user_email = "admin@scuffedflix.no";
+  #     ldap_base_dn = "dc=scuffedflix,dc=no";
+  #     http_url = "http://auth.scuffedflix.no";
+  #   };
+  # };
+  # systemd.services."lldap.service".serviceConfig ={
+  #   user = "lldap";
+  #   group= "lldap";
+  # };
+  # users.users.lldap = {
+  #   group = "lldap";
+  #   isSystemUser = true;
+  # };
+  # users.groups = { "lldap" = { }; };
 }
