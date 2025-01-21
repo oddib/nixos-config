@@ -8,7 +8,7 @@
     #nixpkgs.follows = "nixos-cosmic/nixpkgs"; # NOTE: change "nixpkgs" to "nixpkgs-stable" to use stable NixOS release
     nixos-cosmic = {
       url = "github:lilyinstarlight/nixos-cosmic";
-      #inputs.nixpkgs.follows = "nixpkgs";
+      inputs.nixpkgs.follows = "nixpkgs";
       inputs.nixpkgs-stable.follows =
         "nixpkgs"; # Bad but i want faster eval time
     };
@@ -50,7 +50,7 @@
     };
   };
   outputs = { self, nixpkgs, home-manager, nixos-cosmic, opnix, nix-flatpak
-    , disko, impermanence, foundryvtt, ... }@inputs:
+    , disko, impermanence, foundryvtt, nix-minecraft,... }@inputs:
     let
       common_modules = [
         { system.configurationRevision = self.rev or self.dirtyRev or null; }

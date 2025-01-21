@@ -1,21 +1,33 @@
-{lib,inputs,pkgs, ...}:
+{ lib, inputs, pkgs, ... }:
+
 let
+
   inherit (inputs.nix-minecraft.lib) collectFilesAt;
   modpack = pkgs.fetchPackwizModpack {
-    url = "https://github.com/oddib/oddpack/blob/main/pack.toml";
-    packHash = "sha256-L5RiSktqtSQBDecVfGj1iDaXV+E90zrNEcf4jtsg+wk=";
+    url = "https://raw.githubusercontent.com/oddib/oddpack/main/pack.toml";
+    packHash = "sha256-Ocn7qmeKJZ3gQ2psPFljcOmW8g7Z6vZ+LVXYm7Hh6o4=";
   };
   mcVersion = modpack.manifest.versions.minecraft;
   fabricVersion = modpack.manifest.versions.fabric;
   serverVersion = lib.replaceStrings [ "." ] [ "_" ] "fabric-${mcVersion}";
-
-in
-{
-  services.minecraft-servers.servers.oddpack = {
+in {
+  nixpkgs.overlays = [ inputs.nix-minecraft.overlay ];
+  services.minecraft-servers = {
     enable = true;
-    package = pkgs.fabricServers.${serverVersion}.override { loaderVersion = fabricVersion; };
-    symlinks = collectFilesAt modpack "mods" ;
-    files = collectFilesAt modpack "config";
+    eula = true;
+    managementSystem = {
+      tmux.enable = false;
+      systemd-socket.enable = true;
+    };
+
+    servers.oddpack = {
+      enable = true;
+      package = pkgs.fabricServers.${serverVersion}.override {
+        loaderVersion = fabricVersion;
+      };
+      symlinks = collectFilesAt modpack "mods";
+      files = collectFilesAt modpack "config";
+    };
   };
 }
 
