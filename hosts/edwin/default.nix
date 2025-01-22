@@ -18,6 +18,8 @@
   # boot.loader.grub.useOSProber = true;
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
+  services.journald.extraConfig = "SystemMaxUse=100M";
+  systemd.services.NetworkManager-wait-online.enable = false;
   # Networking
   networking.hostName = "edwin"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.

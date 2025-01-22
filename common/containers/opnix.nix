@@ -9,7 +9,7 @@
     environmentFile = "/etc/opnix.env";
     # Set the systemd services that will use 1Password secrets; this makes them wait until
     # secrets are deployed before attempting to start the service.
-    systemdWantedBy = [ "podman-caddy" "lldap" ];
+    systemdWantedBy = [ "podman-caddy" ];
     # Specify the secrets you need
     secrets = {
       # The 1Password Secret Reference in here (the `op://` URI)
@@ -25,13 +25,13 @@
       #caddy-secret.path = "/run/secrets/container/caddy-secret";
       # You can also disable symlinking the secret into the installation destination
       caddy-secret.symlink = true;
-      lldap-secret = {
-        source = "op://Docker secrets/LLDAP_JWT_SECRET/password";
-        symlink = true;
-        user = "lldap";
-        group = "lldap";
-        mode = "0600";
-      };
+      #lldap-secret = {
+      #  source = "op://Docker secrets/LLDAP_JWT_SECRET/password";
+      #  symlink = true;
+      #  user = "lldap";
+      #  group = "lldap";
+      #  mode = "0600";
+      #};
     };
   };
 }

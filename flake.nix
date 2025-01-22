@@ -44,12 +44,12 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    opnix = {
-      url = "github:mrjones2014/opnix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    #opnix = {
+    #  url = "github:mrjones2014/opnix";
+    #  inputs.nixpkgs.follows = "nixpkgs";
+    #};
   };
-  outputs = { self, nixpkgs, home-manager, nixos-cosmic, opnix, nix-flatpak
+  outputs = { self, nixpkgs, home-manager, nixos-cosmic, nix-flatpak
     , disko, impermanence, foundryvtt, nix-minecraft,... }@inputs:
     let
       common_modules = [

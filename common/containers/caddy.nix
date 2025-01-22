@@ -4,7 +4,7 @@
   
   virtualisation.oci-containers.containers.caddy = {
     image = "ghcr.io/caddybuilds/caddy-cloudflare:latest";
-    environmentFiles = [ config.opnix.secrets.caddy-secret.path ];
+    environmentFiles = [ "/etc/caddy" ];
     environment = { DOMAIN = "scuffedflix.no"; };
     extraOptions = [ "--network=host" ];
     user = "root";
