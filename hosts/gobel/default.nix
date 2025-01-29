@@ -2,14 +2,14 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ inputs, ... }: {
+{ pkgs, inputs, ... }: {
   imports = [ # Include the results of the hardware scan.
     ./hardware-configuration.nix
     ./disk-config.nix
     inputs.disko.nixosModules.disko
     ./persistance.nix
     ./galaxybookpro
-    #inputs.lanzaboote.nixosModules.lanzaboote ## move to boot nix config soon
+    ./secureboot.nix
   ];
 
   # Bootloader.
@@ -20,7 +20,6 @@
     #loader.grub.useOSProber = true;
     loader.efi.canTouchEfiVariables = true;
     #lanzaboote = { enable = true; pkiBundle = "/etc/secureboot";};    loader.systemd-boot.enable = lib.mkForce false;
-
   };
 
   # Networking

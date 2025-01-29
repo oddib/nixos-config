@@ -5,7 +5,8 @@
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     #nixpkgs-stable.url= "github:nixos/nixpkgs/nixos-24.11";
     nixpkgs-stable.follows = "nixos-cosmic/nixpkgs-stable";
-    nixpkgs.follows = "nixos-cosmic/nixpkgs"; # NOTE: change "nixpkgs" to "nixpkgs-stable" to use stable NixOS release
+    nixpkgs.follows =
+      "nixos-cosmic/nixpkgs"; # NOTE: change "nixpkgs" to "nixpkgs-stable" to use stable NixOS release
     nixos-cosmic = {
       url = "github:lilyinstarlight/nixos-cosmic";
       #inputs.nixpkgs.follows = "nixpkgs";
@@ -27,12 +28,12 @@
       url = "github:Infinidoge/nix-minecraft";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    #lanzaboote = {
-    #  url = "github:nix-community/lanzaboote";
-    #  inputs.nixpkgs.follows = "nixpkgs";
-    #  inputs.pre-commit-hooks-nix.follows = "";
-    #  #inputs.nixpkgs-stable.follows = "nixpkgs-stable";
-    #};
+    lanzaboote = {
+      url = "github:nix-community/lanzaboote";
+      inputs.nixpkgs.follows = "nixpkgs";
+      #  inputs.pre-commit-hooks-nix.follows = "";
+      #inputs.nixpkgs-stable.follows = "nixpkgs-stable";
+    };
     foundryvtt = {
       url = "github:reckenrode/nix-foundryvtt";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -48,8 +49,8 @@
     #  inputs.nixpkgs.follows = "nixpkgs";
     #};
   };
-  outputs = { self, nixpkgs, home-manager, nixos-cosmic, nix-flatpak
-    , disko, impermanence, foundryvtt, nix-minecraft,... }@inputs:
+  outputs = { self, nixpkgs, home-manager, nixos-cosmic, nix-flatpak, disko
+    , impermanence, foundryvtt, nix-minecraft, lanzaboote, ... }@inputs:
     let
       common_modules = [
         { system.configurationRevision = self.rev or self.dirtyRev or null; }
