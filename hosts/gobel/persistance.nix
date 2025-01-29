@@ -13,6 +13,7 @@
       "/var/lib/tailscale"
       ## /etc
       "/etc/secureboot"
+      "/etc/nixos"
       "/etc/NetworkManager/system-connections"
     ];
     files = [

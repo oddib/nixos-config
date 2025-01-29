@@ -37,11 +37,12 @@
         "no"; # "yes", "without-password", "prohibit-password", "forced-commands-only", "no"
     };
   };
-
+  users.mutableUsers=false;
   users.users.oddbjornmr = {
     isNormalUser = true;
     description = "Oddbjørn Mestad Rønnestad";
     extraGroups = [ "networkmanager" "wheel" ];
+    hashedPasswordFile = "/persist/passwords/oddbjornmr";
   };
   home-manager = {
     useGlobalPkgs = true;

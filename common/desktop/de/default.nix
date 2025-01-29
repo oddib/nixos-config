@@ -1,5 +1,7 @@
 { ... }:
 
 {
-  imports = [ ./cosmic.nix ./gnome.nix ];
+  imports = [ 
+	#./cosmic.nix 
+	./gnome.nix ];
 }
