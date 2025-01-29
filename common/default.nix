@@ -3,7 +3,7 @@
 {
   imports = [
     ./tailscale.nix
-    #../cachix.nix
+    ./cache
     inputs.home-manager.nixosModules.home-manager
   ];
 

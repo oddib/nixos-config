@@ -9,6 +9,7 @@
     ./arr.nix
     ./foundryvtt.nix
     ./minecraft
+    ./nix-serve.nix
   ];
   # Runtime
   virtualisation.podman = {

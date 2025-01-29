@@ -48,7 +48,10 @@
           reverse_proxy localhost:30000
           import cloudflare
         }
-
+        nixcache.{$DOMAIN} {
+          reverse_proxy localhost:8081
+          import cloudflare
+        }
         ";
     };
   };
