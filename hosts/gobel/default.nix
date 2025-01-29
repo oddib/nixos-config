@@ -8,6 +8,7 @@
     ./disk-config.nix
     inputs.disko.nixosModules.disko
     ./persistance.nix
+    ./Galaxy-book2-pro.nix
     #inputs.lanzaboote.nixosModules.lanzaboote ## move to boot nix config soon
   ];
 
