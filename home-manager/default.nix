@@ -22,21 +22,13 @@
     # here is some command line tools I use frequently
     # feel free to add your own or remove some of them
 
-    neofetch
-    nnn # terminal file manager
+    fastfetch
 
     # archives
     zip
     xz
     unzip
     p7zip
-
-    # utils
-    ripgrep # recursively searches directories for a regex pattern
-    jq # A lightweight and flexible command-line JSON processor
-    yq-go # yaml processor https://github.com/mikefarah/yq
-    eza # A modern replacement for ‘ls’
-    fzf # A command-line fuzzy finder
 
     # networking tools
     mtr # A network diagnostic tool
@@ -68,7 +60,6 @@
     nixfmt-classic # formatter
 
     # productivity
-    hugo # static site generator
     glow # markdown previewer in terminal
 
     btop # replacement of htop/nmon

@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ ... }:
+{ pkgs, ... }:
 
 {
   imports = [ # Include the results of the hardware scan.
@@ -11,6 +11,16 @@
     ./ekstra-disks.nix
     #./impermanence.nix
   ];
+  # GPU
+  #24.11 
+
+  hardware.graphics = {
+    enable = true;
+    enable32Bit = true;
+    extraPackages = with pkgs; [ amdvlk ];
+    extraPackages32 = with pkgs;
+      [ driversi686Linux.amdvlk ]; # For 32 bit applications
+  };
 
   # Bootloader.
   # boot.loader.grub.enable = true;
