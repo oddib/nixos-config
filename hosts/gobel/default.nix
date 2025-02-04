@@ -15,10 +15,6 @@
   # Bootloader.
 
   boot = {
-    plymouth = {
-      enable = true;
-      theme = "breeze";
-    };
     initrd.systemd.enable = true;
     loader.systemd-boot.enable = true;
     #loader.grub.useOSProber = true;
