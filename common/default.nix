@@ -47,6 +47,7 @@
   home-manager = {
     useGlobalPkgs = true;
     useUserPackages = true;
-    users.oddbjornmr = import ../home-manager;
+    extraSpecialArgs.flake-inputs = inputs;
+    users.oddbjornmr = import ../home;
   };
 }

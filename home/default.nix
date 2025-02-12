@@ -1,5 +1,5 @@
-{pkgs , ...}:
-{
+{ pkgs, ... }: {
+  imports = [ ./git.nix ];
   home.username = "oddbjornmr";
   home.homeDirectory = "/home/oddbjornmr";
   #
@@ -15,8 +15,7 @@
 
   # Let home Manager install and manage itself.
   programs.home-manager.enable = true;
-  
-  
+
   home.packages = with pkgs; [
 
     # here is some command line tools I use frequently
@@ -79,12 +78,6 @@
     usbutils # lsusb
 
   ];
-  # basic configuration of git, please change to your own
-  programs.git = {
-    enable = true;
-    userName = "Oddbjørn Rønnestad";
-    userEmail = "oddbjorn.r@gmail.com";
-  };
 
   # starship - an customizable prompt for any shell
   programs.starship = {
@@ -97,8 +90,6 @@
       line_break.disabled = true;
     };
   };
-
-
   programs.bash = {
     enable = true;
     enableCompletion = true;

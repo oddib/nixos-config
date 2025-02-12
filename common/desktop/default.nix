@@ -1,7 +1,7 @@
 { ... }:
 
 {
-  imports = [ ./flatpak.nix ./de ./games ./1pass.nix];
+  imports = [ ./de ./steam.nix ./1pass.nix];
 
   # Enable CUPS to print documents.
   #services.printing.enable = true;
@@ -13,6 +13,8 @@
     "Source,Sink,Media,Socket"; # Enabling A2DP Sink
   #hardware.bluetooth.settings.General.Experimental =true; # Showing battery charge of bluetooth devices
   home-manager = {
-    users.oddbjornmr = import ../../home-manager/desktop;
+    users.oddbjornmr = import ../../home/desktop;
   };
+  services.flatpak.enable = true;
+
 }
