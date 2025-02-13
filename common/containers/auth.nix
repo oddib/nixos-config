@@ -1,7 +1,7 @@
 { lib, ... }: {
   ###
   # Wizarr
-  
+
   virtualisation.oci-containers.containers."wizarr" = {
     image = "ghcr.io/wizarrrr/wizarr:latest";
     volumes = [ "/var/lib/container//wizarr:/data/database:rw" ];

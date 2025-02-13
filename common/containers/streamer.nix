@@ -33,7 +33,7 @@
 
   ###
   # Jellyseerr
-  
+
   virtualisation.oci-containers.containers."jellyseerr" = {
     image = "fallenbagel/jellyseerr:latest";
     environment = {

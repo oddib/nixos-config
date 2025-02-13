@@ -56,7 +56,7 @@
     #ProtectClock = true;
     #ProtectKernelModules= true;
     #PrivateUsers=true;
-    SystemCallFilter="@system-service";
+    SystemCallFilter = "@system-service";
   };
   # virtualisation.oci-containers.containers.caddy = {
   #   image = "ghcr.io/caddybuilds/caddy-cloudflare:latest";
