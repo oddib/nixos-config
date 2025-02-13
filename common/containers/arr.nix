@@ -34,7 +34,7 @@
     ProtectKernelModules = true;
     PrivateUsers = true;
     SystemCallFilter = "@system-service";
-    UMask = "0002";
+    UMask = "0077";
     DeviceAllow = "";
     RestrictNamespaces = true;
     PrivateDevices = true;
@@ -62,7 +62,7 @@
     ProtectKernelModules = true;
     PrivateUsers = true;
     SystemCallFilter = "@system-service";
-    UMask = "0002";
+    UMask = "0077";
     DeviceAllow = "";
   };
 
