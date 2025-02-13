@@ -11,7 +11,7 @@
       hash = "sha256-JVkUkDKdat4aALJHQCq1zorJivVCdyBT+7UhqTvaFLw=";
     };
     globalConfig = ''
-      	acme_dns cloudflare {$CLOUDFLARE_API_KEY}
+      acme_dns cloudflare {$CLOUDFLARE_API_KEY}
     '';
     virtualHosts = {
       "{$DOMAIN}".extraConfig = ''
@@ -38,6 +38,25 @@
         reverse_proxy localhost:8081
       '';
     };
+  };
+
+  systemd.services.caddy.serviceConfig = {
+    ProtectSystem = "strict";
+    InaccessiblePaths = "...";
+    ProtectHome = true;
+    PrivateTmp = true;
+    ProtectProc = "invisible";
+    ProtectKernelTunables = true;
+    ProtectControlGroups = true;
+    AmbientCapabilities = "cap_net_bind_service";
+    CapabilityBoundingSet = "cap_net_bind_service";
+    UMask = 77;
+    #ProtectHostname = true;
+    RestrictSUIDSGID = true;
+    #ProtectClock = true;
+    #ProtectKernelModules= true;
+    #PrivateUsers=true;
+    SystemCallFilter="@system-service";
   };
   # virtualisation.oci-containers.containers.caddy = {
   #   image = "ghcr.io/caddybuilds/caddy-cloudflare:latest";

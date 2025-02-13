@@ -18,11 +18,52 @@
   #prowlarr
 
   services.prowlarr.enable = true;
-  systemd.services.sabnzbd.serviceConfig.UMASK = 2;
+  systemd.services.prowlarr.serviceConfig = {
+    ProtectSystem = "strict";
+    InaccessiblePaths = "...";
+    ProtectHome = true;
+    PrivateTmp = true;
+    ProtectProc = "invisible";
+    ProtectKernelTunables = true;
+    ProtectControlGroups = true;
+    AmbientCapabilities = "";
+    CapabilityBoundingSet = "";
+    ProtectHostname = true;
+    RestrictSUIDSGID = true;
+    ProtectClock = true;
+    ProtectKernelModules = true;
+    PrivateUsers = true;
+    SystemCallFilter = "@system-service";
+    UMask = "0002";
+    DeviceAllow = "";
+    RestrictNamespaces = true;
+    PrivateDevices = true;
+  };
+
   #sabnzbd
   services.sabnzbd = {
     enable = true;
     group = "media";
     configFile = "/var/lib/container/sabnzbd/sabnzbd.ini";
   };
+  systemd.services.sabnzbd.serviceConfig = {
+    #ProtectSystem = "strict";
+    InaccessiblePaths = "...";
+    ProtectHome = true;
+    PrivateTmp = true;
+    ProtectProc = "invisible";
+    ProtectKernelTunables = true;
+    ProtectControlGroups = true;
+    AmbientCapabilities = "";
+    CapabilityBoundingSet = "";
+    ProtectHostname = true;
+    RestrictSUIDSGID = true;
+    ProtectClock = true;
+    ProtectKernelModules = true;
+    PrivateUsers = true;
+    SystemCallFilter = "@system-service";
+    UMask = "0002";
+    DeviceAllow = "";
+  };
+
 }
