@@ -1,16 +1,11 @@
-# Edit this configuration file to define what should be installed on
-# your system.  Help is available in the configuration.nix(5) man page
-# and in the NixOS manual (accessible by running ‘nixos-help’).
-
 { inputs, lib, ... }: {
-  imports = [ # Include the results of the hardware scan.
-    #./hardware-configuration.nix
-    ./disk-config.nix
+  imports = [
+    ./hardware-configuration.nix
     inputs.disko.nixosModules.disko
+    ./disk-config.nix
+
     ./persistance.nix
-    #./galaxybookpro
     ./secureboot.nix
-    inputs.nixos-hardware.nixosModules.samsung-galaxybook-2-pro
   ];
 
   # Bootloader.
@@ -21,12 +16,10 @@
     #loader.grub.useOSProber = true;
     loader.efi.canTouchEfiVariables = true;
   };
-  nixpkgs.hostPlatform = lib.mkDefault"x86_64-linux";
 
   # Networking
   networking.hostName = "gobel"; # Define your hostname.
-  networking.useDHCP = lib.mkDefault true;
-  # Define a user account. Don't forget to set a password with ‘passwd’.
+
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
   # on your system were taken. It‘s perfectly fine and recommended to leave
