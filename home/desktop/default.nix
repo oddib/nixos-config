@@ -1,7 +1,7 @@
 { pkgs, ... }:
 
 {
-  imports = [ ./flatpak.nix ./1pass.nix ./vivaldi.nix ./vscode.nix ];
+  imports = [ ./flatpak.nix ./1pass.nix ./vivaldi.nix ./vscode.nix ./dungeondraft];
   
   home.packages = with pkgs; [ 
     ### Game launchers
