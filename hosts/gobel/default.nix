@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ inputs, ... }: {
+{ inputs, lib, ... }: {
   imports = [ # Include the results of the hardware scan.
     #./hardware-configuration.nix
     ./disk-config.nix
@@ -21,11 +21,11 @@
     #loader.grub.useOSProber = true;
     loader.efi.canTouchEfiVariables = true;
   };
-  nixpkgs.hostPlatform = "x86_64-linux";
+  nixpkgs.hostPlatform = lib.mkDefault"x86_64-linux";
 
   # Networking
   networking.hostName = "gobel"; # Define your hostname.
-  networking.useDHCP = true;
+  networking.useDHCP = lib.mkDefault true;
   # Define a user account. Don't forget to set a password with ‘passwd’.
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
