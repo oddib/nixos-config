@@ -287,6 +287,21 @@
         "type": "github"
       }
     },
+    "nixos-hardware": {
+      "locked": {
+        "lastModified": 1739567923,
+        "narHash": "sha256-PyZFj/eWwLcJVx5KX9XZWuDA1Cz3XYFyt3cjsa0vz1U=",
+        "owner": "oddib",
+        "repo": "nixos-hardware",
+        "rev": "263311653d188f993574c477c8efe006ca1fec3e",
+        "type": "github"
+      },
+      "original": {
+        "owner": "oddib",
+        "repo": "nixos-hardware",
+        "type": "github"
+      }
+    },
     "nixpkgs": {
       "locked": {
         "lastModified": 1739214665,
@@ -356,6 +371,7 @@
         "nix-flatpak": "nix-flatpak",
         "nix-minecraft": "nix-minecraft",
         "nixos-cosmic": "nixos-cosmic",
+        "nixos-hardware": "nixos-hardware",
         "nixpkgs": "nixpkgs"
       }
     },
