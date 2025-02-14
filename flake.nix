@@ -10,7 +10,7 @@
       inputs.nixpkgs-stable.follows =
         "nixpkgs"; # Bad but i want faster eval time
     };
-    nixos-hardware.url = github.com/oddib/nixos-hardware;
+    nixos-hardware.url = "github:oddib/nixos-hardware";
     nix-flatpak = {
       url = "github:gmodena/nix-flatpak/?ref=latest";
       #inputs.nixpkgs.follows = "nixpkgs";
