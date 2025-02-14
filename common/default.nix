@@ -4,6 +4,7 @@
   imports = [
     ./tailscale.nix
     ./cache
+    ./nix.nix
     inputs.home-manager.nixosModules.home-manager
   ];
 
@@ -25,7 +26,6 @@
     #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
     #  wget
     duplicacy
-    cachix
   ];
   services.openssh = {
     enable = true;

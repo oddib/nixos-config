@@ -7,7 +7,7 @@
 {
   imports = [ # Include the results of the hardware scan.
     ./hardware-configuration.nix
-    ../../common/containers
+    ../../common/services
     ./ekstra-disks.nix
     #./impermanence.nix
   ];
