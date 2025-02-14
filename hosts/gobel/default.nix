@@ -8,7 +8,7 @@
     ./disk-config.nix
     inputs.disko.nixosModules.disko
     ./persistance.nix
-    ./galaxybookpro
+    ./galaxybook-2-pro
     ./secureboot.nix
   ];
 
