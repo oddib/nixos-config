@@ -7,8 +7,10 @@
     nixos-cosmic = {
       url = "github:lilyinstarlight/nixos-cosmic";
       inputs.nixpkgs.follows = "nixpkgs";
-      inputs.nixpkgs-stable.follows = "nixpkgs"; # Bad but i want faster eval time
+      inputs.nixpkgs-stable.follows =
+        "nixpkgs"; # Bad but i want faster eval time
     };
+    nixos-hardware.url = github.com/oddib/nixos-hardware;
     nix-flatpak = {
       url = "github:gmodena/nix-flatpak/?ref=latest";
       #inputs.nixpkgs.follows = "nixpkgs";
@@ -47,7 +49,8 @@
     #};
   };
   outputs = { self, nixpkgs, home-manager, nixos-cosmic, nix-flatpak, disko
-    , impermanence, foundryvtt, nix-minecraft, lanzaboote, ... }@inputs:
+    , impermanence, foundryvtt, nix-minecraft, lanzaboote, nixos-hardware
+    }@inputs:
     let
       common_modules = [
         { system.configurationRevision = self.rev or self.dirtyRev or null; }

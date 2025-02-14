@@ -4,12 +4,13 @@
 
 { inputs, ... }: {
   imports = [ # Include the results of the hardware scan.
-    ./hardware-configuration.nix
+    #./hardware-configuration.nix
     ./disk-config.nix
     inputs.disko.nixosModules.disko
     ./persistance.nix
-    ./galaxybookpro
+    #./galaxybookpro
     ./secureboot.nix
+    inputs.nixos-hardware.nixosModules.samsung-galaxybook-2-pro
   ];
 
   # Bootloader.
@@ -20,10 +21,11 @@
     #loader.grub.useOSProber = true;
     loader.efi.canTouchEfiVariables = true;
   };
+  nixpkgs.hostPlatform = "x86_64-linux";
 
   # Networking
   networking.hostName = "gobel"; # Define your hostname.
-
+  networking.useDHCP = true;
   # Define a user account. Don't forget to set a password with ‘passwd’.
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
