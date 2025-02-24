@@ -21,7 +21,7 @@
       mountPoint = "/mnt/disks/disk4";
       options = [ "nofail" ];
     };
-    "/persist/storage" = {
+    "/srv" = {
       device = "/mnt/disks/*";
       fsType = "mergerfs";
       options =

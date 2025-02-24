@@ -8,5 +8,5 @@
     "com.discordapp.Discord"
     "org.geogebra.GeoGebra"
     "com.spotify.Client"
-  ];
+    "com.github.iwalton3.jellyfin-media-player"  ];
 }
