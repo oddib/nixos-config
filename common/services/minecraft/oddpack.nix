@@ -13,13 +13,6 @@ let
 in {
   nixpkgs.overlays = [ inputs.nix-minecraft.overlay ];
   services.minecraft-servers = {
-    enable = true;
-    eula = true;
-    managementSystem = {
-      tmux.enable = false;
-      systemd-socket.enable = true;
-    };
-
     servers.oddpack = {
       enable = true;
       package = pkgs.fabricServers.${serverVersion}.override {

@@ -1,4 +1,4 @@
-{ flake-inputs, lib, ... }: {
+{ flake-inputs, ... }: {
   imports = [ flake-inputs.nix-flatpak.homeManagerModules.nix-flatpak ];
 
   services.flatpak.update.auto.enable = true;
