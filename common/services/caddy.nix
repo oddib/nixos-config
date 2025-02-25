@@ -56,6 +56,7 @@ in {
           }
       '';
     };
+    environment.persistence."/persist".directories = [ "/var/lib/caddy" ];
 
     systemd.services.caddy.serviceConfig = {
       ProtectSystem = "strict";
