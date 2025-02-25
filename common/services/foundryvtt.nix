@@ -8,6 +8,7 @@
     upnp = false;
     package = inputs.foundryvtt.packages.${pkgs.system}.foundryvtt_12;
   };
+  environment.persistence."/persist".directories = [ "/var/lib/foundryvtt" ];
 
   # opnix = {
   #   systemdWantedBy = [ "podman-foundryvtt" ];

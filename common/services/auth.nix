@@ -16,6 +16,8 @@
     partOf = [ "podman-compose-scuffedflix-root.target" ];
     wantedBy = [ "podman-compose-scuffedflix-root.target" ];
   };
+  environment.persistence."/persist".directories =
+    [ "/var/lib/container/wizarr" ];
   # services.lldap = {
   #   enable = true;
   #   environment = {

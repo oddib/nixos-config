@@ -6,6 +6,7 @@
     ./cache
     ./nix.nix
     inputs.home-manager.nixosModules.home-manager
+    ./persistance.nix
   ];
 
   home-manager.backupFileExtension = "hm-backup";
@@ -23,10 +24,10 @@
   # Configure console keymap
   console.keyMap = "no";
   environment.systemPackages = with pkgs; [
-    #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-    #  wget
-    duplicacy
-  ];
+      #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
+      #  wget
+      duplicacy
+    ];
   services.openssh = {
     enable = true;
     settings = {
