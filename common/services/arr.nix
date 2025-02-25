@@ -55,5 +55,11 @@ in {
     configFile = "/var/lib/container/sabnzbd/sabnzbd.ini";
   };
   systemd.services.sabnzbd.serviceConfig = default // { };
-
+  environment.persistence."/persist".directories = [
+    "/var/lib/container"
+    "/var/lib/sabnzbd"
+    "/var/lib/radarr"
+    "/var/lib/sonarr"
+    "/var/lib/prowlarr"
+  ];
 }

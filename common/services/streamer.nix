@@ -1,5 +1,5 @@
 { ... }: {
-  imports= [
+  imports = [
     #inputs.nixos-jellyfin.nixosModules.jellyfin
   ];
   ###
@@ -20,5 +20,8 @@
     enable = true;
     #group = "media";
   };
+  environment.persistence."/persist".directories =
+    [ "/var/lib/jellyseerr" "/var/lib/jellyfin" ];
+
 }
 
