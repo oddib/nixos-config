@@ -10,6 +10,8 @@
       services.caddy.virtualHosts."nixcache.{$DOMAIN}".extraConfig = ''
         reverse_proxy localhost:8081
       '';
+      environment.persistence."/persist".files =
+        [{ file = "/var/cache-priv-key.pem"; }];
     })
   ];
 }

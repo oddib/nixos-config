@@ -37,6 +37,8 @@ in {
         reverse_proxy localhost:5055
       '';
     };
+    environment.persistence."/persist".directories =
+      [ "/var/lib/jellyseerr" "/var/lib/jellyfin" ];
   };
 }
 

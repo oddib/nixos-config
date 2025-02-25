@@ -9,8 +9,7 @@
       "/var/lib/bluetooth"
       "/var/lib/nixos"
       "/var/lib/systemd/coredump"
-      "/var/lib/flatpak"
-      "/var/lib/tailscale"
+      #"/var/lib/flatpak"
       "/var/lib/sbctl"
       ## /etc
       "/etc/secureboot"

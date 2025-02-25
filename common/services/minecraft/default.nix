@@ -13,4 +13,8 @@
     };
     dataDir="/var/lib/minecraft";
   };
+  environment.persistence."/persist".directories = [
+    "/var/lib/minecraft"
+  ];
+
 }
