@@ -28,6 +28,7 @@ in {
       enable = true;
       #group = "media";
     };
+
     services.caddy.virtualHosts."jellyseerr.{$DOMAIN}" = {
       serverAliases = [
         "jellyserr.{$DOMAIN}"
@@ -39,7 +40,6 @@ in {
         reverse_proxy localhost:5055
       '';
     };
-    environment.persistence."/persist".directories =
-      [ "/var/lib/jellyseerr" "/var/lib/jellyfin" ];
+    environment.persistence."/persist".directories = ["/var/lib/jellyseerr" "/var/lib/jellyfin"];
   };
 }
