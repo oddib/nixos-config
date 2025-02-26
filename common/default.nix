@@ -42,7 +42,7 @@
     isNormalUser = true;
     description = "Oddbjørn Mestad Rønnestad";
     extraGroups = [ "networkmanager" "wheel" ];
-    hashedPasswordFile = "/persist/passwords/oddbjornmr";
+    hashedPasswordFile = "/etc/passwords/oddbjornmr";
   };
   home-manager = {
     useGlobalPkgs = true;
