@@ -1,4 +1,4 @@
-{ inputs, lib, ... }: {
+{ pkgs, inputs, ... }: {
   imports = [
     ./hardware-configuration.nix
     inputs.disko.nixosModules.disko
@@ -16,7 +16,7 @@
     #loader.grub.useOSProber = true;
     loader.efi.canTouchEfiVariables = true;
   };
-
+  boot.kernelPackages = pkgs.linuxPackages_testing;
   # Networking
   networking.hostName = "gobel"; # Define your hostname.
 
