@@ -1,5 +1,4 @@
 { ... }: {
-  fileSystems."/persist".neededForBoot = true;
   disko.devices = {
     disk = {
       main = {

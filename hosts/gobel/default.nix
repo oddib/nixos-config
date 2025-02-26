@@ -1,11 +1,9 @@
-{ inputs, lib, ... }: {
+{ inputs, ... }: {
   imports = [
     ./hardware-configuration.nix
     inputs.disko.nixosModules.disko
     ./disk-config.nix
-
-    ./persistance.nix
-    ./secureboot.nix
+    ../../common/secureboot.nix
   ];
 
   # Bootloader.

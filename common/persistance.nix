@@ -1,5 +1,6 @@
 { inputs, ... }: {
   imports = [ inputs.impermanence.nixosModules.impermanence ];
+  fileSystems."/persist".neededForBoot = true;
   environment.persistence."/persist" = {
     enable = true; # NB: Defaults to true, not needed
     hideMounts = true;
@@ -9,12 +10,11 @@
       "/var/lib/bluetooth"
       "/var/lib/nixos"
       "/var/lib/systemd/coredump"
-      #"/var/lib/flatpak"
-      "/var/lib/sbctl"
       ## /etc
       "/etc/secureboot"
       "/etc/nixos"
       "/etc/NetworkManager/system-connections"
+      "/etc/passwords"
     ];
     files = [
       "/etc/machine-id"
