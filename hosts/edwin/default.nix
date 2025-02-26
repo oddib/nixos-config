@@ -1,8 +1,10 @@
-{...}: {
+{ inputs, pkgs, ... }: {
   imports = [
-    # Include the results of the hardware scan.
     ./hardware-configuration.nix
+    ./ekstra-disks.nix
+    inputs.disko.nixosModules.disko
     ./disk-config.nix
+
   ];
   system = {
     desktop.enable = true;
