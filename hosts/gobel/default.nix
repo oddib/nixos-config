@@ -3,7 +3,9 @@
     ./hardware-configuration.nix
     inputs.disko.nixosModules.disko
     ./disk-config.nix
+
     ./persistance.nix
+    ./secureboot.nix
   ];
 
   # Bootloader.
