@@ -4,8 +4,8 @@ let
 
   inherit (inputs.nix-minecraft.lib) collectFilesAt;
   modpack = pkgs.fetchPackwizModpack {
-    url = "https://raw.githubusercontent.com/oddib/oddpack/refs/tags/1.1.0/pack.toml";
-    packHash = "sha256-sNAsT9v463s7znFfW1LUEmNobloOO/ihsFFzSOQ3kow=";
+    url = "https://raw.githubusercontent.com/oddib/oddpack/refs/tags/1.2.0/pack.toml";
+    packHash = "sha256-xkJGWIq0hjTvGzZqpMSvO2tD+2PyneCJyT1+4V06FIs=";
   };
   mcVersion = modpack.manifest.versions.minecraft;
   fabricVersion = modpack.manifest.versions.fabric;
