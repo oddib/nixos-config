@@ -16,7 +16,7 @@ let
     ProtectKernelModules = true;
     PrivateUsers = true;
     SystemCallFilter = "@system-service";
-    UMask = "0077";
+    UMask = "0002";
     DeviceAllow = "/dev/null rw";
     RestrictNamespaces = true;
     PrivateDevices = true;

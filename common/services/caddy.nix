@@ -1,9 +1,15 @@
-{ pkgs, ... }: {
+{ lib, pkgs, ... }: {
   ###
   # Caddy
+  services.tailscaleAuth = {
+    enable = true;
+    user = "caddy";
+    group = "caddy";
+  };
   services.caddy = {
     enable = true;
     environmentFile = "/etc/caddy/caddy.env";
+    logFormat = lib.mkForce "level DEBUG";
     package = pkgs.caddy.withPlugins {
       plugins = [
         "github.com/caddy-dns/cloudflare@v0.0.0-20240703190432-89f16b99c18e"
@@ -12,6 +18,25 @@
     };
     globalConfig = ''
       acme_dns cloudflare {$CLOUDFLARE_API_KEY}
+    '';
+    extraConfig = ''
+      (auth) {
+          forward_auth unix//run/tailscale-nginx-auth/tailscale-nginx-auth.sock {
+            uri /auth
+            header_up Remote-Addr {remote_host}
+            header_up Remote-Port {remote_port}
+            header_up Original-URI {uri}
+            copy_headers {
+              Tailscale-User>X-Webauth-User
+              Tailscale-Name>X-Webauth-Name
+              Tailscale-Login>X-Webauth-Login
+              Tailscale-Tailnet>X-Webauth-Tailnet
+              Tailscale-Profile-Picture>X-Webauth-Profile-Picture
+            }
+          }
+        }
+
+
     '';
     virtualHosts = {
       "{$DOMAIN}".extraConfig = ''
@@ -37,12 +62,55 @@
       "nixcache.{$DOMAIN}".extraConfig = ''
         reverse_proxy localhost:8081
       '';
+      "radarr.{$DOMAIN}".extraConfig = ''
+          route {
+            import auth          
+            @allowedUser {
+                header X-Webauth-User "{$EMAIL}"
+            }
+
+            reverse_proxy @allowedUser http://localhost:7878
+            respond "Access denied" 403
+        }
+      '';
+      "sonarr.{$DOMAIN}".extraConfig = ''
+          route {
+            import auth          
+            @allowedUser {
+                header X-Webauth-User "{$EMAIL}"
+            }
+
+            reverse_proxy @allowedUser http://localhost:8989
+            respond "Access denied" 403
+        }
+      '';
+      "prowlarr.{$DOMAIN}".extraConfig = ''
+          route {
+            import auth          
+            @allowedUser {
+                header X-Webauth-User "{$EMAIL}"
+            }
+
+            reverse_proxy @allowedUser http://localhost:9696
+            respond "Access denied" 403
+        }
+      '';
+      "sabnzbd.{$DOMAIN}".extraConfig = ''
+          route {
+            import auth          
+            @allowedUser {
+                header X-Webauth-User "{$EMAIL}"
+            }
+
+            reverse_proxy @allowedUser http://localhost:4343
+            respond "Access denied" 403
+        }
+      '';
     };
   };
 
   systemd.services.caddy.serviceConfig = {
     ProtectSystem = "strict";
-    InaccessiblePaths = "...";
     ProtectHome = true;
     PrivateTmp = true;
     ProtectProc = "invisible";
@@ -58,54 +126,4 @@
     #PrivateUsers=true;
     SystemCallFilter = "@system-service";
   };
-  # virtualisation.oci-containers.containers.caddy = {
-  #   image = "ghcr.io/caddybuilds/caddy-cloudflare:latest";
-  #   environmentFiles = [ "/etc/caddy" ];
-  #   environment = { DOMAIN = "scuffedflix.no"; };
-  #   extraOptions = [ "--network=host" ];
-  #   user = "root";
-  #   volumes = [
-  #     "/etc/container/caddy/Caddyfile:/etc/caddy/Caddyfile"
-  #     "caddy_data:/data"
-  #     "caddy_config:/config"
-  #   ];
-  #   capabilities = { NET_ADMIN = true; };
-  # };
-  # environment.etc = {
-  #   caddy = {
-  #     #source = ./Caddyfile;
-  #     target = "/container/caddy/Caddyfile";
-  #     text = ''
-  #       (cloudflare) {
-  #       	tls {
-  #       		dns cloudflare {$CLOUDFLARE_API_KEY}
-  #       	}
-  #       }
-  #       {$DOMAIN} {
-  #       	reverse_proxy localhost:8096
-  #       	import cloudflare
-  #       }
-  #       jellyseerr.{$DOMAIN}, jellyserr.{$DOMAIN}, jellyseer.{$DOMAIN}, jellyser.{$DOMAIN}, request.{$DOMAIN} {
-  #           reverse_proxy localhost:5055
-  #           import cloudflare
-  #         }
-  #       invite.{$DOMAIN} {
-  #           reverse_proxy localhost:5690
-  #           import cloudflare
-  #       }
-  #       auth.{$DOMAIN} {
-  #         reverse_proxy localhost:3890
-  #         import cloudflare
-  #       }
-  #       foundryvtt.{$DOMAIN} {
-  #         reverse_proxy localhost:30000
-  #         import cloudflare
-  #       }
-  #       nixcache.{$DOMAIN} {
-  #         reverse_proxy localhost:8081
-  #         import cloudflare
-  #       }
-  #     '';
-  #   };
-  # };
 }
