@@ -40,5 +40,8 @@ in {
     environment.persistence."/persist".directories =
       [ "/var/lib/jellyseerr" "/var/lib/jellyfin" ];
   };
+  environment.persistence."/persist".directories =
+    [ "/var/lib/jellyseerr" "/var/lib/jellyfin" ];
+
 }
 
