@@ -2,42 +2,21 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ pkgs, ... }:
+{ ... }:
 
 {
   imports = [ # Include the results of the hardware scan.
     ./hardware-configuration.nix
-    ../../common/services
     ./ekstra-disks.nix
-    #./impermanence.nix
   ];
-  # GPU
-  #24.11 
-
-  hardware.graphics = {
-    enable = true;
-    enable32Bit = true;
-    extraPackages = with pkgs; [ amdvlk ];
-    extraPackages32 = with pkgs;
-      [ driversi686Linux.amdvlk ]; # For 32 bit applications
+  system ={
+    desktop.enable = true;
+    services.enable = true;
+    games.enable = true; 
   };
 
-  # Bootloader.
-  # boot.loader.grub.enable = true;
-  # boot.loader.grub.device = "/dev/nvme0n1";
-  # boot.loader.grub.useOSProber = true;
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
-  services.journald.extraConfig = "SystemMaxUse=100M";
-  systemd.services.NetworkManager-wait-online.enable = false;
   # Networking
-  networking.hostName = "edwin"; # Define your hostname.
-  # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
-  # Configure network proxy if necessary
-  # networking.proxy.default = "http://user:password@proxy:port/";
-  # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
-  # Enable touchpad support (enabled default in most desktopManager).
-  # services.xserver.libinput.enable = true;
+  networking.hostName = "edwin";
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   # This value determines the NixOS release from which the default

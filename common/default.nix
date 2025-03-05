@@ -6,6 +6,8 @@
     ./cache
     ./nix.nix
     inputs.home-manager.nixosModules.home-manager
+    ./boot.nix
+    ./services
   ];
 
   home-manager.backupFileExtension = "hm-backup";

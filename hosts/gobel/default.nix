@@ -1,20 +1,17 @@
-{ inputs, lib, ... }: {
+{ inputs, ... }: {
   imports = [
     ./hardware-configuration.nix
     inputs.disko.nixosModules.disko
     ./disk-config.nix
-
     ./persistance.nix
-    ./secureboot.nix
   ];
 
   # Bootloader.
+  system = {
+    secureboot.enable=true;
+    desktop.enable = true;
+    games.enable = true; 
 
-  boot = {
-    initrd.systemd.enable = true;
-    loader.systemd-boot.enable = true;
-    #loader.grub.useOSProber = true;
-    loader.efi.canTouchEfiVariables = true;
   };
 
   # Networking
