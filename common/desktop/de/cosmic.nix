@@ -5,7 +5,7 @@ in {
 
   options = {
     system.desktop.cosmic.enable = mkOption {
-      description = "enable audio";
+      description = "enable cosmic de";
       type = types.bool;
       default = false;
     };
