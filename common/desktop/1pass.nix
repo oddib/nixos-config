@@ -3,7 +3,10 @@
 {
   # Install 1password
   programs._1password.enable = true;
-  programs._1password-gui.enable = true;
+  programs._1password-gui = {
+    enable = true;
+    polkitPolicyOwners = [ "oddbjornmr" ];
+  };
   environment.etc = {
     "1password/custom_allowed_browsers" = {
       text = ''
@@ -11,15 +14,6 @@
       '';
       mode = "0755";
     };
-  };
-  nixpkgs = {
-    overlays = [
-      (final: prev: {
-        _1password-gui = prev._1password-gui.override {
-          polkitPolicyOwners = [ "oddbjornmr" ];
-        };
-      })
-    ];
   };
   home-manager.users.oddbjornmr = {
     programs.ssh = {

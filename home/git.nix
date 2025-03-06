@@ -1,6 +1,5 @@
 { pkgs, lib, ... }: {
   programs = {
-    git-credential-oauth.enable = true;
     git = {
       enable = true;
       userName = "Oddbjørn Rønnestad";
