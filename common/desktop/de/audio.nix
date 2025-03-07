@@ -1,5 +1,9 @@
-{ lib, config, ... }:
-let inherit (lib) mkOption mkIf types;
+{
+  lib,
+  config,
+  ...
+}: let
+  inherit (lib) mkOption mkIf types;
 in {
   # Enable sound with pipewire.
   options = {

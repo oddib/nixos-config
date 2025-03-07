@@ -1,5 +1,6 @@
-{ ... }: {
-  imports = [ # Include the results of the hardware scan.
+{...}: {
+  imports = [
+    # Include the results of the hardware scan.
     ./hardware-configuration.nix
     ./ekstra-disks.nix
   ];
@@ -15,10 +16,10 @@
   programs.corectrl.enable = true;
   security.polkit.extraConfig = ''
     polkit.addRule(function(action, subject) {
-      if ((action.id == "org.corectrl.helper.init" || 
-           action.id == "org.corectrl.helperkiller.init") && 
-          subject.local == true && 
-          subject.active == true && 
+      if ((action.id == "org.corectrl.helper.init" ||
+           action.id == "org.corectrl.helperkiller.init") &&
+          subject.local == true &&
+          subject.active == true &&
           subject.isInGroup("wheel")) {
         return polkit.Result.YES;
       }
@@ -33,5 +34,4 @@
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "24.11"; # Did you read the comment?
-
 }

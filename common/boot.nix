@@ -1,10 +1,14 @@
-{ config, lib, pkgs, inputs, ... }:
-
-let
+{
+  config,
+  lib,
+  pkgs,
+  inputs,
+  ...
+}: let
   inherit (lib) mkIf mkOption types mkMerge;
   cfg = config.system.secureboot;
 in {
-  imports = [ inputs.lanzaboote.nixosModules.lanzaboote ];
+  imports = [inputs.lanzaboote.nixosModules.lanzaboote];
   options = {
     system.secureboot.enable = mkOption {
       description = "enable secureboot";

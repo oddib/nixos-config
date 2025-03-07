@@ -1,7 +1,10 @@
-{ osConfig, lib, pkgs, ... }:
-
 {
+  osConfig,
+  lib,
+  pkgs,
+  ...
+}: {
   config = lib.mkIf osConfig.system.desktop.enable {
-    home.packages = [ (pkgs.callPackage ./dungeondraft.nix { }) ];
+    home.packages = [(pkgs.callPackage ./dungeondraft.nix {})];
   };
 }

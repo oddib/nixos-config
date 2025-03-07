@@ -7,8 +7,7 @@
     nixos-cosmic = {
       url = "github:lilyinstarlight/nixos-cosmic";
       inputs.nixpkgs.follows = "nixpkgs";
-      inputs.nixpkgs-stable.follows =
-        "nixpkgs"; # Bad but i want faster eval time
+      inputs.nixpkgs-stable.follows = "nixpkgs"; # Bad but i want faster eval time
     };
     nixos-hardware.url = "github:oddib/nixos-hardware";
     nix-flatpak = {
@@ -28,7 +27,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     lanzaboote = {
-      url = "github:nix-community/lanzaboote";
+      url = "github:nix-community/lanzaboote/v0.4.2";
       inputs.nixpkgs.follows = "nixpkgs";
       #  inputs.pre-commit-hooks-nix.follows = "";
       #inputs.nixpkgs-stable.follows = "nixpkgs-stable";
@@ -48,27 +47,36 @@
     #  inputs.nixpkgs.follows = "nixpkgs";
     #};
   };
-  outputs = { self, nixpkgs, home-manager, nixos-cosmic, nix-flatpak, disko
-    , impermanence, foundryvtt, nix-minecraft, lanzaboote, nixos-hardware
-    }@inputs:
-    let
-      common_modules = [
-        { system.configurationRevision = self.rev or self.dirtyRev or null; }
-        ./common
-      ];
-      desktop_modules = common_modules ++ [ ./common/desktop ];
-    in {
-      nixosConfigurations = {
-        edwin = nixpkgs.lib.nixosSystem {
-          system = "x86_64-linux";
-          specialArgs = { inherit inputs; };
-          modules = desktop_modules ++ [ ./hosts/edwin ];
-        };
-        gobel = nixpkgs.lib.nixosSystem {
-          system = "x86_64-linux";
-          specialArgs = { inherit inputs; };
-          modules = desktop_modules ++ [ ./hosts/gobel ];
-        };
+  outputs = {
+    self,
+    nixpkgs,
+    home-manager,
+    nixos-cosmic,
+    nix-flatpak,
+    disko,
+    impermanence,
+    foundryvtt,
+    nix-minecraft,
+    lanzaboote,
+    nixos-hardware,
+  } @ inputs: let
+    common_modules = [
+      {system.configurationRevision = self.rev or self.dirtyRev or null;}
+      ./common
+    ];
+    desktop_modules = common_modules ++ [./common/desktop];
+  in {
+    nixosConfigurations = {
+      edwin = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        specialArgs = {inherit inputs;};
+        modules = desktop_modules ++ [./hosts/edwin];
+      };
+      gobel = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        specialArgs = {inherit inputs;};
+        modules = desktop_modules ++ [./hosts/gobel];
       };
     };
+  };
 }

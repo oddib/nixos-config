@@ -1,6 +1,5 @@
-{ pkgs, ... }: {
+{pkgs, ...}: {
   home.packages = with pkgs; [
-
     # here is some command line tools I use frequently
     # feel free to add your own or remove some of them
 
@@ -38,8 +37,8 @@
     # it provides the command `nom` works just like `nix`
     # with more details log output
     nix-output-monitor
-    nil # language server
-    nixfmt-classic # formatter
+    nixd # language server
+    alejandra # formatter
 
     # productivity
     glow # markdown previewer in terminal
@@ -59,7 +58,6 @@
     ethtool
     pciutils # lspci
     usbutils # lsusb
-
   ];
 
   # starship - an customizable prompt for any shell

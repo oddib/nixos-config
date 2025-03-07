@@ -1,16 +1,17 @@
-{ inputs, ... }: # Make sure the flake inputs are in your system's config
+{inputs, ...}:
+# Make sure the flake inputs are in your system's config
 {
   imports = [
     inputs.nix-minecraft.nixosModules.minecraft-servers
-    ./oddpack.nix 
+    ./oddpack.nix
   ];
-  nixpkgs.overlays = [ inputs.nix-minecraft.overlay ];
+  nixpkgs.overlays = [inputs.nix-minecraft.overlay];
   services.minecraft-servers = {
     eula = true;
     managementSystem = {
       tmux.enable = false;
       systemd-socket.enable = true;
     };
-    dataDir="/var/lib/minecraft";
+    dataDir = "/var/lib/minecraft";
   };
 }

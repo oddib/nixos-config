@@ -1,5 +1,9 @@
-{ config, lib, ... }:
-let inherit (lib) mkOption types mkIf;
+{
+  config,
+  lib,
+  ...
+}: let
+  inherit (lib) mkOption types mkIf;
 in {
   options = {
     system.games.enable = mkOption {
@@ -24,7 +28,7 @@ in {
         enable = true;
         capSysNice = true;
       };
-      gamemode = { enable = true; };
+      gamemode = {enable = true;};
     };
   };
 }

@@ -1,6 +1,8 @@
-{ inputs, pkgs, ... }:
-
 {
+  inputs,
+  pkgs,
+  ...
+}: {
   imports = [
     ./tailscale.nix
     ./cache
@@ -15,7 +17,7 @@
   # Enable networking
   networking.networkmanager.enable = true;
   # Enabling flakes and unfree
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  nix.settings.experimental-features = ["nix-command" "flakes"];
   nixpkgs.config.allowUnfree = true;
 
   # Set your time zone.
@@ -33,17 +35,15 @@
     enable = true;
     settings = {
       PasswordAuthentication = true;
-      AllowUsers =
-        ["oddbjornmr"]; # Allows all users by default. Can be [ "user1" "user2" ]
-      PermitRootLogin =
-        "no"; # "yes", "without-password", "prohibit-password", "forced-commands-only", "no"
+      AllowUsers = ["oddbjornmr"]; # Allows all users by default. Can be [ "user1" "user2" ]
+      PermitRootLogin = "no"; # "yes", "without-password", "prohibit-password", "forced-commands-only", "no"
     };
   };
-  users.mutableUsers=false;
+  users.mutableUsers = false;
   users.users.oddbjornmr = {
     isNormalUser = true;
     description = "Oddbjørn Mestad Rønnestad";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = ["networkmanager" "wheel"];
     hashedPasswordFile = "/etc/passwords/oddbjornmr";
   };
   home-manager = {

@@ -1,7 +1,9 @@
-{ lib, inputs, pkgs, ... }:
-
-let
-
+{
+  lib,
+  inputs,
+  pkgs,
+  ...
+}: let
   inherit (inputs.nix-minecraft.lib) collectFilesAt;
   modpack = pkgs.fetchPackwizModpack {
     url = "https://raw.githubusercontent.com/oddib/oddpack/refs/tags/1.2.0/pack.toml";
@@ -9,9 +11,9 @@ let
   };
   mcVersion = modpack.manifest.versions.minecraft;
   fabricVersion = modpack.manifest.versions.fabric;
-  serverVersion = lib.replaceStrings [ "." ] [ "_" ] "fabric-${mcVersion}";
+  serverVersion = lib.replaceStrings ["."] ["_"] "fabric-${mcVersion}";
 in {
-  nixpkgs.overlays = [ inputs.nix-minecraft.overlay ];
+  nixpkgs.overlays = [inputs.nix-minecraft.overlay];
   services.minecraft-servers = {
     servers.oddpack = {
       enable = true;
@@ -23,4 +25,3 @@ in {
     };
   };
 }
-

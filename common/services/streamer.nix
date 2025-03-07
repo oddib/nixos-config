@@ -1,10 +1,12 @@
-{ lib, config, ... }:
-let
+{
+  lib,
+  config,
+  ...
+}: let
   inherit (lib) mkIf;
   cfg = config.services.mediaserver;
 in {
   config = mkIf cfg.enable {
-
     ###
     # Jellyfin
 
@@ -39,4 +41,3 @@ in {
     };
   };
 }
-

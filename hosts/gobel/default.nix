@@ -1,4 +1,4 @@
-{ inputs, ... }: {
+{inputs, ...}: {
   imports = [
     ./hardware-configuration.nix
     inputs.disko.nixosModules.disko
@@ -8,10 +8,9 @@
 
   # Bootloader.
   system = {
-    secureboot.enable=true;
+    secureboot.enable = true;
     desktop.enable = true;
-    games.enable = true; 
-
+    games.enable = true;
   };
 
   # Networking
@@ -24,5 +23,4 @@
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "24.11"; # Did you read the comment?
-
 }

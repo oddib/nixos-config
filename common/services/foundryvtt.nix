@@ -1,5 +1,9 @@
-{ inputs, pkgs, ... }: {
-  imports = [ inputs.foundryvtt.nixosModules.foundryvtt ];
+{
+  inputs,
+  pkgs,
+  ...
+}: {
+  imports = [inputs.foundryvtt.nixosModules.foundryvtt];
   services.foundryvtt = {
     minifyStaticFiles = true;
     proxyPort = 443;

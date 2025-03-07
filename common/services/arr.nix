@@ -1,4 +1,8 @@
-{ lib, config, ... }:
+{
+  lib,
+  config,
+  ...
+}:
 ### Sonarr
 let
   default = {
@@ -28,13 +32,14 @@ in {
       dataDir = "/var/lib/container/sonarr";
       group = "media";
     };
-    systemd.services.sonarr.serviceConfig = default // {
-      #ProtectSystem = "strict";
-
-    };
+    systemd.services.sonarr.serviceConfig =
+      default
+      // {
+        #ProtectSystem = "strict";
+      };
     services.caddy.virtualHosts."sonarr.{$DOMAIN}".extraConfig = ''
         route {
-          import auth          
+          import auth
           @allowedUser {
               header X-Webauth-User "{$EMAIL}"
           }
@@ -51,12 +56,14 @@ in {
       dataDir = "/var/lib/container/radarr";
       group = "media";
     };
-    systemd.services.radarr.serviceConfig = default // {
-      #ProtectSystem = "strict";
-    };
+    systemd.services.radarr.serviceConfig =
+      default
+      // {
+        #ProtectSystem = "strict";
+      };
     services.caddy.virtualHosts."radarr.{$DOMAIN}".extraConfig = ''
         route {
-          import auth          
+          import auth
           @allowedUser {
               header X-Webauth-User "{$EMAIL}"
           }
@@ -69,12 +76,14 @@ in {
     #prowlarr
 
     services.prowlarr.enable = true;
-    systemd.services.prowlarr.serviceConfig = default // {
-      ProtectSystem = "strict";
-    };
+    systemd.services.prowlarr.serviceConfig =
+      default
+      // {
+        ProtectSystem = "strict";
+      };
     services.caddy.virtualHosts."prowlarr.{$DOMAIN}".extraConfig = ''
         route {
-          import auth          
+          import auth
           @allowedUser {
               header X-Webauth-User "{$EMAIL}"
           }
@@ -89,11 +98,11 @@ in {
       group = "media";
       configFile = "/var/lib/container/sabnzbd/sabnzbd.ini";
     };
-    systemd.services.sabnzbd.serviceConfig = default // { };
+    systemd.services.sabnzbd.serviceConfig = default // {};
 
     services.caddy.virtualHosts."sabnzbd.{$DOMAIN}".extraConfig = ''
         route {
-          import auth          
+          import auth
           @allowedUser {
               header X-Webauth-User "{$EMAIL}"
           }
@@ -102,6 +111,5 @@ in {
           respond "Access denied" 403
       }
     '';
-
   };
 }

@@ -1,7 +1,11 @@
-{ config, lib, ... }:
-let inherit (lib) mkIf mkOption types;
+{
+  config,
+  lib,
+  ...
+}: let
+  inherit (lib) mkIf mkOption types;
 in {
-  imports = [ ./de ./games.nix ./1pass.nix ];
+  imports = [./de ./games.nix ./1pass.nix];
   options = {
     system.desktop.enable = mkOption {
       description = "enable desktop";
@@ -17,8 +21,7 @@ in {
     hardware.bluetooth.enable = true; # enables support for Bluetooth
     hardware.bluetooth.powerOnBoot =
       false; # powers up the default Bluetooth controller on boot
-    hardware.bluetooth.settings.General.Enable =
-      "Source,Sink,Media,Socket"; # Enabling A2DP Sink
+    hardware.bluetooth.settings.General.Enable = "Source,Sink,Media,Socket"; # Enabling A2DP Sink
     #hardware.bluetooth.settings.General.Experimental =true; # Showing battery charge of bluetooth devices
     services.flatpak.enable = true;
   };

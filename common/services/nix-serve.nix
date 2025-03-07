@@ -1,4 +1,8 @@
-{ lib, config, ... }: {
+{
+  lib,
+  config,
+  ...
+}: {
   config = lib.mkMerge [
     {
       services.nix-serve = {

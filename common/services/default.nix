@@ -1,6 +1,9 @@
-{ lib, config, inputs, ... }:
-
-let
+{
+  lib,
+  config,
+  #inputs,
+  ...
+}: let
   inherit (lib) mkIf mkOption types;
   cfg = config.system.services;
 in {
@@ -26,7 +29,6 @@ in {
       type = types.bool;
       default = false;
     };
-
   };
   config = mkIf cfg.enable {
     services = {
@@ -54,6 +56,6 @@ in {
       group = "media";
       isSystemUser = true;
     };
-    users.groups = { "media" = { }; };
+    users.groups = {"media" = {};};
   };
 }

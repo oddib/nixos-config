@@ -1,3 +1,3 @@
-{ ... }: {
-  imports = [ ./vivaldi.nix ./vscode.nix ./dungeondraft ./games.nix ];
+{...}: {
+  imports = [./vivaldi.nix ./vscode.nix ./dungeondraft ./games.nix];
 }

@@ -1,6 +1,11 @@
-{ flake-inputs, osConfig, lib, ... }: {
-  imports = [ flake-inputs.nix-flatpak.homeManagerModules.nix-flatpak ];
-  config = lib.mkIf osConfig.services.flatpak.enable  {
+{
+  flake-inputs,
+  osConfig,
+  lib,
+  ...
+}: {
+  imports = [flake-inputs.nix-flatpak.homeManagerModules.nix-flatpak];
+  config = lib.mkIf osConfig.services.flatpak.enable {
     services.flatpak.update.auto.enable = true;
     #services.flatpak.uninstallUnmanaged = true;
     services.flatpak.packages = [

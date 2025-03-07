@@ -1,4 +1,9 @@
-{ lib, config, pkgs, ... }:
+{
+  lib,
+  config,
+  pkgs,
+  ...
+}:
 ###
 # Caddy
 let
@@ -52,7 +57,6 @@ in {
 
 
       '';
-
     };
 
     systemd.services.caddy.serviceConfig = {
@@ -74,4 +78,3 @@ in {
     };
   };
 }
-

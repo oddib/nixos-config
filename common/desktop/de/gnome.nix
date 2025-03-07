@@ -1,5 +1,9 @@
-{ lib, config, ... }:
-let inherit (lib) mkOption mkIf types mkForce;
+{
+  lib,
+  config,
+  ...
+}: let
+  inherit (lib) mkOption mkIf types mkForce;
 in {
   options = {
     system.desktop.gnome.enable = mkOption {
