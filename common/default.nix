@@ -12,14 +12,12 @@
     ./services
   ];
 
-  home-manager.backupFileExtension = "hm-backup";
-
   # Enable networking
   networking.networkmanager.enable = true;
   # Enabling flakes and unfree
-  nix.settings.experimental-features = ["nix-command" "flakes"];
   nixpkgs.config.allowUnfree = true;
 
+  services.fwupd.enable = true;
   # Set your time zone.
   time.timeZone = "Europe/Oslo";
   # Select internationalisation properties.
@@ -51,5 +49,6 @@
     useUserPackages = true;
     extraSpecialArgs.flake-inputs = inputs;
     users.oddbjornmr = import ../home;
+    backupFileExtension = "hm-backup";
   };
 }
