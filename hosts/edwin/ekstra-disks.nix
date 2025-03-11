@@ -21,10 +21,23 @@
       mountPoint = "/mnt/disks/disk4";
       options = ["nofail"];
     };
-    "/srv" = {
+    data = {
+      device = "/dev/disk/by-label/Data";
+      mountPoint = "/mnt/data";
+      options = ["nofail"];
+    };
+    "/media" = {
       device = "/mnt/disks/*";
       fsType = "mergerfs";
       options = ["cache.files=partial" "dropcacheonclose=true" "category.create=mfs"];
+    };
+    "/srv" = {
+      fsType = "overlay";
+      overlay = {
+        lowerdir = ["/mnt/disks/disk1" "/mnt/disks/disk2" "/mnt/disks/disk3" "/mnt/disks/disk4"];
+        upperdir = "/mnt/data/data";
+        workdir = "/mnt/data/WRD";
+      };
     };
   };
 }
