@@ -32,12 +32,9 @@
       options = ["cache.files=partial" "dropcacheonclose=true" "category.create=mfs"];
     };
     "/srv" = {
-      fsType = "overlay";
-      overlay = {
-        lowerdir = ["/mnt/disks/disk1" "/mnt/disks/disk2" "/mnt/disks/disk3" "/mnt/disks/disk4"];
-        upperdir = "/mnt/data/data";
-        workdir = "/mnt/data/WRD";
-      };
+      device = "/mnt/disks/*,/mnt/data/data";
+      fsType = "mergerfs";
+      options = ["cache.files=partial" "dropcacheonclose=true" "category.create=lus"];
     };
   };
 }
