@@ -32,7 +32,7 @@
       options = ["cache.files=partial" "dropcacheonclose=true" "category.create=mfs"];
     };
     "/srv" = {
-      device = "/mnt/disks/*,/mnt/data/data";
+      device = "/mnt/disks/*:/mnt/data/data";
       fsType = "mergerfs";
       options = ["cache.files=partial" "dropcacheonclose=true" "category.create=lus"];
     };
