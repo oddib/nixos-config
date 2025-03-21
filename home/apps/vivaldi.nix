@@ -10,7 +10,12 @@
         proprietaryCodecs = true;
         enableWidevine = true;
         #vulkanSupport = true;
-        commandLineArgs = "--enable-features=AcceleratedVideoDecodeLinuxGL,AcceleratedVideoEncoder,VaapiVideoDecoder,VaapiIgnoreDriverChecks,Vulkan,DefaultANGLEVulkan,VulkanFromANGLE";
+        commandLineArgs = ''
+          --enable-features=AcceleratedVideoDecodeLinuxGL,AcceleratedVideoEncoder,VaapiVideoDecoder,VaapiIgnoreDriverChecks,Vulkan,DefaultANGLEVulkan --ignore-gpu-blocklist --enable-unsafe-webgpu --enable-zero-copy
+        '';
+
+        #commandLineArgs = "--enable-features=AcceleratedVideoDecodeLinuxGL,AcceleratedVideoEncoder,VaapiVideoDecoder,VaapiIgnoreDriverChecks,Vulkan,DefaultANGLEVulkan,VulkanFromANGLE";
+
       })
     ];
   };

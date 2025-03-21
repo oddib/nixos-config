@@ -10,7 +10,7 @@
       profiles.default = {
         #/home/oddbjornmr/nixos/flake.nix
         userSettings = {
-          "extensions.autoUpdate" = false;
+          "extensions.autoUpdate" = true;
           "nix.enableLanguageServer" = true;
           "nix.serverPath" = "nixd";
           "git.confirmSync" = false;
