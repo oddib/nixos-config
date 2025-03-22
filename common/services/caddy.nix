@@ -28,7 +28,7 @@ in {
     services.caddy = {
       enable = true;
       environmentFile = "/etc/caddy/caddy.env";
-      logFormat = lib.mkForce "level DEBUG";
+      # logFormat = lib.mkForce "level DEBUG";
       package = pkgs.caddy.withPlugins {
         plugins = [
           "github.com/caddy-dns/cloudflare@v0.0.0-20240703190432-89f16b99c18e"
