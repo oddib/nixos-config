@@ -5,7 +5,7 @@
 }: {
   imports = [inputs.foundryvtt.nixosModules.foundryvtt];
   services.foundryvtt = {
-    hostname = "foundryvtt.scuffedflix.no";
+    hostName = "foundryvtt.scuffedflix.no";
     world= "Eberron";
     minifyStaticFiles = true;
     proxyPort = 443;

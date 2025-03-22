@@ -1,6 +1,17 @@
 {pkgs, ...}: {
   environment.systemPackages = with pkgs; [mergerfs];
+  swapDevices = [{device = "/dev/disk/by-uuid/05dfc96e-c67f-45af-a5f1-9568e5005a9c";}];
+
   fileSystems = {
+    "/" = {
+      device = "/dev/disk/by-uuid/b2419630-73e6-4aef-a2d1-d086f513b726";
+      fsType = "btrfs";
+    };
+    "/boot" = {
+      device = "/dev/disk/by-uuid/E2C0-442A";
+      fsType = "vfat";
+      options = ["fmask=0077" "dmask=0077"];
+    };
     disk1 = {
       device = "/dev/disk/by-uuid/0dd470b5-baec-43bc-bec8-dcf3b44667d9";
       mountPoint = "/mnt/disks/disk1";
