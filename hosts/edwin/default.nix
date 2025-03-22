@@ -2,7 +2,7 @@
   imports = [
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
-    ./ekstra-disks.nix
+    ./disk-config.nix
   ];
   system = {
     desktop.enable = true;
@@ -10,7 +10,7 @@
     games.enable = true;
   };
   programs.corectrl.enable = true;
-  
+
   # Networking
   networking.hostName = "edwin";
 
