@@ -17,6 +17,7 @@ in {
     ./foundryvtt.nix
     ./minecraft
     ./nix-serve.nix
+    ./odoo.nix
   ];
   options = {
     system.services.enable = mkOption {
