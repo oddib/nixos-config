@@ -1,0 +1,57 @@
+(auth) {
+	forward_auth unix//run/tailscale-nginx-auth/tailscale-nginx-auth.sock {
+		uri /auth
+		header_up Remote-Addr {remote_host}
+		header_up Remote-Port {remote_port}
+		header_up Original-URI {uri}
+		copy_headers {
+			Tailscale-User>X-Webauth-User
+			Tailscale-Name>X-Webauth-Name
+			Tailscale-Login>X-Webauth-Login
+			Tailscale-Tailnet>X-Webauth-Tailnet
+			Tailscale-Profile-Picture>X-Webauth-Profile-Picture
+		}
+	}
+}
+
+foundryvtt.scuffedflix.no {
+	handle_path /join {
+		import auth
+
+		@tailscaleUser header X-Tailscale-Login *
+		handle @tailscaleUser {
+			route {
+				exec map_user {
+					command "${pkgs.writeShellScript "map-user" ''
+					${pkgs.jq}/bin/jq -r --arg ts "$1" \
+ '.users[] | select(.tailscale_id == $ts) | .foundry_id' \
+ /etc/caddy/users.json
+					''}" {http.header.X-Tailscale-Login}
+					output foundry_id
+				}
+
+				rewrite * /join {
+					method POST
+					header Content-Type "application/x-www-form-urlencoded"
+					body "{http.exec.map_user.foundry_id}&password="
+				}
+
+				reverse_proxy localhost:30000 {
+					header_down Set-Cookie FoundrySession=*
+				}
+
+				header Set-Cookie "{http.reverse_proxy.header.Set-Cookie}; Secure; HttpOnly; SameSite=Lax"
+				redir /game 302
+			}
+		}
+		respond "Access denied" 403
+	}
+
+	handle {
+		@hasValidSession header Cookie FoundrySession=*
+		handle @hasValidSession {
+			reverse_proxy localhost:30000
+		}
+		redir /join 302
+	}
+}

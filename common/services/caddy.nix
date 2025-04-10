@@ -18,6 +18,7 @@ in {
     };
   };
   config = mkIf cfg.enable {
+
     services.tailscale.enable = mkForce true;
     services.tailscaleAuth = {
       enable = true;
@@ -32,28 +33,13 @@ in {
       package = pkgs.caddy.withPlugins {
         plugins = [
           "github.com/caddy-dns/cloudflare@v0.0.0-20240703190432-89f16b99c18e"
+          "github.com/greenpau/caddy-security@v1.1.31"
+          "github.com/abiosoft/caddy-exec@v0.0.0-20240914124740-521d8736cb4d"
         ];
-        hash = "sha256-W09nFfBKd+9QEuzV3RYLeNy2CTry1Tz3Vg1U2JPNPPc=";
+        hash = "sha256-NWIThHIGOAr8/VUq5yaZ+ZHwX+WSBFEIAwds2ti5M/c=";
       };
       globalConfig = ''
         acme_dns cloudflare {$CLOUDFLARE_API_KEY}
-      '';
-      extraConfig = ''
-        (auth) {
-            forward_auth unix//run/tailscale-nginx-auth/tailscale-nginx-auth.sock {
-              uri /auth
-              header_up Remote-Addr {remote_host}
-              header_up Remote-Port {remote_port}
-              header_up Original-URI {uri}
-              copy_headers {
-                Tailscale-User>X-Webauth-User
-                Tailscale-Name>X-Webauth-Name
-                Tailscale-Login>X-Webauth-Login
-                Tailscale-Tailnet>X-Webauth-Tailnet
-                Tailscale-Profile-Picture>X-Webauth-Profile-Picture
-              }
-            }
-          }
       '';
     };
 

@@ -8,6 +8,7 @@
   cfg = config.system.services;
 in {
   imports = [
+    ./tsidp.nix
     ./caddy.nix
     #./opnix.nix
     #inputs.opnix.nixosModules.default
@@ -18,6 +19,7 @@ in {
     ./minecraft
     ./nix-serve.nix
     ./odoo.nix
+    ./invite.nix
   ];
   options = {
     system.services.enable = mkOption {
