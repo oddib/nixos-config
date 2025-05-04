@@ -38,6 +38,7 @@ in {
       mediaserver.enable = true;
       proxy.enable = true;
       minecraft-servers.enable = true;
+      odoo-container.enable = true;
     };
     # Containers
     # Runtime
