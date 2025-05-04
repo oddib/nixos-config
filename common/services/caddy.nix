@@ -31,9 +31,9 @@ in {
       # logFormat = lib.mkForce "level DEBUG";
       package = pkgs.caddy.withPlugins {
         plugins = [
-          "github.com/caddy-dns/cloudflare@v0.0.0-20240703190432-89f16b99c18e"
+          "github.com/caddy-dns/cloudflare@v0.2.1"
         ];
-        hash = "sha256-W09nFfBKd+9QEuzV3RYLeNy2CTry1Tz3Vg1U2JPNPPc=";
+        hash = "sha256-saKJatiBZ4775IV2C5JLOmZ4BwHKFtRZan94aS5pO90=";
       };
       globalConfig = ''
         acme_dns cloudflare {$CLOUDFLARE_API_KEY}
