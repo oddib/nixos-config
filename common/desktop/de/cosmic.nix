@@ -6,8 +6,6 @@
 }: let
   inherit (lib) mkOption mkIf types mkForce;
 in {
-  imports = [inputs.nixos-cosmic.nixosModules.default];
-
   options = {
     system.desktop.cosmic.enable = mkOption {
       description = "enable cosmic de";
