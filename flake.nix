@@ -62,19 +62,24 @@
     common_modules = [
       {system.configurationRevision = self.rev or self.dirtyRev or null;}
       ./common
+      home-manager.nixosModules.home-manager
+      impermanence.nixosModules.impermanence
+      disko.nixosModules.disko
+      nix-minecraft.nixosModules.minecraft-servers
+      lanzaboote.nixosModules.lanzaboote
+      foundryvtt.nixosModules.foundryvtt
     ];
-    desktop_modules = common_modules ++ [./common/desktop];
   in {
     nixosConfigurations = {
       edwin = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         specialArgs = {inherit inputs;};
-        modules = desktop_modules ++ [./hosts/edwin];
+        modules = common_modules ++ [./hosts/edwin];
       };
       gobel = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         specialArgs = {inherit inputs;};
-        modules = desktop_modules ++ [./hosts/gobel];
+        modules = common_modules ++ [./hosts/gobel];
       };
     };
   };

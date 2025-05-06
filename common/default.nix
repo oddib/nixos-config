@@ -5,11 +5,10 @@
 }: {
   imports = [
     ./tailscale.nix
-    ./cache
     ./nix.nix
-    inputs.home-manager.nixosModules.home-manager
     ./boot.nix
     ./services
+    ./desktop
     ./persistance.nix
   ];
 
@@ -44,6 +43,7 @@
     description = "Oddbjørn Mestad Rønnestad";
     extraGroups = ["networkmanager" "wheel"];
     hashedPasswordFile = "/etc/passwords/oddbjornmr";
+    initialHashedPassword = "$y$j9T$SAQb63c3fPa6VfJ2K/4FV/$pRTZFnC4BOUFr9.raMosv1nsKwXepy9tQEzNvY.Ia2B";
   };
   home-manager = {
     useGlobalPkgs = true;

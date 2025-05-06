@@ -1,10 +1,7 @@
-{ inputs, ... }: {
+{...}: {
   imports = [
     ./hardware-configuration.nix
-    ./ekstra-disks.nix
-    inputs.disko.nixosModules.disko
     ./disk-config.nix
-
   ];
   system = {
     desktop.enable = true;
@@ -15,8 +12,6 @@
 
   # Networking
   networking.hostName = "edwin";
-
-  
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   # This value determines the NixOS release from which the default

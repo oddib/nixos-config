@@ -3,7 +3,6 @@
   pkgs,
   ...
 }: {
-  imports = [inputs.foundryvtt.nixosModules.foundryvtt];
   services.foundryvtt = {
     hostName = "foundryvtt.scuffedflix.no";
     world= "Eberron";
