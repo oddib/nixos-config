@@ -1,5 +1,11 @@
 {...}: {
-  imports = [./shell.nix ./apps ./flatpak.nix];
+  imports = [
+    ./shell.nix
+    ./apps
+    ./flatpak.nix
+    ./git.nix
+    ./ssh.nix
+  ];
   home.username = "oddbjornmr";
   home.homeDirectory = "/home/oddbjornmr";
   #
