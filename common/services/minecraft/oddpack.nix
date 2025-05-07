@@ -16,7 +16,7 @@ in {
   nixpkgs.overlays = [inputs.nix-minecraft.overlay];
   services.minecraft-servers = {
     servers.oddpack = {
-      enable = true;
+      enable = false;
       package = pkgs.fabricServers.${serverVersion}.override {
         loaderVersion = fabricVersion;
       };

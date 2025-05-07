@@ -3,6 +3,7 @@
 {
   imports = [
     ./oddpack.nix
+    ./sgsg.nix
   ];
   nixpkgs.overlays = [inputs.nix-minecraft.overlay];
   services.minecraft-servers = {
