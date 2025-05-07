@@ -18,6 +18,7 @@
       gamemode = "survival";
       allowFlight = true;
       enableCommandBlock = true;
+      viewDistance = 20;
     };
   };
 }
