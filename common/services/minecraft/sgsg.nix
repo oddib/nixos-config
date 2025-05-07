@@ -12,5 +12,12 @@
 
     # Specify the custom minecraft server package
     package = pkgs.minecraftServers.vanilla-1_21_5;
+    serverProperties = {
+      difficulty = "hard";
+      motd = "Sandnes ghetto sykkel gjeng";
+      gamemode = "survival";
+      allowFlight = true;
+      enableCommandBlock = true;
+    };
   };
 }
