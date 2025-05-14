@@ -1,31 +1,26 @@
 # Nixos config
 
 Some annoying commands to type when reinstalling systems
-### Format disks
-* Gobel (laptop):
+
+#### Secure boot:
+- Run
+
 ```bash
-sudo nix --experimental-features "nix-command flakes" run github:nix-community/disko/latest -- --mode destroy,format,mount raw.githubusercontent.com/oddib/nixos-config/refs/heads/main/hosts/gobel/disk-config.nix
+cd /tmp
+root=$(mktemp -d)
+sudo nix run nixpkgs#sbctl create-keys -e ${root}/var/lib/sbctl
+mkpasswd PASSWORD > ${root}/etc/passwords/oddbjornmr
+
 ```
-* Edwin (Gaming desktop)
+
+
 ```bash
-sudo nix --experimental-features "nix-command flakes" run github:nix-community/disko/latest -- --mode destroy,format,mount raw. githubusercontent.com/oddib/nixos-config/refs/heads/main/hosts/edwin/disk-config.nix
-```
-### Install nixos
-* Gobel
-```bash
-nixos-install --flake github:oddib/nixos-config#gobel
-```
-* Edwin
-```bash
-nixos-install --flake github:oddib/nixos-config#edwin
+nix run github:nix-community/nixos-anywhere -- \
+--flake .#gobel \
+--target-host user@host
+
 ```
 ### Post install
-#### Secure boot:
-- Run at /etc/secureboot :
-```bash
-sudo nix run nixpkgs#sbctl create-keys
-```
-- Reboot
 - To verify signing run:
 ```bash
 sudo nix run unstable#sbctl verify
