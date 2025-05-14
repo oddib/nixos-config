@@ -1,4 +1,4 @@
-{...}: {
+{pkgs, ...}: {
   imports = [
     ./hardware-configuration.nix
     ./disk-config.nix
@@ -11,7 +11,7 @@
     desktop.enable = true;
     games.enable = true;
   };
-
+  boot.kernelPackages = pkgs.linuxPackages_latest;
   # Networking
   networking.hostName = "gobel"; # Define your hostname.
 
