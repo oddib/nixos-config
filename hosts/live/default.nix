@@ -1,11 +1,28 @@
-{ ...}: {
-
+{lib,pkgs, ...}: {
   # Bootloader.
-  system = {
-    desktop.enable = true;
-  };
   # Networking
-  networking.hostName = "nixos"; # Define your hostname.
+  networking = {
+    hostName = "nixos"; # Define your hostname.
+  };
+
+  # Show IP address on console on boot
+  #networking.dhcpcd.runHook = "${pkgs.systemd}/bin/systemd-cat -t dhcpcd echo Interface $interface: $new_ip_address";
+
+  environment.systemPackages = [
+    pkgs.wifi-qr
+  ];
+
+  # Set password for nixos user
+  users.users.nixos.initialHashedPassword = lib.mkForce "$y$j9T$j5mWbJa5mXvS2FIRMCTP21$P8hEoOkSnxu.cWcR3RW.Qvo3QOu40nm18xZyIhZ9ki1"; # "nixos";
+
+  services.openssh = {
+    enable = true;
+    settings = {
+      PasswordAuthentication = true;
+      # Permit root login for live ISO
+      PermitRootLogin = "yes";
+    };
+  };
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
