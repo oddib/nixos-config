@@ -1,7 +1,6 @@
 {...}: {
   imports = [
     ./apps
-    ./flatpak.nix
     ./shell
   ];
   home.username = "oddbjornmr";
