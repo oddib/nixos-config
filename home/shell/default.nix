@@ -1,8 +1,13 @@
 {pkgs, ...}: {
-  home.packages = with pkgs; [
-    # here is some command line tools I use frequently
-    # feel free to add your own or remove some of them
+  # config for shell apps
+  imports = [
+    ./git.nix
+    ./ssh.nix
+    ./sh.nix
+    ./starship.nix
+  ];
 
+  home.packages = with pkgs; [
     fastfetch
 
     # archives
@@ -59,24 +64,4 @@
     pciutils # lspci
     usbutils # lsusb
   ];
-
-  # starship - an customizable prompt for any shell
-  programs.starship = {
-    enable = true;
-    # custom settings
-    settings = {
-      add_newline = false;
-      aws.disabled = true;
-      gcloud.disabled = true;
-      line_break.disabled = true;
-    };
-  };
-  programs.bash = {
-    enable = true;
-    enableCompletion = true;
-    # TODO add your custom bashrc here
-    bashrcExtra = ''
-      export PATH="$PATH:$HOME/bin:$HOME/.local/bin:$HOME/go/bin"
-    '';
-  };
 }
