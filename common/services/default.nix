@@ -10,6 +10,7 @@ in {
   imports = [
     ./caddy.nix
     ./mediaserver
+    ./odoo
     ./containers
     ./foundryvtt.nix
     ./minecraft
@@ -29,7 +30,7 @@ in {
       mediaserver.enable = true;
       caddy.enable = true;
       minecraft-servers.enable = true;
-      odoo-container.enable = true;
+      #odoo-container.enable = true;
     };
   };
 }

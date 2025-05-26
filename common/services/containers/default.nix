@@ -9,7 +9,7 @@
 in {
   imports = [
     ./wizarr.nix
-    ./odoo.nix
+    #./odoo.nix
   ];
   config = mkIf cfg.enable {
     # Runtime
