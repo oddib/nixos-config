@@ -21,7 +21,13 @@
   # Set your time zone.
   time.timeZone = "Europe/Oslo";
   # Select internationalisation properties.
-  i18n.defaultLocale = "nb_NO.UTF-8";
+  i18n = {
+    defaultLocale = "nb_NO.UTF-8";
+    extraLocales = [
+      "nn_NO.UTF-8/nb_NO.UTF-8"
+      "en_US.UTF-8/en_US.UTF-8"
+    ];
+  };
   # Configure console keymap
   console.keyMap = "no";
   environment.systemPackages = with pkgs; [
