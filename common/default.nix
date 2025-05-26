@@ -24,9 +24,9 @@
   i18n = {
     defaultLocale = "nb_NO.UTF-8";
     extraLocales = [
-      "nn_NO.UTF-8/nb_NO.UTF-8"
-      "en_US.UTF-8/en_US.UTF-8"
-    ];
+      "nn_NO.UTF-8"
+      "en_US.UTF-8"
+      "en_GB.UTF-8"];
   };
   # Configure console keymap
   console.keyMap = "no";
