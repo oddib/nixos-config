@@ -4,7 +4,7 @@
   #inputs,
   ...
 }: let
-  inherit (lib) mkIf mkOption types;
+  inherit (lib) mkIf mkOption types mkDefault;
   cfg = config.system.services;
 in {
   imports = [
@@ -25,12 +25,13 @@ in {
   };
   config = mkIf cfg.enable {
     services = {
-      nix-serve.enable = true;
-      foundryvtt.enable = true;
-      mediaserver.enable = true;
-      caddy.enable = true;
-      minecraft-servers.enable = true;
-      #odoo-container.enable = true;
+      nix-serve.enable =mkDefault true;
+      foundryvtt.enable = mkDefault true;
+      mediaserver.enable = mkDefault true;
+      caddy.enable = mkDefault true;
+      minecraft-servers.enable = mkDefault true;
+      odoo.enable = mkDefault true;
+      #odoo-container.enable = mkDefault true;
     };
   };
 }
