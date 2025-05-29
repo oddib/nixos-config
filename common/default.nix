@@ -23,15 +23,15 @@
   # Select internationalisation properties.
   i18n = {
     defaultLocale = "nb_NO.UTF-8";
-    extraLocales = [
+      /* extraLocales = [
       "nn_NO.UTF-8"
       "en_US.UTF-8"
-      "en_GB.UTF-8"];
+      "en_GB.UTF-8"]; */
   };
-  # Configure console keymap
+  ## Configure console keymap
   console.keyMap = "no";
   environment.systemPackages = with pkgs; [
-    #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
+    #  vim 
     #  wget
     duplicacy
   ];
@@ -49,7 +49,6 @@
     description = "Oddbjørn Mestad Rønnestad";
     extraGroups = ["networkmanager" "wheel"];
     hashedPasswordFile = "/etc/passwords/oddbjornmr";
-    #initialHashedPassword = "$y$j9T$SAQb63c3fPa6VfJ2K/4FV/$pRTZFnC4BOUFr9.raMosv1nsKwXepy9tQEzNvY.Ia2B";
   };
   home-manager = {
     useGlobalPkgs = true;
