@@ -1,6 +1,7 @@
 {
   lib,
   config,
+  pkgs,
   ...
 }: let
   inherit (lib) mkOption mkIf types mkForce;
@@ -13,6 +14,9 @@ in {
     };
   };
   config = mkIf config.system.desktop.cosmic.enable {
+    environment.systemPackages = [
+       (pkgs.callPackage ../../../pkgs/gui-scale/package.nix {}) 
+    ];
     system.desktop.audio.enable = mkForce true;
     services.desktopManager.cosmic.enable = true;
     services.displayManager.cosmic-greeter.enable = true;
