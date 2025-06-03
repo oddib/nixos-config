@@ -9,9 +9,8 @@
     games.enable = true;
   };
   programs.corectrl.enable = true;
+  services.sunshine.enable = true;
   
-  # Try to fix flickering with vrr on cosmic
-  environment.etc."profile.d".text = "COSMIC_DISABLE_DIRECT_SCANOUT=1";
   boot.kernelPackages = pkgs.linuxPackages_latest;
   
 

@@ -1,11 +1,12 @@
 {
+  pkgs,
   config,
   lib,
   ...
 }: let
   inherit (lib) mkIf mkOption types;
 in {
-  imports = [./de ./games.nix ./1pass.nix];
+  imports = [./de ./games.nix ./1pass.nix ./sunshine.nix];
   options = {
     system.desktop.enable = mkOption {
       description = "enable desktop";
@@ -14,6 +15,10 @@ in {
     };
   };
   config = mkIf config.system.desktop.enable {
+    environment.systemPackages = [
+      pkgs.moonlight-qt
+    ];
+
     # Enable CUPS to print documents.
     #services.printing.enable = true;
 

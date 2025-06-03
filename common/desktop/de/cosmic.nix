@@ -16,6 +16,9 @@ in {
     system.desktop.audio.enable = mkForce true;
     services.desktopManager.cosmic.enable = true;
     services.displayManager.cosmic-greeter.enable = true;
+    # Try to fix flickering with vrr on cosmic
+    environment.etc."profile.d".text = "COSMIC_DISABLE_DIRECT_SCANOUT=1";
+
     # xdg defaults not working.
     # https://github.com/lilyinstarlight/nixos-cosmic/issues/273
     systemd.user.extraConfig = ''
