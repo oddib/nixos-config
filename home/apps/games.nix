@@ -4,7 +4,7 @@
   lib,
   ...
 }: {
-  config = lib.mkIf osConfig.system.games.enable {
+  config = lib.mkIf osConfig.system.desktop.games.enable {
     home.packages = with pkgs; [
       ### Game launchers
       prismlauncher # minecraft

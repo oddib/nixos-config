@@ -8,8 +8,10 @@
   system = {
     impermanence.enable = true;
     secureboot.enable = true;
-    desktop.enable = true;
-    games.enable = true;
+    desktop = {
+      enable = true;
+      games.enable = true;
+    };
   };
   boot.kernelPackages = pkgs.linuxPackages_latest;
   # Networking

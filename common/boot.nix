@@ -24,7 +24,7 @@ in {
         };
       };
       environment = {
-        persistence."/persist".directories = ["/var/lib/sbctl"];
+        persistence."/persist".directories = [ config.boot.lanzaboote.pkiBundle];
         systemPackages = [
           pkgs.sbctl
         ];
