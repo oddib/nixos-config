@@ -29,7 +29,7 @@ in {
           _1password-gui.enable = true;
         };
         # Enable CUPS to print documents.
-        #services.printing.enable = true;
+        services.printing.enable = true;
 
         # Bluetooth
         hardware.bluetooth = {
