@@ -15,6 +15,7 @@ in {
     ./foundryvtt.nix
     ./minecraft
     ./nix-serve.nix
+    ./printer.nix
   ];
   options = {
     system.services.enable = mkOption {

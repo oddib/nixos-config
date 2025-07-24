@@ -4,7 +4,7 @@
   lib,
   ...
 }: let
-  inherit (lib) mkIf mkOption types mkMerge;
+  inherit (lib) mkIf mkOption types mkMerge mkDefault;
 in {
   imports = [./de ./games.nix ./1pass.nix ./sunshine.nix];
   options = {
@@ -29,7 +29,10 @@ in {
           _1password-gui.enable = true;
         };
         # Enable CUPS to print documents.
-        services.printing.enable = true;
+        services.printing.enable = mkDefault true;
+        services.avahi = {
+          enable = mkDefault true;
+        };
 
         # Bluetooth
         hardware.bluetooth = {
