@@ -18,14 +18,14 @@
           "files.autoSave" = "afterDelay";
           "git.autofetch" = true;
           "nix.serverSettings" = {
-            "options" = {
-              "nixos" = {
-                "expr" = "(builtins.getFlake \"/home/oddbjornmr/nixos/flake.nix\").nixosConfigurations.edwin.options";
-              };
-            };
             "nixd" = {
               "formatting" = {
                 "command" = ["alejandra"];
+              };
+              "options" = {
+                "nixos" = {
+                  "expr" = "(builtins.getFlake \"/home/oddbjornmr/nixos-config/flake.nix\").nixosConfigurations.edwin.options";
+                };
               };
             };
           };
