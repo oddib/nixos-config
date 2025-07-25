@@ -49,7 +49,7 @@
   users.users.oddbjornmr = {
     isNormalUser = true;
     description = "Oddbjørn Mestad Rønnestad";
-    extraGroups = ["networkmanager" "wheel"];
+    extraGroups = ["networkmanager" "wheel" "lpadmin"];
     hashedPasswordFile = "/etc/passwords/oddbjornmr";
   };
   home-manager = {
