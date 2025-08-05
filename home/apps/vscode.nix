@@ -11,10 +11,12 @@
     "git.enableSmartCommit" = true;
     "git.autofetch" = true;
   };
-  sharedExtensions =
-    with pkgs.vscode-extensions; [
+  sharedExtensions = with pkgs.vscode-extensions;
+    [
       tailscale.vscode-tailscale
-    ] ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
+      jnoortheen.nix-ide
+    ]
+    ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
       {
         name = "op-vscode";
         publisher = "1Password";
@@ -33,34 +35,40 @@ in {
         };
 
         nix = {
-          userSettings = sharedUserSettings // {
-            "nix.enableLanguageServer" = true;
-            "nix.serverPath" = "nixd";
-            "nix.serverSettings" = {
-              "nixd" = {
-                "formatting" = {
-                  "command" = ["alejandra"];
-                };
-                "options" = {
-                  "nixos" = {
-                    "expr" = "(builtins.getFlake \"/home/oddbjornmr/nixos-config/flake.nix\").nixosConfigurations.edwin.options";
+          userSettings =
+            sharedUserSettings
+            // {
+              "nix.enableLanguageServer" = true;
+              "nix.serverPath" = "nixd";
+              "nix.serverSettings" = {
+                "nixd" = {
+                  "formatting" = {
+                    "command" = ["alejandra"];
+                  };
+                  "options" = {
+                    "nixos" = {
+                      "expr" = "(builtins.getFlake \"/home/oddbjornmr/nixos-config/flake.nix\").nixosConfigurations.edwin.options";
+                    };
                   };
                 };
               };
             };
-          };
-          extensions = sharedExtensions ++ (with pkgs.vscode-extensions; [
-            jnoortheen.nix-ide
-          ]);
+          extensions =
+            sharedExtensions;
         };
 
         python-dev = {
-          userSettings = sharedUserSettings // {
-            # Add any Python-specific settings here
-          };
-          extensions = sharedExtensions ++ (with pkgs.vscode-extensions; [
-            ms-python.python
-          ]);
+          userSettings =
+            sharedUserSettings
+            // {
+              # Add any Python-specific settings here
+            };
+          extensions =
+            sharedExtensions
+            ++ (with pkgs.vscode-extensions; [
+              ms-python.python
+              ms-toolsai.jupyter
+            ]);
         };
       };
     };
