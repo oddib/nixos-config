@@ -5,7 +5,7 @@
   ...
 }: let
   inherit (lib) mkIf mkOption types mkDefault;
-  cfg = config.system.services;
+  cfg = config.system.server-services;
 in {
   imports = [
     ./caddy.nix
@@ -18,7 +18,7 @@ in {
     ./printer.nix
   ];
   options = {
-    system.services.enable = mkOption {
+    system.server-services.enable = mkOption {
       description = "Enable server-configuration";
       type = types.bool;
       default = false;
@@ -31,7 +31,7 @@ in {
       mediaserver.enable = mkDefault true;
       caddy.enable = mkDefault true;
       minecraft-servers.enable = mkDefault true;
-      odoo.enable = mkDefault true;
+      # odoo.enable = mkDefault true;
       #odoo-container.enable = mkDefault true;
     };
   };

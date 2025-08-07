@@ -5,7 +5,7 @@
   ...
 }: let
   inherit (lib) mkIf;
-  cfg = config.system.services;
+  cfg = config.system.server-services;
 in {
   imports = [
     ./wizarr.nix

@@ -5,7 +5,7 @@
   ];
   system = {
     desktop.enable = true;
-    services.enable = true;
+    server-services.enable = true;
     desktop.games.enable = true;
   };
   programs.corectrl.enable = true;
