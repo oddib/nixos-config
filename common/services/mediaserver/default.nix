@@ -9,6 +9,7 @@ in {
   imports = [
     ./streamer.nix
     ./arr.nix
+    ./mylar3.nix
   ];
 
   options = {
@@ -26,6 +27,7 @@ in {
       sabnzbd.enable = mkDefault true;
       jellyfin.enable = mkDefault true;
       jellyseerr.enable = mkDefault true;
+      mylar3.enable = mkDefault true;
     };
     users.users.media = {
       group = "media";
