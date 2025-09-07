@@ -42,6 +42,7 @@ in {
           # settings.General.Experimental =true; # Showing battery charge of bluetooth devices
         };
         services.flatpak.enable = true;
+        system.desktop.games.enable = mkDefault false;
       }
     )
     ## Games

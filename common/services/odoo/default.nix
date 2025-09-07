@@ -1,4 +1,4 @@
-{pkgs, ...}: {
+{...}: {
   services.odoo = {
     #enable = true;
     # install addons declaratively.
