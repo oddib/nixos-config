@@ -6,7 +6,7 @@
 }: let
   inherit (lib) mkIf mkOption types mkMerge mkDefault;
 in {
-  imports = [./de ./games.nix ./1pass.nix ./sunshine.nix];
+  imports = [./de ./games.nix ./1pass.nix];
   options = {
     system.desktop = {
       enable = mkOption {
