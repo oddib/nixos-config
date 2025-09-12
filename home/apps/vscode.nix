@@ -27,7 +27,6 @@
 in {
   config = lib.mkIf osConfig.system.desktop.enable {
     programs.vscode = {
-      enable = true;
       profiles = {
         default = {
           userSettings = sharedUserSettings;
@@ -39,11 +38,11 @@ in {
             sharedUserSettings
             // {
               "nix.enableLanguageServer" = true;
-              "nix.serverPath" = "nixd";
+              "nix.serverPath" = pkgs.nixd;
               "nix.serverSettings" = {
                 "nixd" = {
                   "formatting" = {
-                    "command" = ["alejandra"];
+                    "command" = [pkgs.alejandra];
                   };
                   "options" = {
                     "nixos" = {
