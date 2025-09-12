@@ -83,7 +83,7 @@ in {
 
     # productivity
     glow # markdown previewer in terminal
-
+    just
     btop # replacement of htop/nmon
     iotop # io monitoring
     iftop # network monitoring
