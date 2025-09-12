@@ -2,7 +2,9 @@
   inputs,
   pkgs,
   ...
-}: {
+}: let
+  defuser = "oddbjornmr";
+in {
   imports = [
     ./tailscale.nix
     ./nix.nix
@@ -23,40 +25,42 @@
   # Select internationalisation properties.
   i18n = {
     defaultLocale = "nb_NO.UTF-8";
-      /* extraLocales = [
-      "nn_NO.UTF-8"
-      "en_US.UTF-8"
-      "en_GB.UTF-8"]; */
+    /*
+       extraLocales = [
+    "nn_NO.UTF-8"
+    "en_US.UTF-8"
+    "en_GB.UTF-8"];
+    */
   };
   ## Configure console keymap
   console.keyMap = "no";
   environment.systemPackages = with pkgs; [
-    #  vim 
+    #  vim
     #  wget
     duplicacy
   ];
   services.tailscale.enable = true;
-  
+
   services.openssh = {
     enable = true;
     settings = {
       PasswordAuthentication = true;
-      AllowUsers = ["oddbjornmr"];
+      AllowUsers = [defuser];
       PermitRootLogin = "no"; # "yes", "without-password", "prohibit-password", "forced-commands-only", "no"
     };
   };
   users.mutableUsers = false;
-  users.users.oddbjornmr = {
+  users.users.defuser = {
     isNormalUser = true;
     description = "Oddbjørn Mestad Rønnestad";
     extraGroups = ["networkmanager" "wheel" "lpadmin"];
-    hashedPasswordFile = "/etc/passwords/oddbjornmr";
+    hashedPasswordFile = "/etc/passwords/" + defuser;
   };
   home-manager = {
     useGlobalPkgs = true;
     useUserPackages = true;
     extraSpecialArgs.flake-inputs = inputs;
-    users.oddbjornmr = import ../home;
+    users.defuser = import ../home;
     backupFileExtension = "hm-backup";
   };
 }
