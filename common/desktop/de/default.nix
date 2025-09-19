@@ -3,7 +3,7 @@
   config,
   ...
 }: {
-  config = lib.mkIf config.system.desktop.enable {
+  config = lib.mkIf config.roles.desktop.enable {
     ###########################################################################
 
     ##  Enable the Cosmic Desktop Environment.

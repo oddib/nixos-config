@@ -5,7 +5,7 @@
   ];
   system = {
     desktop.enable = false;
-    server-services.enable = true;
+    mediaserver.enable = true;
   };  
   # Networking
   networking.hostName = "pascal";

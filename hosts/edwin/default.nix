@@ -3,13 +3,16 @@
     ./hardware-configuration.nix
     ./disk-config.nix
   ];
-  system = {
+  roles = {
     desktop.enable = true;
-    server-services.enable = true;
+    mediaserver.enable = true;
     desktop.games.enable = true;
   };
+  profiles={
+    boot.default=true;
+  };
   programs.corectrl.enable = true;
-  services.sunshine.enable = true;
+  #services.sunshine.enable = true;
   
   boot.kernelPackages = pkgs.linuxPackages_latest;
   # Networking

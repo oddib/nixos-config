@@ -5,13 +5,15 @@
   ];
 
   # Bootloader.
-  system = {
-    impermanence.enable = true;
-    secureboot.enable = true;
+  roles = {
     desktop = {
       enable = true;
       games.enable = true;
     };
+  };
+  profiles = {
+    impermanence.enable = true;
+    boot.secureboot = true;
   };
   boot.kernelPackages = pkgs.linuxPackages_latest;
   # Networking

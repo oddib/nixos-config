@@ -2,11 +2,8 @@
   inputs,
   pkgs,
   ...
-}: let
-  defuser = "oddbjornmr";
-in {
+}: {
   imports = [
-    ./tailscale.nix
     ./nix.nix
     ./boot.nix
     ./services
@@ -45,22 +42,22 @@ in {
     enable = true;
     settings = {
       PasswordAuthentication = true;
-      AllowUsers = [defuser];
+      AllowUsers = ["oddbjornmr"];
       PermitRootLogin = "no"; # "yes", "without-password", "prohibit-password", "forced-commands-only", "no"
     };
   };
   users.mutableUsers = false;
-  users.users.defuser = {
+  users.users.oddbjornmr = {
     isNormalUser = true;
     description = "Oddbjørn Mestad Rønnestad";
     extraGroups = ["networkmanager" "wheel" "lpadmin"];
-    hashedPasswordFile = "/etc/passwords/" + defuser;
+    hashedPasswordFile = "/etc/passwords/oddbjornmr";
   };
   home-manager = {
     useGlobalPkgs = true;
     useUserPackages = true;
     extraSpecialArgs.flake-inputs = inputs;
-    users.defuser = import ../home;
+    users.oddbjornmr = import ../home;
     backupFileExtension = "hm-backup";
   };
 }
