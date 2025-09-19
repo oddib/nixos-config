@@ -25,7 +25,7 @@
       }
     ];
 in {
-  config = lib.mkIf osConfig.system.desktop.enable {
+  config = lib.mkIf osConfig.roles.desktop.enable {
     programs.vscode = {
       profiles = {
         default = {

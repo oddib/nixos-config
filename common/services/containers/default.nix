@@ -5,7 +5,7 @@
   ...
 }: let
   inherit (lib) mkIf;
-  cfg = config.system.server-services;
+  cfg = config.roles.mediaserver;
 in {
   imports = [
     ./wizarr.nix

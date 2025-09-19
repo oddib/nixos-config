@@ -5,7 +5,7 @@
   ...
 }: let
   inherit (lib) mkIf mkOption types mkDefault;
-  cfg = config.system.server-services;
+  cfg = config.roles.mediaserver;
 in {
   imports = [
     ./caddy.nix
@@ -16,9 +16,10 @@ in {
     ./minecraft
     ./nix-serve.nix
     ./printer.nix
+    ./tailscale.nix
   ];
   options = {
-    system.server-services.enable = mkOption {
+    roles.mediaserver.enable = mkOption {
       description = "Enable server-configuration";
       type = types.bool;
       default = false;

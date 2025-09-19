@@ -5,7 +5,7 @@
   ...
 }: {
   imports = [./vscode.nix ./games.nix ./flatpak.nix];
-  config = lib.mkIf osConfig.system.desktop.enable {
+  config = lib.mkIf osConfig.roles.desktop.enable {
     home.packages = with pkgs; [
       ## Vivaldi
       vivaldi

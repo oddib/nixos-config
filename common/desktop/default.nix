@@ -8,7 +8,7 @@
 in {
   imports = [./de ./games.nix ./1pass.nix];
   options = {
-    system.desktop = {
+    roles.desktop = {
       enable = mkOption {
         description = "enable desktop";
         type = types.bool;
@@ -23,7 +23,7 @@ in {
   };
   config = mkMerge [
     (
-      mkIf config.system.desktop.enable {
+      mkIf config.roles.desktop.enable {
         programs = {
           _1password.enable = true;
           _1password-gui.enable = true;
@@ -42,12 +42,12 @@ in {
           # settings.General.Experimental =true; # Showing battery charge of bluetooth devices
         };
         services.flatpak.enable = true;
-        system.desktop.games.enable = mkDefault false;
+        roles.desktop.games.enable = mkDefault false;
       }
     )
     ## Games
 
-    (mkIf config.system.desktop.games.enable {
+    (mkIf config.roles.desktop.games.enable {
       environment.systemPackages = [
         pkgs.moonlight-qt
       ];
