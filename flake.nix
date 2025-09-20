@@ -74,12 +74,12 @@
       edwin = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         specialArgs = {inherit inputs;};
-        modules = common_modules ++ [./hosts/edwin];
+        modules = common_modules ++ [./hosts/edwin ];
       };
       gobel = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         specialArgs = {inherit inputs;};
-        modules = common_modules ++ [./hosts/gobel];
+        modules = common_modules ++ [./hosts/gobel ];
       };
       iso = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";

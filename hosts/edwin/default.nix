@@ -1,4 +1,4 @@
-{pkgs,...}: {
+{pkgs, ...}: {
   imports = [
     ./hardware-configuration.nix
     ./disk-config.nix
@@ -8,12 +8,13 @@
     mediaserver.enable = true;
     desktop.games.enable = true;
   };
-  profiles={
-    boot.default=true;
+  profiles = {
+    boot.default = true;
+    users = ["oddbjornmr"];
   };
   programs.corectrl.enable = true;
   #services.sunshine.enable = true;
-  
+
   boot.kernelPackages = pkgs.linuxPackages_latest;
   # Networking
   networking.hostName = "edwin";

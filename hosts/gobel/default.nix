@@ -14,6 +14,7 @@
   profiles = {
     impermanence.enable = true;
     boot.secureboot = true;
+    users = ["oddbjornmr"];
   };
   boot.kernelPackages = pkgs.linuxPackages_latest;
   # Networking
