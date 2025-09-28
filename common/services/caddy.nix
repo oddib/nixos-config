@@ -7,12 +7,13 @@
 ###
 # Caddy
 let
-  inherit (lib) mkIf mkForce mkMerge;
+  inherit (lib) mkIf mkForce mkMerge mkDefault;
   cfg = config.services.caddy;
 in {
   config = mkMerge [
     {
       services.caddy = {
+        enable = mkDefault (config.roles.server.enable || config.roles.server.mediaserver.enable);
         environmentFile = "/etc/caddy/caddy.env";
         # logFormat = lib.mkForce "level DEBUG";
         package = pkgs.caddy.withPlugins {

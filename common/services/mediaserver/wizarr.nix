@@ -3,7 +3,7 @@
   config,
   ...
 }: {
-  config = lib.mkIf config.services.mediaserver.enable {
+  config = lib.mkIf config.roles.server.mediaserver.enable {
     virtualisation.oci-containers.containers."wizarr" = {
       image = "ghcr.io/wizarrrr/wizarr:latest";
       volumes = ["/var/lib/container//wizarr:/data/database:rw"];

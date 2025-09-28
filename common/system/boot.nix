@@ -5,10 +5,10 @@
   ...
 }: let
   inherit (lib) mkIf mkEnableOption mkDefault mkMerge;
-  cfg = config.profiles.boot;
+  cfg = config.roles.boot;
 in {
-  options.profiles.boot = {
-    nothing = mkEnableOption "Disable all boot profiles";
+  options.roles.boot = {
+    nothing = mkEnableOption "Disable all boot roles";
     default = mkEnableOption "Standard boot setup";
     secureboot = mkEnableOption "UEFI Secure Boot (composes with default)";
     legacy = mkEnableOption "Legacy BIOS boot";
@@ -25,7 +25,7 @@ in {
       };
     })
     (mkIf (cfg.secureboot && !cfg.nothing) {
-      profiles.boot.default = mkDefault true;
+      roles.boot.default = mkDefault true;
       boot = {
         loader.systemd-boot.enable = lib.mkForce false;
         lanzaboote = {

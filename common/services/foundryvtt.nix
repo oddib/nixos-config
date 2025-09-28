@@ -1,9 +1,11 @@
 {
   inputs,
   pkgs,
+  config,
   ...
 }: {
   services.foundryvtt = {
+    enable = config.roles.server.foundryvtt.enable;
     hostName = "foundryvtt.scuffedflix.no";
     world = "Eberron";
     minifyStaticFiles = true;

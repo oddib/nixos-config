@@ -25,7 +25,7 @@
   allUsers,
   ...
 }: let
-  cfg = config.profiles.users;
+  cfg = config.roles.users;
 
   # Filter DB to only keep enabled users for this host
   hostUsers = lib.filterAttrs (n: _: builtins.elem n cfg) allUsers;
@@ -53,7 +53,7 @@ in {
   imports = [
     ./accounts.nix
   ];
-  options.profiles.users = lib.mkOption {
+  options.roles.users = lib.mkOption {
     type = lib.types.listOf lib.types.str;
     default = [];
     description = "List of usernames to enable on this host";

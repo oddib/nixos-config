@@ -1,6 +1,6 @@
 {pkgs, ...}: {
   imports = [
-    ./starship
+    ./starship.nix
   ];
   environment.systemPackages = with pkgs; [
     fastfetch

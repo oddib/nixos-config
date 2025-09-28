@@ -1,4 +1,4 @@
-{inputs, ...}:
+{inputs,config, lib, ...}:
 # Make sure the flake inputs are in your system's config
 {
   imports = [
@@ -7,6 +7,7 @@
   ];
   nixpkgs.overlays = [inputs.nix-minecraft.overlay];
   services.minecraft-servers = {
+    enable = lib.mkDefault config.roles.server.minecraft.enable;
     eula = true;
     managementSystem = {
       tmux.enable = false;

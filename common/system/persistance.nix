@@ -4,10 +4,10 @@
   ...
 }: let
   inherit (lib) mkIf mkOption types mkMerge mkDefault;
-  cfg = config.profiles.impermanence;
+  cfg = config.roles.impermanence;
 in {
   options = {
-    profiles.impermanence.enable = mkOption {
+    roles.impermanence.enable = mkOption {
       description = "Enable impermanence";
       type = types.bool;
       default = false;

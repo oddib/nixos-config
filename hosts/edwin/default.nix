@@ -4,11 +4,11 @@
     ./disk-config.nix
   ];
   roles = {
-    desktop.enable = true;
-    mediaserver.enable = true;
-    desktop.games.enable = true;
-  };
-  profiles = {
+    desktop = {
+      enable = true;
+      games.enable = true;
+    };
+    server.enable = true;
     boot.default = true;
     users = ["oddbjornmr"];
   };

@@ -1,39 +1,36 @@
 {
   lib,
   config,
-  #inputs,
   ...
 }: let
-  inherit (lib) mkIf mkOption types mkDefault;
-  cfg = config.roles.mediaserver;
+  inherit (lib) mkEnableOption types mkOption;
 in {
   imports = [
     ./caddy.nix
     ./mediaserver
-    ./odoo
-    ./containers
+    ./odoo.nix
     ./foundryvtt.nix
     ./minecraft
     ./nix-serve.nix
     ./printer.nix
     ./tailscale.nix
   ];
-  options = {
-    roles.mediaserver.enable = mkOption {
-      description = "Enable server-configuration";
+  options.roles.server = {
+    enable = mkEnableOption "Enable server-configuration";
+    mediaserver.enable = mkOption {
+      description = "Enable mediaserver-configuration";
+      default = config.roles.server.enable;
       type = types.bool;
-      default = false;
     };
-  };
-  config = mkIf cfg.enable {
-    services = {
-      nix-serve.enable = mkDefault false;
-      foundryvtt.enable = mkDefault true;
-      mediaserver.enable = mkDefault true;
-      caddy.enable = mkDefault true;
-      minecraft-servers.enable = mkDefault true;
-      # odoo.enable = mkDefault true;
-      #odoo-container.enable = mkDefault true;
+    minecraft.enable = mkOption {
+      description = "Enable minecraft server-configuration";
+      default = config.roles.server.enable;
+      type = types.bool;
+    };
+    foundryvtt.enable = mkOption {
+      description = "Enable foundryvtt server";
+      default = config.roles.server.enable;
+      type = types.bool;
     };
   };
 }

@@ -10,8 +10,6 @@
       enable = true;
       games.enable = true;
     };
-  };
-  profiles = {
     impermanence.enable = true;
     boot.secureboot = true;
     users = ["oddbjornmr"];

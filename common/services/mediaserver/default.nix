@@ -4,21 +4,14 @@
   #inputs,
   ...
 }: let
-  inherit (lib) mkIf mkOption types mkDefault;
+  inherit (lib) mkIf mkDefault;
 in {
   imports = [
     ./streamer.nix
     ./arr.nix
+    ./wizarr.nix
   ];
-
-  options = {
-    services.mediaserver.enable = mkOption {
-      description = "Enable mediaserver";
-      type = types.bool;
-      default = false;
-    };
-  };
-  config = mkIf config.services.mediaserver.enable {
+  config = mkIf config.roles.server.mediaserver.enable {
     services = {
       sonarr.enable = mkDefault true;
       radarr.enable = mkDefault true;
@@ -32,5 +25,15 @@ in {
       isSystemUser = true;
     };
     users.groups = {"media" = {};};
+    virtualisation.docker = {
+      rootless = {
+        enable = true;
+        setSocketVariable = true;
+      };
+      enable = true;
+      autoPrune.enable = true;
+      storageDriver = "btrfs";
+    };
+    virtualisation.oci-containers.backend = "docker";
   };
 }

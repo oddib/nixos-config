@@ -1,6 +1,5 @@
 {
   osConfig,
-  lib,
   pkgs,
   ...
 }: let
@@ -28,50 +27,49 @@
     */
     ;
 in {
-  config = lib.mkIf osConfig.roles.desktop.enable {
-    programs.vscode = {
-      profiles = {
-        default = {
-          userSettings = sharedUserSettings;
-          extensions = sharedExtensions;
-        };
+  programs.vscode = {
+    enable = osConfig.roles.desktop.enable;
+    profiles = {
+      default = {
+        userSettings = sharedUserSettings;
+        extensions = sharedExtensions;
+      };
 
-        nix = {
-          userSettings =
-            sharedUserSettings
-            // {
-              "nix.enableLanguageServer" = true;
-              "nix.serverPath" = "nixd";
-              "nix.serverSettings" = {
-                "nixd" = {
-                  "formatting" = {
-                    "command" = ["alejandra"];
-                  };
-                  "options" = {
-                    "nixos" = {
-                      "expr" = "(builtins.getFlake \"/home/oddbjornmr/nixos-config/flake.nix\").nixosConfigurations.edwin.options";
-                    };
+      nix = {
+        userSettings =
+          sharedUserSettings
+          // {
+            "nix.enableLanguageServer" = true;
+            "nix.serverPath" = "nixd";
+            "nix.serverSettings" = {
+              "nixd" = {
+                "formatting" = {
+                  "command" = ["alejandra"];
+                };
+                "options" = {
+                  "nixos" = {
+                    "expr" = "(builtins.getFlake \"/home/oddbjornmr/nixos-config/flake.nix\").nixosConfigurations.edwin.options";
                   };
                 };
               };
             };
-          extensions =
-            sharedExtensions;
-        };
+          };
+        extensions =
+          sharedExtensions;
+      };
 
-        python-dev = {
-          userSettings =
-            sharedUserSettings
-            // {
-              # Add any Python-specific settings here
-            };
-          extensions =
-            sharedExtensions
-            ++ (with pkgs.vscode-extensions; [
-              ms-python.python
-              ms-toolsai.jupyter
-            ]);
-        };
+      python-dev = {
+        userSettings =
+          sharedUserSettings
+          // {
+            # Add any Python-specific settings here
+          };
+        extensions =
+          sharedExtensions
+          ++ (with pkgs.vscode-extensions; [
+            ms-python.python
+            ms-toolsai.jupyter
+          ]);
       };
     };
   };
