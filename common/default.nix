@@ -10,7 +10,6 @@
   ];
 
   # Enable networking
-  networking.networkmanager.enable = true;
   # Enabling flakes and unfree
   nixpkgs.config.allowUnfree = true;
 
