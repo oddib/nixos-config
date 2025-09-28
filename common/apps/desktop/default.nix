@@ -3,6 +3,7 @@
   config,
   ...
 }: {
+  imports=[./1pass.nix ./games.nix];
   config = lib.mkIf config.roles.desktop.enable {
     ###########################################################################
 
