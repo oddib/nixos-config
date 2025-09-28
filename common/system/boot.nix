@@ -34,7 +34,7 @@ in {
         };
       };
       environment = {
-        persistence."/persist".directories = [ config.boot.lanzaboote.pkiBundle];
+        persistence."/persist".directories = [config.boot.lanzaboote.pkiBundle];
         systemPackages = [
           pkgs.sbctl
         ];
@@ -46,7 +46,6 @@ in {
     })
 
     {
-      
     }
   ];
 }

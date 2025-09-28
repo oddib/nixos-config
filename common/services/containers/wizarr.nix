@@ -14,8 +14,6 @@
     services.caddy.virtualHosts."invite.{$DOMAIN}".extraConfig = ''
       reverse_proxy localhost:5690
     '';
-    environment.persistence."/persist".directories =
-      [ "/var/lib/container/wizarr" ];
-
+    environment.persistence."/persist".directories = ["/var/lib/container/wizarr"];
   };
 }

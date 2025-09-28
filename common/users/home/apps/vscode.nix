@@ -11,19 +11,21 @@
     "git.enableSmartCommit" = true;
     "git.autofetch" = true;
   };
-  sharedExtensions = with pkgs.vscode-extensions;
-    [
+  sharedExtensions =
+    with pkgs.vscode-extensions; [
       tailscale.vscode-tailscale
       jnoortheen.nix-ide
     ]
-/*     ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
+    /*
+       ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
       {
         name = "op-vscode";
         publisher = "1Password";
         version = "1.0.5";
         sha256 = "sha256-J7vAK2t6fSjm5i6y3+88aO84ipFwekQkJMD7W3EIWrc=";
       }
-    ] */
+    ]
+    */
     ;
 in {
   config = lib.mkIf osConfig.roles.desktop.enable {

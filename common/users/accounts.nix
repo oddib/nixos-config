@@ -1,7 +1,4 @@
-{
-  pkgs,
-  ...
-}: let
+{pkgs, ...}: let
   allUsers = {
     oddbjornmr = {
       description = "Oddbjørn Mestad Rønnestad";

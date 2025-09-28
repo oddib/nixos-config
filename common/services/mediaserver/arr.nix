@@ -132,7 +132,6 @@ in {
 
       systemd.services.sabnzbd.serviceConfig = default // {};
 
-
       services.caddy.virtualHosts."sabnzbd.{$DOMAIN}".extraConfig = ''
         route {
           import auth
