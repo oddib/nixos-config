@@ -27,7 +27,7 @@ in {
   };
   config = mkIf cfg.enable {
     services = {
-      nix-serve.enable =mkDefault true;
+      nix-serve.enable =mkDefault false;
       foundryvtt.enable = mkDefault true;
       mediaserver.enable = mkDefault true;
       caddy.enable = mkDefault true;
