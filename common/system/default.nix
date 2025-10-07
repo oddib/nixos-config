@@ -1,7 +1,7 @@
 {...}: {
   imports = [
     ./nix.nix
-    ./boot.nix
+    ./boot
     ./persistance.nix
     ./networks.nix
   ];

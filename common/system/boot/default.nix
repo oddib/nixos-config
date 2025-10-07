@@ -7,6 +7,7 @@
   inherit (lib) mkIf mkEnableOption mkDefault mkMerge;
   cfg = config.roles.boot;
 in {
+  imports = [./plymouth.nix];
   options.roles.boot = {
     nothing = mkEnableOption "Disable all boot roles";
     default = mkEnableOption "Standard boot setup";
