@@ -11,7 +11,7 @@
     jvmOpts = "-Xmx4G -Xms2G";
 
     # Specify the custom minecraft server package
-    package = pkgs.minecraftServers.vanilla-1_21_5;
+    package = pkgs.minecraftServers.vanilla;
     serverProperties = {
       difficulty = "hard";
       motd = "Sandnes ghetto sykkel gjeng";
