@@ -33,7 +33,7 @@
       #inputs.nixpkgs-stable.follows = "nixpkgs-stable";
     };
     foundryvtt = {
-      url = "github:reckenrode/nix-foundryvtt";
+      url = "github:oddib/nix-foundryvtt";
       inputs.nixpkgs.follows = "nixpkgs";
       # inputs.nixpkgs.follows = "nixpkgs-stable";
     };
