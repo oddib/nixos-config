@@ -17,9 +17,11 @@ in {
 
     git = {
       enable = mkDefault true;
-      userName = "Oddbjørn Rønnestad";
-      userEmail = "60390653+oddib@users.noreply.github.com";
-      extraConfig = {
+      settings = {
+        user = {
+          name = "Oddbjørn Rønnestad";
+          email = "60390653+oddib@users.noreply.github.com";
+        };
         gpg.format = "ssh";
         "gpg \"ssh\"".program = "${lib.getExe' pkgs._1password-gui "op-ssh-sign"}";
         commit.gpgsign = true;
