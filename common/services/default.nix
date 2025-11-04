@@ -3,7 +3,7 @@
   config,
   ...
 }: let
-  inherit (lib) mkEnableOption types mkOption;
+  inherit (lib) mkEnableOption;
 in {
   imports = [
     ./caddy.nix
@@ -17,20 +17,8 @@ in {
   ];
   options.roles.server = {
     enable = mkEnableOption "Enable server-configuration";
-    mediaserver.enable = mkOption {
-      description = "Enable mediaserver-configuration";
-      default = config.roles.server.enable;
-      type = types.bool;
-    };
-    minecraft.enable = mkOption {
-      description = "Enable minecraft server-configuration";
-      default = config.roles.server.enable;
-      type = types.bool;
-    };
-    foundryvtt.enable = mkOption {
-      description = "Enable foundryvtt server";
-      default = config.roles.server.enable;
-      type = types.bool;
-    };
+    mediaserver.enable = mkEnableOption "Enable mediaserver-configuration" // {default = config.roles.server.enable;};
+    minecraft.enable = mkEnableOption "Enable minecraft server-configuration" // {default = config.roles.server.enable;};
+    foundryvtt.enable = mkEnableOption "Enable foundryvtt server" // {default = config.roles.server.enable;};
   };
 }
