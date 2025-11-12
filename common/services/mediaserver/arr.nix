@@ -47,9 +47,7 @@ in {
       services.caddy.virtualHosts."sonarr.{$DOMAIN}".extraConfig = ''
         route {
           import auth
-          @allowedUser {
-            header X-Webauth-User "{$EMAIL}"
-          }
+
           reverse_proxy @allowedUser http://localhost:8989
           respond "Access denied" 403
         }
@@ -77,9 +75,6 @@ in {
       services.caddy.virtualHosts."radarr.{$DOMAIN}".extraConfig = ''
         route {
           import auth
-          @allowedUser {
-            header X-Webauth-User "{$EMAIL}"
-          }
           reverse_proxy @allowedUser http://localhost:7878
           respond "Access denied" 403
         }
@@ -103,9 +98,6 @@ in {
       services.caddy.virtualHosts."prowlarr.{$DOMAIN}".extraConfig = ''
         route {
           import auth
-          @allowedUser {
-            header X-Webauth-User "{$EMAIL}"
-          }
           reverse_proxy @allowedUser http://localhost:9696
           respond "Access denied" 403
         }
@@ -135,9 +127,6 @@ in {
       services.caddy.virtualHosts."sabnzbd.{$DOMAIN}".extraConfig = ''
         route {
           import auth
-          @allowedUser {
-            header X-Webauth-User "{$EMAIL}"
-          }
           reverse_proxy @allowedUser http://localhost:4343
           respond "Access denied" 403
         }

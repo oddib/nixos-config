@@ -29,23 +29,20 @@
     lanzaboote = {
       url = "github:nix-community/lanzaboote/v0.4.3";
       inputs.nixpkgs.follows = "nixpkgs";
-      #  inputs.pre-commit-hooks-nix.follows = "";
-      #inputs.nixpkgs-stable.follows = "nixpkgs-stable";
     };
     foundryvtt = {
       url = "github:oddib/nix-foundryvtt";
       inputs.nixpkgs.follows = "nixpkgs";
-      # inputs.nixpkgs.follows = "nixpkgs-stable";
     };
     # home-manager, used for managing user configuration
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    #opnix = {
-    #  url = "github:mrjones2014/opnix";
-    #  inputs.nixpkgs.follows = "nixpkgs";
-    #};
+    opnix = {
+      url = "github:brizzbuzz/opnix/v0.7.0";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
   outputs = {
     self,
@@ -58,6 +55,7 @@
     nix-minecraft,
     lanzaboote,
     nixos-hardware,
+    opnix,
   } @ inputs: let
     common_modules = [
       {system.configurationRevision = self.rev or self.dirtyRev or null;}
@@ -68,6 +66,7 @@
       nix-minecraft.nixosModules.minecraft-servers
       lanzaboote.nixosModules.lanzaboote
       foundryvtt.nixosModules.foundryvtt
+      opnix.nixosModules.default
     ];
   in {
     nixosConfigurations = {

@@ -9,12 +9,13 @@
 let
   inherit (lib) mkIf mkForce mkMerge mkDefault;
   cfg = config.services.caddy;
+  scrt = config.services.onepassword-secrets.secrets;
 in {
   config = mkMerge [
     {
       services.caddy = {
         enable = mkDefault (config.roles.server.enable || config.roles.server.mediaserver.enable);
-        environmentFile = "/etc/caddy/caddy.env";
+        environmentFile = scrt.caddyenv.path;
         # logFormat = lib.mkForce "level DEBUG";
         package = pkgs.caddy.withPlugins {
           plugins = [
@@ -23,7 +24,7 @@ in {
           hash = "sha256-XwZ0Hkeh2FpQL/fInaSq+/3rCLmQRVvwBM0Y1G1FZNU=";
         };
         globalConfig = ''
-          acme_dns cloudflare {$CLOUDFLARE_API_KEY}
+          acme_dns cloudflare {file.${scrt.CF-key.path}}
         '';
         extraConfig = ''
           (auth) {
@@ -40,6 +41,9 @@ in {
                   Tailscale-Profile-Picture>X-Webauth-Profile-Picture
                 }
               }
+              @allowedUser {
+                header X-Webauth-User "{$EMAIL}"
+              }
             }
         '';
       };
@@ -47,11 +51,27 @@ in {
 
     (mkIf cfg.enable
       {
-        services.tailscale.enable = mkForce true;
-        services.tailscaleAuth = {
-          enable = true;
-          user = "caddy";
-          group = "caddy";
+        services = {
+          onepassword-secrets.secrets = {
+            CF-key = {
+              reference = "op://secrets/Cloudflare/api-key";
+              owner = "caddy";
+              services = ["caddy"];
+              path = "/etc/caddy/CFapi";
+            };
+            caddyenv = {
+              reference = "op://secrets/caddy.env/.env";
+              owner = "caddy";
+              services = ["caddy"];
+              path = "/etc/caddy/.env";
+            };
+          };
+          tailscale.enable = mkForce true;
+          tailscaleAuth = {
+            enable = true;
+            user = "caddy";
+            group = "caddy";
+          };
         };
         environment.persistence."/persist".directories = ["/var/lib/caddy"];
         systemd.services.caddy.serviceConfig = {
