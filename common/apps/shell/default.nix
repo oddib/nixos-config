@@ -4,7 +4,8 @@
   ];
   environment.systemPackages = with pkgs; [
     fastfetch
-
+    devenv
+    direnv
     # archives
     zip
     xz

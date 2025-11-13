@@ -66,10 +66,22 @@ in {
           };
         extensions =
           sharedExtensions
-          ++ (with pkgs.vscode-extensions; [
-            ms-python.python
-            ms-toolsai.jupyter
-          ]);
+          ++ (
+            with pkgs.vscode-extensions;
+              [
+                ms-python.python
+                ms-toolsai.jupyter
+                mkhl.direnv
+              ]
+              ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
+                {
+                  name = "vscode-sqlite";
+                  publisher = "alexcvzz";
+                  version = "0.14.1";
+                  sha256 = "sha256-jOQkRgBkUwJupD+cRo/KRahFRs82X3K49DySw6GlU8U=";
+                }
+              ]
+          );
       };
     };
   };

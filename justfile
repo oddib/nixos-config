@@ -10,7 +10,7 @@ boot:
 build:
     nixos-rebuild --flake . build
 update:
-    nix flake update --commit-lock-file
+    nix flake update > 
     nix flake check
 commit:
     git add --all
