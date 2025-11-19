@@ -10,6 +10,7 @@ in {
     ./streamer.nix
     ./arr.nix
     ./wizarr.nix
+    ./profilarr.nix
   ];
   config = mkIf config.roles.server.mediaserver.enable {
     services = {
