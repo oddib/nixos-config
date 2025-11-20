@@ -12,7 +12,8 @@
     boot.default = true;
     users = ["oddbjornmr"];
   };
-  programs.corectrl.enable = true;
+  services.lact.enable = true;
+  
   #services.sunshine.enable = true;
 
   boot.kernelPackages = pkgs.linuxPackages_latest;
