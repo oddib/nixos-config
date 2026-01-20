@@ -1,6 +1,7 @@
 {
   lib,
   config,
+  pkgs,
   ...
 }: {
   imports = [./1pass.nix ./games.nix];
@@ -20,7 +21,9 @@
     systemd.user.extraConfig = ''
       DefaultEnvironment="PATH=/run/wrappers/bin:/etc/profiles/per-user/%u/bin:/nix/var/nix/profiles/default/bin:/run/current-system/sw/bin"
     '';
-
+    environment.cosmic.excludePackages = [pkgs.orca];
+    services.orca.enable = lib.mkForce false;
+    # i cant deal with that stupid noise remove later to test
     ###########################################################################
 
     ##  Enable the Gnome Desktop Environment.
