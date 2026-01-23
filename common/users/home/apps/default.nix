@@ -8,7 +8,8 @@
   config = lib.mkIf osConfig.roles.desktop.enable {
     home.packages = with pkgs; [
       ## Vivaldi
-      (callPackage ./vivaldi.nix {})
+      vivaldi
+      (callPackage ./vivaldi-snapshot.nix {})
     ];
   };
 }
