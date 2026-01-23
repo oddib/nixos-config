@@ -77,7 +77,7 @@ stdenv.mkDerivation rec {
 
   src = fetchurl {
     #url = "https://downloads.vivaldi.com/stable/vivaldi-stable_${version}-1_${suffix}.deb";
-    url = "https://downloads.vivaldi.com/snapshot/vivaldi-snapshot_${version}-1_.deb";
+    url = "https://downloads.vivaldi.com/snapshot/vivaldi-snapshot_${version}-1_${suffix}.deb";
     hash =
       {
         aarch64-linux = "sha256-tKBFe5MBeOSS5mkC57fMJ+EgGpj9sW196SPOGINgDeM=";
