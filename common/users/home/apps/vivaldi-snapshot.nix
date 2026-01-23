@@ -81,7 +81,7 @@ stdenv.mkDerivation rec {
     hash =
       {
         aarch64-linux = "sha256-tKBFe5MBeOSS5mkC57fMJ+EgGpj9sW196SPOGINgDeM=";
-        x86_64-linux = "sha256-A8Ct99TmZOjyg6A45Aok+caOPSLIz1dzOWxw5g3ui6g=";
+        x86_64-linux = "sha256-4CJEmqqki7Ue/rsK+1NrYzDe7AYmtxw2qHMsPl3iedY=";
       }
       .${stdenv.hostPlatform.system} or (throw "Unsupported system: ${stdenv.hostPlatform.system}");
   };
