@@ -66,7 +66,7 @@
 
 stdenv.mkDerivation rec {
   pname = "vivaldi-snapshot";
-  version = "7.8.3925.3-1";
+  version = "7.8.3925.32";
 
   suffix =
     {
@@ -77,7 +77,7 @@ stdenv.mkDerivation rec {
 
   src = fetchurl {
     #url = "https://downloads.vivaldi.com/stable/vivaldi-stable_${version}-1_${suffix}.deb";
-    url = "https://downloads.vivaldi.com/snapshot/vivaldi-snapshot_7.8.3925.32-1_amd64.deb";
+    url = "https://downloads.vivaldi.com/snapshot/vivaldi-snapshot_${version}-1_.deb";
     hash =
       {
         aarch64-linux = "sha256-tKBFe5MBeOSS5mkC57fMJ+EgGpj9sW196SPOGINgDeM=";
