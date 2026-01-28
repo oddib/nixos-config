@@ -66,7 +66,7 @@
 
 stdenv.mkDerivation rec {
   pname = "vivaldi-snapshot";
-  version = "7.8.3925.32";
+  version = "7.8.3925.53";
 
   suffix =
     {
@@ -81,7 +81,7 @@ stdenv.mkDerivation rec {
     hash =
       {
         aarch64-linux = "sha256-tKBFe5MBeOSS5mkC57fMJ+EgGpj9sW196SPOGINgDeM=";
-        x86_64-linux = "sha256-4CJEmqqki7Ue/rsK+1NrYzDe7AYmtxw2qHMsPl3iedY=";
+        x86_64-linux = "sha256-u1i+6XX7gFNaaroUdg+3D4T2Xv6qTiMW7hFxvC5KWrI=";
       }
       .${stdenv.hostPlatform.system} or (throw "Unsupported system: ${stdenv.hostPlatform.system}");
   };
