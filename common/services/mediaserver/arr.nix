@@ -117,7 +117,7 @@ in {
     (lib.mkIf config.services.sabnzbd.enable {
       services.sabnzbd = {
         group = "media";
-        configFile = "/var/lib/container/sabnzbd/sabnzbd.ini";
+        secretFiles = [/var/lib/container/sabnzbd/sabnzbd.ini];
       };
       environment.persistence."/persist".files = [
         {
