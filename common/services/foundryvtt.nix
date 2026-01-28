@@ -12,7 +12,7 @@
     proxyPort = 443;
     proxySSL = true;
     upnp = false;
-    package = inputs.foundryvtt.packages.${pkgs.system}.foundryvtt_13;
+    package = inputs.foundryvtt.packages.${pkgs.stdenv.hostPlatform.system}.foundryvtt_13;
   };
   environment.persistence."/persist".directories = ["/var/lib/foundryvtt"];
   services.caddy.virtualHosts."foundryvtt.{$DOMAIN}".extraConfig = ''
