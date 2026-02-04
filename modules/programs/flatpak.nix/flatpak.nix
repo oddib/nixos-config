@@ -1,11 +1,5 @@
 {
-  flake.modules.homeManager.flatpak=
-{
-  lib,
-  ...
-}: {
-  imports = [flake-inputs.nix-flatpak.homeManagerModules.nix-flatpak];
-  config = lib.mkIf osConfig.services.flatpak.enable {
+  flake.modules.homeManager.flatpak = {lib, ...}: {
     services.flatpak.update.auto.enable = true;
     services.flatpak.uninstallUnmanaged = true;
     services.flatpak.packages = [
@@ -16,5 +10,4 @@
       "com.github.iwalton3.jellyfin-media-player"
     ];
   };
-};
 }

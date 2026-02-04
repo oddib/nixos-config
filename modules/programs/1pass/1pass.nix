@@ -1,10 +1,7 @@
 {
-  lib,
-  config,
-  ...
-}: {
-  config = lib.mkIf config.programs._1password-gui.enable {
+  flake.modules.nixos.onepass = {...}: {
     programs._1password-gui = {
+      enable = true;
       polkitPolicyOwners = ["oddbjornmr"];
     };
     environment.etc = {

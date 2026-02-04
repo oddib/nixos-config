@@ -15,7 +15,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     lanzaboote = {
-      url = "github:nix-community/lanzaboote/latest";
+      url = "github:nix-community/lanzaboote/v1.0.0";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     foundryvtt = {
@@ -26,8 +26,10 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    inputs.import-tree.url = "github:vic/import-tree";
-    inputs.flake-parts.url = "github:hercules-ci/flake-parts";
+    import-tree.url = "github:vic/import-tree";
+    flake-file.url = "github:vic/flake-file";
+
+    flake-parts.url = "github:hercules-ci/flake-parts";
   };
   outputs = inputs:
     inputs.flake-parts.lib.mkFlake {inherit inputs;}

@@ -1,10 +1,7 @@
 {
-  config,
-  lib,
-  ...
-}: {
-  config = lib.mkIf config.services.tailscale.enable {
+  flake.modules.nixos.tailscale = {...}: {
     services.tailscale = {
+      enable = true;
       openFirewall = true;
     };
 
