@@ -1,5 +1,5 @@
-{
-  osConfig,
+
+{flake.modules.homeManager.vscode ={
   pkgs,
   ...
 }: let
@@ -33,7 +33,7 @@
     ];
 in {
   programs.vscode = {
-    enable = osConfig.roles.desktop.enable;
+    enable = true;
     profiles = {
       default = {
         userSettings = sharedUserSettings;
@@ -92,4 +92,5 @@ in {
       };
     };
   };
+};
 }

@@ -3,93 +3,33 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    # nixpkgs.follows = "nixos-cosmic/nixpkgs"; # NOTE: change "nixpkgs" to "nixpkgs-stable" to use stable NixOS release
-    # nixos-cosmic = {
-    #   url = "github:lilyinstarlight/nixos-cosmic";
-    #   #inputs.nixpkgs.follows = "nixpkgs";
-    #   inputs.nixpkgs-stable.follows = "nixpkgs"; # Bad but i want faster eval time
-    # };
     nixos-hardware.url = "github:oddib/nixos-hardware";
-    nix-flatpak = {
-      url = "github:gmodena/nix-flatpak/?ref=latest";
-      #inputs.nixpkgs.follows = "nixpkgs";
-    };
+    nix-flatpak.url = "github:gmodena/nix-flatpak/?ref=latest";
     disko = {
       url = "github:nix-community/disko/latest";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    impermanence = {
-      url = "github:nix-community/impermanence";
-      #inputs.nixpkgs.follows = "nixpkgs";
-    };
+    impermanence.url = "github:nix-community/impermanence";
     nix-minecraft = {
       url = "github:Infinidoge/nix-minecraft";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     lanzaboote = {
-      url = "github:nix-community/lanzaboote/v0.4.3";
+      url = "github:nix-community/lanzaboote/latest";
       inputs.nixpkgs.follows = "nixpkgs";
-      #  inputs.pre-commit-hooks-nix.follows = "";
-      #inputs.nixpkgs-stable.follows = "nixpkgs-stable";
     };
     foundryvtt = {
       url = "github:oddib/nix-foundryvtt";
       inputs.nixpkgs.follows = "nixpkgs";
-      # inputs.nixpkgs.follows = "nixpkgs-stable";
     };
-    # home-manager, used for managing user configuration
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    #opnix = {
-    #  url = "github:mrjones2014/opnix";
-    #  inputs.nixpkgs.follows = "nixpkgs";
-    #};
+    inputs.import-tree.url = "github:vic/import-tree";
+    inputs.flake-parts.url = "github:hercules-ci/flake-parts";
   };
-  outputs = {
-    self,
-    nixpkgs,
-    home-manager,
-    nix-flatpak,
-    disko,
-    impermanence,
-    foundryvtt,
-    nix-minecraft,
-    lanzaboote,
-    nixos-hardware,
-  } @ inputs: let
-    common_modules = [
-      {system.configurationRevision = self.rev or self.dirtyRev or null;}
-      ./common
-      home-manager.nixosModules.home-manager
-      impermanence.nixosModules.impermanence
-      disko.nixosModules.disko
-      nix-minecraft.nixosModules.minecraft-servers
-      lanzaboote.nixosModules.lanzaboote
-      foundryvtt.nixosModules.foundryvtt
-    ];
-  in {
-    nixosConfigurations = {
-      edwin = nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
-        specialArgs = {inherit inputs;};
-        modules = common_modules ++ [./hosts/edwin];
-      };
-      gobel = nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
-        specialArgs = {inherit inputs;};
-        modules = common_modules ++ [./hosts/gobel];
-      };
-      iso = nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
-        specialArgs = {inherit inputs;};
-        modules = [
-          ({modulesPath, ...}: {
-            imports = [(modulesPath + "/installer/cd-dvd/installation-cd-minimal.nix") ./hosts/iso];
-          })
-        ];
-      };
-    };
-  };
+  outputs = inputs:
+    inputs.flake-parts.lib.mkFlake {inherit inputs;}
+    (inputs.import-tree ./modules);
 }

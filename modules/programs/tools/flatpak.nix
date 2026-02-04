@@ -1,6 +1,6 @@
 {
-  flake-inputs,
-  osConfig,
+  flake.modules.homeManager.flatpak=
+{
   lib,
   ...
 }: {
@@ -16,4 +16,5 @@
       "com.github.iwalton3.jellyfin-media-player"
     ];
   };
+};
 }
