@@ -58,10 +58,10 @@
     usbutils # lsusb
   ];
 in {
-  flake.modules.nixos.utils = {pkgs, ...}: {
+  flake.modules.nixos.cli-tools = {pkgs, ...}: {
     environment.systemPackages = packages;
   };
-  flake.modules.homeManager.utils = {pkgs, ...}: {
+  flake.modules.homeManager.cli-tools = {pkgs, ...}: {
     home.packages = packages;
   };
 }

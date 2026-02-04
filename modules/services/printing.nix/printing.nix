@@ -1,13 +1,15 @@
 {
-  flake.modules.nixos.printers = {
-    pkgs,
-    lib,
-    ...
-  }: {
+  flake.modules.nixos.printing = {pkgs, ...}: {
     services.printing = {
-      enable=true;
+      enable = true;
       drivers = with pkgs; [epson-escpr epsonscan2];
     };
+    services.avahi = {
+      enable = true;
+      nssmdns4 = true;
+      openFirewall = true;
+    };
+
     hardware.printers = {
       ensurePrinters = [
         {
@@ -21,10 +23,6 @@
         }
       ];
       ensureDefaultPrinter = "Epson_ET-2865";
-    };
-
-    services.avahi = {
-      nssmdns4 = lib.mkDefault true;
     };
   };
 }

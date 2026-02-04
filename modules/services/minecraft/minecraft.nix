@@ -1,8 +1,7 @@
 {
-  flake.modules.nixos.minecraft = {inputs, ...}:
+  flake.modules.nixos.minecraft = {...}:
   # Make sure the flake inputs are in your system's config
   {
-    nixpkgs.overlays = [inputs.nix-minecraft.overlay];
     services.minecraft-servers = {
       enable = true;
       eula = true;

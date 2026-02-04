@@ -1,5 +1,5 @@
 {
-  flake.modules.nixos.starship = {pkgs, ...}: {
+  flake.modules.nixos.cli-tools = {pkgs, ...}: {
     environment.systemPackages = [pkgs.starship];
     programs.starship = {
       enable = true;

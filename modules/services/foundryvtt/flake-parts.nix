@@ -8,6 +8,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
-
-  imports = [inputs.foundryvtt.nixosModules.foundryvtt];
+  flake.modules.nixos.foundryvtt = {
+    imports = [inputs.foundryvtt.nixosModules.foundryvtt];
+  };
 }
