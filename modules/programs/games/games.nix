@@ -1,10 +1,8 @@
 {
-  pkgs,
-  config,
-  lib,
-  ...
-}: {
-  config = lib.mkIf config.roles.desktop.games.enable {
+  flake.modules.nixos.games = {
+    pkgs,
+    ...
+  }: {
     environment.systemPackages = with pkgs; [
       moonlight-qt
       prismlauncher # minecraft
@@ -29,9 +27,9 @@
       };
     };
     services.sunshine = {
-      autoStart = true;
+      autoStart = false;
       capSysAdmin = true;
-      openFirewall = true;
+      openFirewall = false;
     };
   };
 }

@@ -1,11 +1,9 @@
 {
-  lib,
-  config,
-  pkgs,
-  ...
-}: {
-  imports = [./1pass.nix ./games.nix];
-  config = lib.mkIf config.roles.desktop.enable {
+  flake.modules.nixos.desktop = {
+    lib,
+    pkgs,
+    ...
+  }: {
     ###########################################################################
 
     ##  Enable the Cosmic Desktop Environment.

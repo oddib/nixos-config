@@ -1,8 +1,5 @@
-{pkgs, ...}: {
-  imports = [
-    ./starship.nix
-  ];
-  environment.systemPackages = with pkgs; [
+{pkgs, ...}: let
+  packages = with pkgs; [
     fastfetch
     devenv
     direnv
@@ -60,4 +57,11 @@
     pciutils # lspci
     usbutils # lsusb
   ];
+in {
+  flake.modules.nixos.utils = {pkgs, ...}: {
+    environment.systemPackages = packages;
+  };
+  flake.modules.homeManager.utils = {pkgs, ...}: {
+    home.packages = packages;
+  };
 }
