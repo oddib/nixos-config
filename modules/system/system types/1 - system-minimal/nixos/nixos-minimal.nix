@@ -4,6 +4,7 @@
   flake.modules.nixos.system-minimal = {...}: {
     nixpkgs.config.allowUnfree = true;
     system.stateVersion = "24.11";
+    users.mutableUsers = false;
 
     nix.settings = {
       substituters = [
@@ -25,7 +26,6 @@
         # "allow-import-from-derivation"
       ];
       auto-optimise-store = true;
-
       download-buffer-size = 1024 * 1024 * 1024;
 
       trusted-users = [

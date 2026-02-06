@@ -1,16 +1,14 @@
 {inputs, ...}: {
-  flake.modules.nixos.edwin = {pkgs, ...}: {
+  flake.modules.nixos.gobel = {pkgs, ...}: {
     imports = with inputs.self.modules.nixos; [
       system-desktop
       systemd-boot
       bluetooth
       games
-      server
+      secureboot
+      impermanence
     ];
 
-    services.lact.enable = true;
-
     boot.kernelPackages = pkgs.linuxPackages_latest;
-    # Networking
   };
 }

@@ -1,5 +1,5 @@
 {
-  flake.modules.nixos.arr = {...}:
+  flake.modules.nixos.harden = {...}:
   # Default systemd service configuration for all *arr services
   let
     default = {

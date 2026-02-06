@@ -1,8 +1,8 @@
 {
-  flake.modules.nixos.onepass = {...}: {
+  flake.modules.nixos.onepass = {pkgs, ...}: {
+    programs._1password.enable = true;
     programs._1password-gui = {
       enable = true;
-      polkitPolicyOwners = ["oddbjornmr"];
     };
     environment.etc = {
       "1password/custom_allowed_browsers" = {
@@ -23,10 +23,7 @@
   in {
     programs.ssh = {
       enable = true;
-      extraConfig = ''
-        Host *
-            IdentityAgent ${onePassPath}
-      '';
+      matchBlocks."*".identityAgent = onePassPath;
     };
     programs.git.settings = {
       gpg.format = "ssh";

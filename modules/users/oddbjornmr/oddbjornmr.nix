@@ -11,10 +11,12 @@
           onepass
           # developmentEnvironment
         ];
+        programs._1password-gui.polkitPolicyOwners = ["oddbjornmr"];
         users.users.oddbjornmr = {
           extraGroups = ["networkmanager" "lpadmin"];
+          description = "Oddbjørn Mestad Rønnestad";
+          hashedPasswordFile = "/etc/passwords/oddbjornmr";
         };
-        hashedPasswordFile = "/etc/passwords/oddbjornmr";
       };
 
       # darwin.oddbjornmr = {
@@ -30,6 +32,7 @@
           # adminTools
           vscode
           onepass
+          games
         ];
         programs.git.settings = {
           user = {

@@ -20,7 +20,6 @@
       browser
       #office
       flatpak
-      vscode
     ];
   };
 }

@@ -9,6 +9,8 @@
       radarr
       sonarr
       wizarr
+      sabnzbd
+      harden
     ];
     users.users.media = {
       group = "media";

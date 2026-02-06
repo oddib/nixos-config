@@ -1,8 +1,7 @@
-{
+{inputs, ...}: {
   flake.modules.nixos.secureboot = {
     lib,
     pkgs,
-    inputs,
     ...
   }: {
     imports = with inputs.self.modules.nixos; [

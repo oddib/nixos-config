@@ -12,6 +12,7 @@
       ssh
       firmware
       cli-tools
+      shell
     ];
   };
   flake.modules.homeManager.system-cli = {
