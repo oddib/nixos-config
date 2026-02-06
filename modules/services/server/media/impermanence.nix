@@ -16,6 +16,8 @@
           config.services.radarr.dataDir
           config.services.sonarr.dataDir
           config.services.prowlarr.dataDir
+          "/var/lib/container/profilarr"
+          "/var/lib/container/wizarr"
         ];
       };
     };

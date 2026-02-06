@@ -51,9 +51,5 @@
 
     ## Configure keymap
 
-    services.xserver.xkb = {
-      layout = "no";
-      variant = "";
-    };
   };
 }

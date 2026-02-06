@@ -11,14 +11,6 @@
   nixpkgs.config.allowUnfree = true;
 
   services.fwupd.enable = true;
-  # Set your time zone.
-  time.timeZone = "Europe/Oslo";
-  # Select internationalisation properties.
-  i18n = {
-    defaultLocale = "nb_NO.UTF-8";
-  };
-  ## Configure console keymap
-  console.keyMap = "no";
   environment.systemPackages = with pkgs; [
     #  vim
     #  wget

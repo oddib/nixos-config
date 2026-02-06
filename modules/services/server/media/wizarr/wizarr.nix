@@ -1,5 +1,5 @@
 {inputs, ...}: {
-  flake.modules.nixos.profilarr = {...}: {
+  flake.modules.nixos.wizarr = {...}: {
     imports = with inputs.self.modules.nixos; [
       containers
     ];
@@ -13,6 +13,5 @@
     services.caddy.virtualHosts."invite.{$DOMAIN}".extraConfig = ''
       reverse_proxy localhost:5690
     '';
-    environment.persistence."/persist".directories = ["/var/lib/container/wizarr"];
   };
 }

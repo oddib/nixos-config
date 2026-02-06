@@ -14,6 +14,7 @@
         users.users.oddbjornmr = {
           extraGroups = ["networkmanager" "lpadmin"];
         };
+        hashedPasswordFile = "/etc/passwords/oddbjornmr";
       };
 
       # darwin.oddbjornmr = {
@@ -23,32 +24,19 @@
       #   ];
       # };
 
-      homeManager.oddbjornmr = {pkgs, ...}: {
+      homeManager.oddbjornmr = {...}: {
         imports = with self.modules.homeManager; [
           system-desktop
           # adminTools
           vscode
+          onepass
         ];
-        programs = {
-          git = {
-            settings = {
-              user = {
-                name = "Oddbjørn Rønnestad";
-                email = "60390653+oddib@users.noreply.github.com";
-              };
-              gpg.format = "ssh";
-              "gpg \"ssh\"".program = "${lib.getExe' pkgs._1password-gui "op-ssh-sign"}";
-              commit.gpgsign = true;
-              user.signingKey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJDCJ0s4kA8stxlBhrxhyN1bQyBh8LFE+HsoNZbas83V";
-            };
+        programs.git.settings = {
+          user = {
+            name = "Oddbjørn Rønnestad";
+            email = "60390653+oddib@users.noreply.github.com";
           };
-          ssh = {
-            matchBlocks = {
-              "*" = {
-                identityAgent = "~/.1password/agent.sock";
-              };
-            };
-          };
+          user.signingKey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJDCJ0s4kA8stxlBhrxhyN1bQyBh8LFE+HsoNZbas83V";
         };
       };
     }

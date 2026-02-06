@@ -22,6 +22,5 @@
         respond "Access denied" 403
       }
     '';
-    environment.persistence."/persist".directories = ["/var/lib/container/wizarr"];
   };
 }

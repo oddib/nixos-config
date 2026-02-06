@@ -3,8 +3,7 @@
     environment = inputs.self.lib.mkIfPersistence config {
       persistence."/persistent" = {
         directories = [
-          "/var/lib/jellyseerr"
-          "/var/lib/jellyfin"
+          config.services.jellyfin.dataDir
         ];
       };
     };
