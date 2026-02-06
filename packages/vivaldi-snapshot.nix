@@ -234,7 +234,7 @@ stdenv.mkDerivation rec {
   meta = {
     description = "Browser for our Friends, powerful and personal";
     homepage = "https://vivaldi.com";
-    license = lib.licenses.unfree;
+    license = lib.licenses.mit;
     sourceProvenance = with lib.sourceTypes; [binaryNativeCode];
     mainProgram = "vivaldi-snapshot";
     maintainers = with lib.maintainers; [

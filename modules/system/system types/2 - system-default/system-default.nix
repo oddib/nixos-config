@@ -11,6 +11,7 @@
       [
         system-minimal
         home-manager
+        firmware
       ]
       ++ (with inputs.self.modules.generic; [
         systemConstants
@@ -26,7 +27,7 @@
       with inputs.self.modules.homeManager;
       [
         system-minimal
-        secrets
+        
       ]
       ++ [ inputs.self.modules.generic.systemConstants ];
   };

@@ -35,7 +35,7 @@
       user = "caddy";
       group = "caddy";
     };
-    environment.persistence."/persist".directories = ["/var/lib/caddy"];
+    # environment.persistence."/persist".directories = ["/var/lib/caddy"];
     systemd.services.caddy.serviceConfig = {
       ProtectSystem = "strict";
       ProtectHome = true;

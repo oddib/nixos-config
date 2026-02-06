@@ -18,7 +18,7 @@
     imports = with inputs.self.modules.homeManager; [
       system-cli
       browser
-      office
+      #office
       flatpak
       vscode
     ];

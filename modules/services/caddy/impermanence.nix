@@ -1,8 +1,10 @@
 {inputs, ...}: {
-  flake.modules.nixos.secureboot = {config, ...}: {
+  flake.modules.nixos.caddy = {config, ...}: {
     environment = inputs.self.lib.mkIfPersistence config {
       persistence."/persistent" = {
-        directories = [config.boot.lanzaboote.pkiBundle];
+        directories = [
+          "/var/lib/caddy"
+        ];
       };
     };
   };

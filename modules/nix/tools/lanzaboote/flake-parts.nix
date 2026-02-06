@@ -3,11 +3,12 @@
   # https://github.com/nix-community/home-manager
 
   flake-file.inputs = {
-    home-manager = {
-      url = "github:nix-community/home-manager";
+    lanzaboote = {
+      url = "github:nix-community/lanzaboote/v1.0.0";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
-
-  imports = [inputs.home-manager.flakeModules.home-manager];
+  flake.modules.nixos.secureboot = {
+    imports = [inputs.lanzaboote.nixosModules.lanzaboote];
+  };
 }

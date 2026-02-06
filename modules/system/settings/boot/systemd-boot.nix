@@ -1,5 +1,5 @@
 {
-  flake.modules.nixos.boot = {...}: {
+  flake.modules.nixos.systemd-boot = {...}: {
     boot = {
       initrd.systemd.enable = true;
       loader = {

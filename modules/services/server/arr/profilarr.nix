@@ -1,9 +1,8 @@
-{
-  lib,
-  config,
-  ...
-}: {
-  config = lib.mkIf config.roles.server.mediaserver.enable {
+{inputs, ...}: {
+  flake.modules.nixos.profilarr = {...}: {
+    imports = with inputs.self.modules.nixos; [
+      containers
+    ];
     virtualisation.oci-containers.containers."profilarr" = {
       image = "santiagosayshey/profilarr:latest";
       volumes = ["/var/lib/container/profilarr:/config:rw"];
