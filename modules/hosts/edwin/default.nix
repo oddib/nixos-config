@@ -1,9 +1,7 @@
+{flake.modules.nixos.edwin=
 {pkgs, ...}: {
-  imports = [
-    ./hardware-configuration.nix
-    ./disk-config.nix
-  ];
-  roles = {
+  imports=
+  ;roles = {
     desktop = {
       enable = true;
       games.enable = true;
@@ -27,4 +25,5 @@
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "24.11"; # Did you read the comment?
+}
 }
