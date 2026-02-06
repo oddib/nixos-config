@@ -1,7 +1,7 @@
 {inputs, ...}: {
   flake.modules.nixos.gobel = {...}: {
     imports = [inputs.disko.nixosModules.default];
-    fileSystems."/persistent".neededForBoot = true;
+    fileSystems."/persist".neededForBoot = true;
     disko.devices.disk = {
       main = {
         type = "disk";
@@ -41,8 +41,8 @@
                       mountpoint = "/nix";
                       mountOptions = ["compress=zstd" "noatime"];
                     };
-                    "/persistent" = {
-                      mountpoint = "/persistent";
+                    "/persist" = {
+                      mountpoint = "/persist";
                       mountOptions = ["compress=zstd" "noatime"];
                     };
                     "/swap" = {

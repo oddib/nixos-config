@@ -1,7 +1,7 @@
 {inputs, ...}: {
   flake.modules.nixos.tailscale = {config, ...}: {
     environment = inputs.self.lib.mkIfPersistence config {
-      persistence."/persistent" = {
+      persistence."/persist" = {
         directories = [
           "/var/lib/tailscale"
         ];

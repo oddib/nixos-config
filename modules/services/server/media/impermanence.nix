@@ -1,7 +1,7 @@
 {inputs, ...}: {
   flake.modules.nixos.arr = {config, ...}: {
     environment = inputs.self.lib.mkIfPersistence config {
-      persistence."/persistent" = {
+      persistence."/persist" = {
         # files = [
         #   {
         #     file = config.services.sabnzbd.secretFiles;

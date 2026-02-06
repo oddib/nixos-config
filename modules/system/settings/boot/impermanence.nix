@@ -1,7 +1,7 @@
 {inputs, ...}: {
   flake.modules.nixos.secureboot = {config, ...}: {
     environment = inputs.self.lib.mkIfPersistence config {
-      persistence."/persistent" = {
+      persistence."/persist" = {
         directories = [config.boot.lanzaboote.pkiBundle];
       };
     };
