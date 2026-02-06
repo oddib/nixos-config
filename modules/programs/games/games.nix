@@ -1,18 +1,7 @@
 {
-  flake.modules.nixos.games = {
-    pkgs,
-    ...
-  }: {
-    environment.systemPackages = with pkgs; [
-      moonlight-qt
-      prismlauncher # minecraft
-      lutris # Random other games
-      heroic # epic games
-    ];
-
+  flake.modules.nixos.games = {...}: {
     programs = {
       gamemode.enable = true;
-      # gamescope.enable = true;
       steam = {
         enable = true;
         remotePlay.openFirewall =
@@ -22,14 +11,22 @@
         localNetworkGameTransfers.openFirewall =
           true; # Open ports in the firewall for Steam Local Network Game Transfers
       };
-      gamescope = {
-        capSysNice = true;
-      };
+      # gamescope = {
+      #   capSysNice = true;
+      # };
     };
-    services.sunshine = {
-      autoStart = false;
-      capSysAdmin = true;
-      openFirewall = false;
-    };
+    # services.sunshine = {
+    #   autoStart = false;
+    #   capSysAdmin = true;
+    #   openFirewall = false;
+    # };
+  };
+  flake.modules.homeManager.games = {pkgs, ...}: {
+    home.packages = with pkgs; [
+      moonlight-qt
+      prismlauncher # minecraft
+      lutris # Random other games
+      heroic # epic games
+    ];
   };
 }

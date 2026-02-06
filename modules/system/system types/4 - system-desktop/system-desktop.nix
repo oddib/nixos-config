@@ -10,6 +10,7 @@
       system-cli
       printing
       desktop
+      flatpak
     ];
   };
 
@@ -18,6 +19,8 @@
       system-cli
       browser
       office
+      flatpak
+      vscode
     ];
   };
 }

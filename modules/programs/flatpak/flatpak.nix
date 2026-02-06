@@ -1,5 +1,5 @@
 {
-  flake.modules.homeManager.flatpak = {lib, ...}: {
+  flake.modules.homeManager.flatpak = {...}: {
     services.flatpak.update.auto.enable = true;
     services.flatpak.uninstallUnmanaged = true;
     services.flatpak.packages = [
@@ -9,5 +9,10 @@
       "com.spotify.Client"
       "com.github.iwalton3.jellyfin-media-player"
     ];
+  };
+  flake.modules.nixos.flatpak = {...}: {
+    services.flatpak = {
+      enable = true;
+    };
   };
 }
