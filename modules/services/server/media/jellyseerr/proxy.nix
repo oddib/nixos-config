@@ -1,5 +1,5 @@
 {
-  flake.modules.nixos.jellyseer = {...}: {
+  flake.modules.nixos.jellyseerr = {...}: {
     services.caddy.virtualHosts."jellyseerr.{$DOMAIN}" = {
       serverAliases = [
         "jellyserr.{$DOMAIN}"

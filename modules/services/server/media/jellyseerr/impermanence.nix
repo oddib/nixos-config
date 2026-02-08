@@ -1,5 +1,5 @@
 {inputs, ...}: {
-  flake.modules.nixos.jellyseer = {config, ...}: {
+  flake.modules.nixos.jellyseerr = {config, ...}: {
     environment = inputs.self.lib.mkIfPersistence config {
       persistence."/persist" = {
         directories = [
