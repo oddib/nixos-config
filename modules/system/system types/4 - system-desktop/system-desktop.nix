@@ -11,6 +11,7 @@
       printing
       desktop
       flatpak
+      fonts
     ];
   };
 
