@@ -30,7 +30,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
       url = "github:Infinidoge/nix-minecraft";
     };
-    nixos-hardware.url = "github:oddib/nixos-hardware";
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     packages = {
       flake = false;

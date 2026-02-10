@@ -4,7 +4,7 @@
   ...
 }: {
   flake.modules = lib.mkMerge [
-    (self.factory.user "oddbjornmr" true)
+    (self.lib.user "oddbjornmr" true)
     {
       nixos.oddbjornmr = {
         imports = with self.modules.nixos; [

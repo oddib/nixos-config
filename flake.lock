@@ -280,21 +280,6 @@
         "type": "github"
       }
     },
-    "nixos-hardware": {
-      "locked": {
-        "lastModified": 1764677181,
-        "narHash": "sha256-/cTiyq1VWhqctB663TR9GZla2iGywH5KrR+X85+nETo=",
-        "owner": "oddib",
-        "repo": "nixos-hardware",
-        "rev": "d883d2bcaddee7041b7f5fef837533f15c838203",
-        "type": "github"
-      },
-      "original": {
-        "owner": "oddib",
-        "repo": "nixos-hardware",
-        "type": "github"
-      }
-    },
     "nixpkgs": {
       "locked": {
         "lastModified": 1768564909,
@@ -404,7 +389,6 @@
         "lanzaboote": "lanzaboote",
         "nix-flatpak": "nix-flatpak",
         "nix-minecraft": "nix-minecraft",
-        "nixos-hardware": "nixos-hardware",
         "nixpkgs": "nixpkgs_2",
         "packages": "packages",
         "pkgs-by-name-for-flake-parts": "pkgs-by-name-for-flake-parts"
