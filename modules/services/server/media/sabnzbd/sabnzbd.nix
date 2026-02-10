@@ -5,6 +5,7 @@
         enable = true;
         group = "media";
         secretFiles = [/var/lib/container/sabnzbd/sabnzbd.ini];
+        configFile = null; ## remove if system.stateversion > 26.05
       };
     };
     services.caddy.virtualHosts = {
