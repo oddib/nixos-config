@@ -1,7 +1,7 @@
-{...}: {
+{self,...}: {
   # default settings needed for all nixosConfigurations
 
-  flake.modules.nixos.system-minimal = {self,...}: {
+  flake.modules.nixos.system-minimal = {...}: {
     nixpkgs.config.allowUnfree = true;
     system.stateVersion = "24.11";
     users.mutableUsers = false;
