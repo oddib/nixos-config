@@ -1,5 +1,4 @@
 {inputs, ...}: {
-
   flake.modules.nixos.media = {
     imports = with inputs.self.modules.nixos; [
       jellyfin

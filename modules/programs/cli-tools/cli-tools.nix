@@ -60,6 +60,6 @@
     ];
   };
   flake.modules.homeManager.cli-tools = {pkgs, ...}: {
-    home.packages = [] ;
+    home.packages = [];
   };
 }

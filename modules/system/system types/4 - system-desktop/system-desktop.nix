@@ -1,8 +1,4 @@
-{
-  inputs,
-  ...
-}:
-{
+{inputs, ...}: {
   # expansion of cli system for desktop use
 
   flake.modules.nixos.system-desktop = {

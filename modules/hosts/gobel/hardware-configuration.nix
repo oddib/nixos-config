@@ -1,4 +1,4 @@
-{lib,...}: {
+{lib, ...}: {
   flake.modules.nixos.gobel = {...}: {
     hardware.facter.reportPath = ./facter.json;
     hardware.facter.detected.dhcp.enable = lib.mkForce false;

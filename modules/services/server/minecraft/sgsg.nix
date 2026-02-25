@@ -1,8 +1,5 @@
 {
-  flake.modules.nixos.minecraft = {
-    pkgs,
-    ...
-  }: {
+  flake.modules.nixos.minecraft = {pkgs, ...}: {
     # Minecraft server settings
     services.minecraft-servers.servers.sgsg = {
       enable = true;

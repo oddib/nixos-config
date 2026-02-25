@@ -1,8 +1,4 @@
-{
-  inputs,
-  ...
-}:
-{
+{inputs, ...}: {
   # expansion of default system with basic system settings & cli-tools
 
   flake.modules.nixos.system-cli = {
