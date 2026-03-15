@@ -11,12 +11,13 @@ build:
     nixos-rebuild --flake . build
 update:
     git stash
-    git checkout main
+    git fetch
+    git pull
     git switch -c update-just
-    nix flake update 
-    nix flake check
-    git checkout main
-    git merge update --squash
+    nix flake update --commit-lock-file
+    nixos-rebuild --flake . build
+    git switch -
+    git merge update-just --squash
     git branch -D update-just
 commit:
     git add --all
