@@ -24,9 +24,9 @@
     };
   in {
     systemd.services = {
-      sonarr.serviceConfig = default // {};
+      # sonarr.serviceConfig = default // {};
       sabnzbd.serviceConfig = default // {};
-      radarr.serviceConfig = default // {};
+      # radarr.serviceConfig = default // {};
       prowlarr.serviceConfig =
         default
         // {

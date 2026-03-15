@@ -1,5 +1,5 @@
 {inputs, ...}: {
-  flake.modules.nixos.gobel = {pkgs, ...}: {
+  flake.modules.nixos.gobel = {...}: {
     imports = with inputs.self.modules.nixos; [
       system-desktop
       systemd-boot
@@ -9,6 +9,6 @@
       impermanence
     ];
 
-    boot.kernelPackages = pkgs.linuxPackages_latest;
+    # boot.kernelPackages = pkgs.linuxPackages_latest;
   };
 }
