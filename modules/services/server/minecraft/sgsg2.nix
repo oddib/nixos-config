@@ -14,6 +14,7 @@
         allowFlight = true;
         enableCommandBlock = true;
         viewDistance = 20;
+        spawn-protection = 0;
       };
     };
   };
