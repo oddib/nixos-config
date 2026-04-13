@@ -1,8 +1,8 @@
 {
   flake.modules.nixos.minecraft = {pkgs, ...}: {
     # Minecraft server settings
-    services.minecraft-servers.servers.sgsg = {
-      enable = false;
+    services.minecraft-servers.servers.sgsg2 = {
+      enable = true;
       jvmOpts = "-Xmx4G -Xms2G";
 
       # Specify the custom minecraft server package
