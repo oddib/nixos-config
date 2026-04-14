@@ -13,7 +13,7 @@
         gamemode = "survival";
         allowFlight = true;
         enableCommandBlock = true;
-        viewDistance = 20;
+        view-distance = 20;
         spawn-protection = 0;
       };
     };
