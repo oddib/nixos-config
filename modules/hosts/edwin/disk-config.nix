@@ -40,6 +40,7 @@
           device = "/dev/disk/by-label/Data";
           mountPoint = "/mnt/data";
           options = ["nofail"];
+          fsType = "ext4";
         };
         "/media" = {
           device = "/mnt/disks/*";
