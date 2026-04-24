@@ -1,7 +1,8 @@
 {
   flake.modules.nixos.jellyseerr = {...}: {
-    services.jellyseerr = {
+    services.seerr = {
       enable = true;
+      configDir = /var/lib/jellyseerr;
     };
   };
 }

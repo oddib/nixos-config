@@ -16,10 +16,12 @@
   flake.modules.homeManager.onepass = {
     lib,
     pkgs,
+    config,
     ...
   }: let
-    # onePassPath = "~/Library/Group Containers/2BUA8C4S2C.com.1password/t/agent.sock";
-    onePassPath = "~/.1password/agent.sock";
+  onePassPath = if pkgs.stdenv.isDarwin
+    then "${config.home.homeDirectory}/Library/Group Containers/2BUA8C4S2C.com.1password/t/agent.sock"
+    else "${config.home.homeDirectory}/.1password/agent.sock";
   in {
     programs.ssh = {
       enable = true;
