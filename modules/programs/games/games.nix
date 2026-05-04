@@ -25,7 +25,7 @@
     home.packages = with pkgs; [
       moonlight-qt
       prismlauncher # minecraft
-      lutris # Random other games
+      # lutris # Random other games
       heroic # epic games
     ];
   };
