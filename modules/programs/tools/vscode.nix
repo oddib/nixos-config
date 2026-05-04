@@ -41,6 +41,7 @@
           userSettings =
             sharedUserSettings
             // {
+              "chat.disableAIFeatures" = true;
               "nix.enableLanguageServer" = true;
               "nix.serverPath" = "nixd";
               "nix.serverSettings" = {
