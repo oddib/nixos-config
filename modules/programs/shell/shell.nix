@@ -21,4 +21,6 @@
       };
     };
   };
+  flake.modules.nixos.shell = {...}: {
+  };
 }

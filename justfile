@@ -2,24 +2,27 @@
 check:
     nix flake check
 switch:
-    sudo nixos-rebuild --flake . switch
+    nh os switch .
 test:
-    sudo nixos-rebuild --flake . test
+    nh os test .
 boot:
-    sudo nixos-rebuild --flake . boot
+    nh os boot .
 build:
-    nixos-rebuild --flake . build
+    nh os build .
 update:
     git stash
     git fetch
     git pull
     git switch -c update-just
     nix flake update --commit-lock-file
-    nixos-rebuild --flake . build
-    git switch -
+    nh os build .
+upgrade:
+    git switch main
     git merge update-just --squash
     git branch -D update-just
-commit:
+    git push
+commit: 
+    git fetch
     git add --all
     nix flake check
     git commit
