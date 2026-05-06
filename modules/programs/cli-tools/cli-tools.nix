@@ -9,6 +9,7 @@
       xz
       unzip
       p7zip
+      gnutar
 
       # networking tools
       mtr # A network diagnostic tool
@@ -26,7 +27,6 @@
       which
       tree
       gnused
-      gnutar
       gawk
       zstd
       gnupg
@@ -38,6 +38,9 @@
       nix-output-monitor
       nixd # language server
       alejandra # formatter
+      nh # nice cli tool for using nix
+      nvd # diff nix builds
+      nix-diff # diff nix-derivations
 
       # productivity
       glow # markdown previewer in terminal
