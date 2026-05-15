@@ -33,6 +33,7 @@
           vscode
           onepass
           games
+          protonmail
         ];
         programs.git.settings = {
           user = {

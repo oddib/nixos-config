@@ -9,6 +9,7 @@
       xz
       unzip
       p7zip
+      gnutar
 
       # networking tools
       mtr # A network diagnostic tool
@@ -26,7 +27,6 @@
       which
       tree
       gnused
-      gnutar
       gawk
       zstd
       gnupg
@@ -38,6 +38,9 @@
       nix-output-monitor
       nixd # language server
       alejandra # formatter
+      nh # nice cli tool for using nix
+      nvd # diff nix builds
+      nix-diff # diff nix-derivations
 
       # productivity
       glow # markdown previewer in terminal
@@ -58,6 +61,11 @@
       pciutils # lspci
       usbutils # lsusb
     ];
+    programs.nh = {
+      enable = true;
+      clean.enable = true;
+      clean.extraArgs = "--keep-since 4d --keep 3";
+    };
   };
   flake.modules.homeManager.cli-tools = {pkgs, ...}: {
     home.packages = [];
