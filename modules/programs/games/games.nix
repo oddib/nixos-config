@@ -1,9 +1,12 @@
 {
-  flake.modules.nixos.games = {...}: {
+  flake.modules.nixos.games = {pkgs, ...}: {
     programs = {
       gamemode.enable = true;
       steam = {
         enable = true;
+        extraCompatPackages = with pkgs; [
+          proton-ge-bin
+        ];
         remotePlay.openFirewall =
           true; # Open ports in the firewall for Steam Remote Play
         dedicatedServer.openFirewall =
@@ -23,7 +26,7 @@
   };
   flake.modules.homeManager.games = {pkgs, ...}: {
     home.packages = with pkgs; [
-      moonlight-qt
+      #moonlight-qt
       prismlauncher # minecraft
       # lutris # Random other games
       heroic # epic games
