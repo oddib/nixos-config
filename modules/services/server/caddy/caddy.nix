@@ -7,7 +7,7 @@
         plugins = [
           "github.com/caddy-dns/cloudflare@v0.2.2"
         ];
-        hash = "sha256-Gb1nC5fZfj7IodQmKmEPGygIHNYhKWV1L0JJiqnVtbs=";
+        hash = "sha256-dNmccsad8nFm2X9w/6mdgAdhPSquNm6oVhf3sNc46SQ=";
       };
       globalConfig = ''
         acme_dns cloudflare {$CLOUDFLARE_API_KEY}
