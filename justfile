@@ -18,7 +18,7 @@ update:
     nh os build .
 upgrade:
     git switch main
-    git merge update-just --commit
+    git merge update-just
     git branch -D update-just
     git push
 commit: 
