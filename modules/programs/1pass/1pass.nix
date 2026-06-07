@@ -32,5 +32,11 @@
       "gpg \"ssh\"".program = "${lib.getExe' pkgs._1password-gui "op-ssh-sign"}";
       commit.gpgsign = true;
     };
+    xdg.autostart={
+      enable = true;
+      entries =[
+          "${pkgs._1password-gui}/share/applications/1password.desktop"
+      ];
+    };
   };
 }
