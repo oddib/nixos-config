@@ -25,7 +25,7 @@
   in {
     programs.ssh = {
       enable = true;
-      matchBlocks."*".identityAgent = onePassPath;
+      settings."*".identityAgent = onePassPath;
     };
     programs.git.settings = {
       gpg.format = "ssh";
