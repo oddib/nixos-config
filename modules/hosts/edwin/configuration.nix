@@ -1,5 +1,5 @@
 {inputs, ...}: {
-  flake.modules.nixos.edwin = {...}: {
+  flake.modules.nixos.edwin = {pkgs, ...}: {
     imports = with inputs.self.modules.nixos; [
       system-desktop
       systemd-boot
@@ -10,6 +10,6 @@
 
     services.lact.enable = true;
 
-    # boot.kernelPackages = pkgs.linuxPackages_latest;
+    boot.kernelPackages = pkgs.linuxPackages_latest;
   };
 }
