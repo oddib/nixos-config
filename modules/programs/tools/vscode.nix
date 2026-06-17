@@ -6,6 +6,8 @@
       "git.confirmSync" = false;
       "git.enableSmartCommit" = true;
       "git.autofetch" = true;
+      "update.showReleaseNotes" = false;
+      "chat.disableAIFeatures" = true;
     };
     sharedExtensions = with pkgs.vscode-extensions;
       [
@@ -13,12 +15,6 @@
         mkhl.direnv
       ]
       ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
-        {
-          name = "vscode-sqlite";
-          publisher = "alexcvzz";
-          version = "0.14.1";
-          sha256 = "sha256-jOQkRgBkUwJupD+cRo/KRahFRs82X3K49DySw6GlU8U=";
-        }
         /*
            {
           name = "op-vscode";
@@ -41,7 +37,6 @@
           userSettings =
             sharedUserSettings
             // {
-              "chat.disableAIFeatures" = true;
               "nix.enableLanguageServer" = true;
               "nix.serverPath" = "nixd";
               "nix.serverSettings" = {
