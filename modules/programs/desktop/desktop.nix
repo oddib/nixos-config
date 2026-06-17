@@ -24,8 +24,8 @@
 
     ##  Enable the Gnome Desktop Environment.
 
-    #services.displayManager.gdm.enable = true;
-    services.desktopManager.gnome.enable = true;
+    # services.displayManager.gdm.enable = true;
+    # services.desktopManager.gnome.enable = true;
     # gnome.core-utilities.enable = false;
 
     ###########################################################################
