@@ -3,6 +3,7 @@
     services.caddy = {
       enable = true;
       environmentFile = "/etc/caddy/caddy.env";
+      openFirewall = true;
       package = pkgs.caddy.withPlugins {
         plugins = [
           "github.com/caddy-dns/cloudflare@v0.2.2"

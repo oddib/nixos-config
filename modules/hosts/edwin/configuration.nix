@@ -8,7 +8,7 @@
       server
     ];
 
-    services.lact.enable = true;
+    #services.lact.enable = true;
 
     boot.kernelPackages = pkgs.linuxPackages_latest;
   };
