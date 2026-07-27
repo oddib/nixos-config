@@ -6,6 +6,11 @@
         "jellyseer.{$DOMAIN}"
         "jellyser.{$DOMAIN}"
         "request.{$DOMAIN}"
+        "requests.{$DOMAIN}"
+        "seerr.{$DOMAIN}"
+        "serr.{$DOMAIN}"
+        "seer.{$DOMAIN}"
+        "seerr.local.{$DOMAIN}"
       ];
       extraConfig = ''
         reverse_proxy localhost:5055
