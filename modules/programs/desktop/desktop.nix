@@ -12,7 +12,8 @@
     services.displayManager.cosmic-greeter.enable = true;
     services.displayManager.defaultSession = "cosmic";
     # Try to fix flickering with vrr on cosmic
-    environment.etc."profile.d".text = "COSMIC_DISABLE_DIRECT_SCANOUT=1";
+    #environment.etc."profile.d".text = "COSMIC_DISABLE_DIRECT_SCANOUT=y";
+    environment.variables = { COSMIC_DISABLE_DIRECT_SCANOUT="y"; };
 
     # xdg defaults not working.
     # https://github.com/lilyinstarlight/nixos-cosmic/issues/273
