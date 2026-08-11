@@ -1,8 +1,11 @@
-{self, ...}: {
+{self, lib,...}: {
   # default settings needed for all nixosConfigurations
 
   flake.modules.nixos.system-minimal = {...}: {
     nixpkgs.config.allowUnfree = true;
+    nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
+             "FoundryVTT-Linux"
+           ];
     system.stateVersion = "24.11";
     users.mutableUsers = false;
     system.configurationRevision = self.rev or self.dirtyRev or null;

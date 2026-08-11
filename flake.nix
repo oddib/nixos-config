@@ -10,10 +10,7 @@
     };
     flake-file.url = "github:vic/flake-file";
     flake-parts.url = "github:hercules-ci/flake-parts";
-    foundryvtt = {
-      url = "github:oddib/nix-foundryvtt";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    foundryvtt.url = "github:nix-foundryvtt/nix-foundryvtt";
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";

@@ -4,8 +4,8 @@
 
   flake-file.inputs = {
     foundryvtt = {
-      url = "github:oddib/nix-foundryvtt";
-      inputs.nixpkgs.follows = "nixpkgs";
+      url = "github:nix-foundryvtt/nix-foundryvtt";
+      #inputs.nixpkgs.follows = "nixpkgs";
     };
   };
   flake.modules.nixos.foundryvtt = {

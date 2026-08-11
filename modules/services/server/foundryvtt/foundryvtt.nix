@@ -8,7 +8,7 @@
       proxyPort = 443;
       proxySSL = true;
       upnp = false;
-      package = inputs.foundryvtt.packages.${pkgs.stdenv.hostPlatform.system}.foundryvtt_13;
+      package = inputs.foundryvtt.packages.${pkgs.stdenv.hostPlatform.system}.foundryvtt_14;
     };
     services.caddy.virtualHosts."foundryvtt.{$DOMAIN}".extraConfig = ''
       reverse_proxy localhost:30000
