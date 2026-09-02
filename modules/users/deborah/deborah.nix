@@ -4,7 +4,7 @@
   ...
 }: {
   flake.modules = lib.mkMerge [
-    (self.lib.user "deborah" true)
+    (self.lib.user "deborah" false)
     {
       nixos.deborah = {
         imports = with self.modules.nixos; [
@@ -14,8 +14,8 @@
         programs._1password-gui.polkitPolicyOwners = ["deborah"];
         users.users.deborah = {
           extraGroups = ["networkmanager" "lpadmin"];
-          description = "Oddbjørn Mestad Rønnestad";
-          password = "123";
+          description = "Deborah";
+          hashedPasswordFile = "/etc/passwords/oddbjornmr";
         };
       };
 
