@@ -1,7 +1,7 @@
 {
   flake.modules.homeManager.vscode = {pkgs, ...}: let
     sharedUserSettings = {
-      "extensions.autoUpdate" = true;
+      "extensions.autoUpdate" = false;
       "files.autoSave" = "afterDelay";
       "git.confirmSync" = false;
       "git.enableSmartCommit" = true;
