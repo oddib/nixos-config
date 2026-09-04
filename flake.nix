@@ -15,7 +15,13 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    impermanence.url = "github:nix-community/impermanence";
+    impermanence = {
+      url = "github:nix-community/impermanence";
+      inputs = {
+        home-manager.follows = "home-manager";
+        nixpkgs.follows = "nixpkgs";
+      };
+    };
     import-tree.url = "github:vic/import-tree";
     lanzaboote = {
       url = "github:nix-community/lanzaboote/v1.1.0";
