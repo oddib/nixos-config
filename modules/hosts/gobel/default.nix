@@ -7,6 +7,7 @@
       games
       secureboot
       impermanence
+      waydroid
     ];
 
     # boot.kernelPackages = pkgs.linuxPackages_latest;
