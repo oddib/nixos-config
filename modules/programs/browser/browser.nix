@@ -8,14 +8,10 @@
       [
       ]
       ++ lib.optionals (
-        stdenv.hostPlatform.system
-        == "x86_64-linux"
-        || stdenv.hostPlatform.system == "aarch64-linux"
+        stdenv.hostPlatform.isLinux
       ) [vivaldi]
       ++ lib.optionals (
-        stdenv.hostPlatform.system
-        == "aarch64-darwin"
-        || stdenv.hostPlatform.system == "x86_64-darwin"
+        stdenv.hostPlatform.isDarwin
       ) [firefox];
   };
 }
