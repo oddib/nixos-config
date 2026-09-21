@@ -1,0 +1,22 @@
+{
+  flake.modules.nixos.minecraft = {pkgs, ...}: {
+    # Minecraft server settings
+    services.minecraft-servers.servers.harumistano = {
+      enable = true;
+      jvmOpts = "-Xmx4G -Xms2G";
+
+      # Specify the custom minecraft server package
+      package = pkgs.minecraftServers.vanilla;
+      serverProperties = {
+        port = 25564;
+        difficulty = "hard";
+        motd = "Harumi stano";
+        gamemode = "survival";
+        allowFlight = false;
+        enableCommandBlock = false;
+        view-distance = 20;
+        spawn-protection = 0;
+      };
+    };
+  };
+}
