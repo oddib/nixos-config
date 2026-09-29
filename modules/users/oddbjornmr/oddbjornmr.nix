@@ -31,6 +31,7 @@
           system-desktop
           # adminTools
           vscode
+          obsidian
           onepass
           games
           protonmail
