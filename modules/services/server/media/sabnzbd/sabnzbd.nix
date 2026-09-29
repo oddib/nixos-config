@@ -4,7 +4,7 @@
       sabnzbd = {
         enable = true;
         group = "media";
-        secretFiles = [/var/lib/container/sabnzbd/sabnzbd.ini];
+        secretFiles = ["/var/lib/container/sabnzbd/sabnzbd.ini"];
         configFile = null; ## remove if system.stateversion > 26.05
       };
     };
