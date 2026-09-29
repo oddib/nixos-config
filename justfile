@@ -15,6 +15,7 @@ update:
     git pull
     git switch -c update-just
     nix flake update --commit-lock-file
+    nix flake check --all systems
     nh os build .
 upgrade:
     git switch main
