@@ -15,7 +15,7 @@ update:
     git pull
     git switch -c update-just
     nix flake update --commit-lock-file
-    nix flake check --all systems
+    nix flake check --all-systems
     nh os build .
 upgrade:
     git switch main
@@ -25,5 +25,5 @@ upgrade:
 commit: 
     git fetch
     git add --all
-    nix flake check
+    nix flake check --all-systems
     git commit
