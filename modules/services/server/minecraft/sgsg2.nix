@@ -18,6 +18,7 @@
         server-port = 25565;
         query.port = 25565;
         white-list=false;
+        "query.port" = 25565;
       };
     };
   };

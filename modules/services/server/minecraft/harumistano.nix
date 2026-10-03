@@ -8,7 +8,7 @@
       # Specify the custom minecraft server package
       package = pkgs.minecraftServers.vanilla;
       serverProperties = {
-        query.port=25564;
+        "query.port"=25564;
         server-port = 25564;
         difficulty = "hard";
         motd = "Harumi stano";
