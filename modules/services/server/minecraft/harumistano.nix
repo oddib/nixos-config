@@ -8,7 +8,8 @@
       # Specify the custom minecraft server package
       package = pkgs.minecraftServers.vanilla;
       serverProperties = {
-        port = 25564;
+        query.port=25564;
+        server-port = 25564;
         difficulty = "hard";
         motd = "Harumi stano";
         gamemode = "survival";
@@ -16,6 +17,7 @@
         enableCommandBlock = false;
         view-distance = 20;
         spawn-protection = 0;
+        enforce-whitelist = false;
       };
     };
   };

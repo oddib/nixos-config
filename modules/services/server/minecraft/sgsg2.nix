@@ -15,6 +15,8 @@
         enableCommandBlock = true;
         view-distance = 20;
         spawn-protection = 0;
+        server-port = 25565;
+        query.port = 25565;
       };
     };
   };
