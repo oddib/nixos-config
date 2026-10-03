@@ -13,7 +13,7 @@
         difficulty = "hard";
         motd = "Harumi stano";
         gamemode = "survival";
-        allowFlight = false;
+        allowFlight = true;
         enableCommandBlock = false;
         view-distance = 20;
         spawn-protection = 0;
