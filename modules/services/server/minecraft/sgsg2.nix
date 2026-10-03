@@ -16,7 +16,7 @@
         view-distance = 20;
         spawn-protection = 0;
         server-port = 25565;
-        white-list=false;
+        white-list = false;
         "query.port" = 25565;
       };
     };
