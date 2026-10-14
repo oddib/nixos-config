@@ -1,0 +1,25 @@
+{
+  flake.modules.nixos.minecraft = {pkgs, ...}: {
+    # Minecraft server settings
+    services.minecraft-servers.servers.sgsgfw = {
+      enable = true;
+      jvmOpts = "-Xmx4G -Xms2G";
+
+      # Specify the custom minecraft server package
+      package = pkgs.minecraftServers.vanilla;
+      serverProperties = {
+        difficulty = "hard";
+        motd = "Sandnes ghetto sykkel gjeng";
+        gamemode = "survival";
+        allowFlight = true;
+        enableCommandBlock = true;
+        view-distance = 20;
+        spawn-protection = 0;
+        server-port = 25565;
+        white-list = false;
+        "query.port" = 25565;
+        enforce-whitelist = false;
+      };
+    };
+  };
+}
