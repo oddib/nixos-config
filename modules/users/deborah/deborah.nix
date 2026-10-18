@@ -15,7 +15,7 @@
         users.users.deborah = {
           extraGroups = ["networkmanager" "lpadmin"];
           description = "Deborah";
-          hashedPasswordFile = "/etc/passwords/oddbjornmr";
+          password="123";
         };
       };
 
